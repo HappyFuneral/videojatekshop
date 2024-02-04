@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/VideojatekShop/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/VideojatekShop/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/VideojatekShop/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/VideojatekShop/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/VideojatekShop/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/VideojatekShop/tests/Unit" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/brick/math" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/carbonphp/carbon-doctrine-types" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/dflydev/dot-access-data" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/dragonmantank/cron-expression" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/egulias/email-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/fakerphp/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/filp/whoops" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/fruitcake/php-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/graham-campbell/result-type" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/guzzlehttp/uri-template" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/hamcrest/hamcrest-php" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/laravel/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/laravel/pint" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/laravel/prompts" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/laravel/sail" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/laravel/sanctum" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/laravel/serializable-closure" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/laravel/tinker" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/league/commonmark" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/league/config" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/league/flysystem" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/league/flysystem-local" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/league/mime-type-detection" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/mockery/mockery" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/nette/schema" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/nette/utils" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/nikic/php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/nunomaduro/collision" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/nunomaduro/termwind" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/phar-io/manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/phar-io/version" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/phpoption/phpoption" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/phpunit/php-code-coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/phpunit/php-file-iterator" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/phpunit/php-invoker" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/phpunit/php-text-template" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/phpunit/php-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/phpunit/phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/psr/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/psr/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/psy/psysh" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/ramsey/collection" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/ramsey/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/cli-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/code-unit" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/code-unit-reverse-lookup" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/comparator" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/complexity" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/environment" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/global-state" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/lines-of-code" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/object-enumerator" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/object-reflector" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/recursion-context" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/type" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/spatie/backtrace" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/spatie/flare-client-php" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/spatie/ignition" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/spatie/laravel-ignition" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/css-selector" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/error-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/http-kernel" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/mailer" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/polyfill-intl-idn" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/polyfill-php72" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/polyfill-php83" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/polyfill-uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/uid" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/theseer/tokenizer" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/tijsverkoyen/css-to-inline-styles" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/vlucas/phpdotenv" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/voku/portable-ascii" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/VideojatekShop/vendor/laravel/breeze" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
