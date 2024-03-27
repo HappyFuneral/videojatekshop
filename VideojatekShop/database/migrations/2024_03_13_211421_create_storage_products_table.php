@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('code');
             $table->integer('count');
-            //$table->foreignId('product_id')->constrained('products');
-            //$table->foreignId('storage_id')->constrained('storages');
+            $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('storage_id')->constrained('storages');
             $table->timestamps();
         });
     }

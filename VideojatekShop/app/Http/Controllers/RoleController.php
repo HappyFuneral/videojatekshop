@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Disc;
-use App\Http\Requests\StoreDiscRequest;
-use App\Http\Requests\UpdateDiscRequest;
+use App\Models\Role;
+use App\Http\Requests\StoreRoleRequest;
+use App\Http\Requests\UpdateRoleRequest;
 
-class DiscController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class DiscController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDiscRequest $request)
+    public function store(StoreRoleRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class DiscController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Disc $disc)
+    public function show(Role $role)
     {
         //
     }
@@ -43,7 +43,7 @@ class DiscController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Disc $disc)
+    public function edit(Role $role)
     {
         //
     }
@@ -51,7 +51,7 @@ class DiscController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDiscRequest $request, Disc $disc)
+    public function update(UpdateRoleRequest $request, Role $role)
     {
         //
     }
@@ -59,7 +59,7 @@ class DiscController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Disc $disc)
+    public function destroy(Role $role)
     {
         //
     }

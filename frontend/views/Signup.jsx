@@ -19,7 +19,7 @@ export default function Signup(){
             password: passwordRef.current.value,
             password_confirmation: passwordConfirmRef.current.value
         }
-        axiosClient.post('/signup',payload)
+        axiosClient.post('/signup',payload,{validateStatus: false})
             .then(({data})=> {
                 setUser(data.user)
                 setToken(data.token)
@@ -41,7 +41,7 @@ export default function Signup(){
                     <h1 className="title">
                     Signup for free
                     </h1>
-                    <input ref={nameRef} name="name" type="text" placeholder="Name"/>
+                    <input ref={nameRef} type="text" placeholder="Name"/>
                     <input ref={emailRef} type="email" placeholder="Email"/>
                     <input ref={passwordRef} type="password" placeholder="Password"/>
                     <input ref={passwordConfirmRef} type="password" placeholder="Password Confirm"/>

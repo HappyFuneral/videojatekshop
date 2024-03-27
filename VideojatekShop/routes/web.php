@@ -28,8 +28,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::post('/signup', [\App\Http\Controllers\Api\AuthController::class,'signup']);
-Route::post('/login', [\App\Http\Controllers\Api\AuthController::class,'login']);
-Route::post('/logout', [\App\Http\Controllers\Api\AuthController::class,'logout']);
 
 require __DIR__.'/auth.php';

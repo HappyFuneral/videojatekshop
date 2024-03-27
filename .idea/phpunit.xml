@@ -3,10 +3,10 @@
   <component name="PHPUnit">
     <option name="directories">
       <list>
-        <option value="$PROJECT_DIR$/VideojatekShop/tests/Unit" />
-        <option value="$PROJECT_DIR$/VideojatekShop/tests/Feature" />
         <option value="$PROJECT_DIR$/inventory-management-system/tests/Unit" />
         <option value="$PROJECT_DIR$/inventory-management-system/tests/Feature" />
+        <option value="$PROJECT_DIR$/VideojatekShop/tests/Unit" />
+        <option value="$PROJECT_DIR$/VideojatekShop/tests/Feature" />
       </list>
     </option>
   </component>

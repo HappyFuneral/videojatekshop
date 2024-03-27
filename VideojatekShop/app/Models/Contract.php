@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Contract extends Model
 {
     use HasFactory;
+
+    protected $fillable = 
+    [
+        "contract_name",
+        "contract_owner",
+        "pdf",
+        "contract_type_id"
+    ];
 }

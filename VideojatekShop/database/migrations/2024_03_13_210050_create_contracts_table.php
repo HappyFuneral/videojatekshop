@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
+            $table->string('contract_name');
+            $table->string('contract_owner');
+            $table->string('pdf');
+            $table->foreignId('contract_type_id')->constrained('contract_types');
             $table->timestamps();
         });
     }
