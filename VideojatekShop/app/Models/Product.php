@@ -16,7 +16,7 @@ class Product extends Model
         'description',
         'price',
         'publisher_id',
-        'releasedate'
+        'releaseDate'
     ];
     /*
      * Get the user that owns the Product
