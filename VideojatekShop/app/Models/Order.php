@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relation\HasOne;
 
 class Order extends Model
 {
@@ -16,4 +17,10 @@ class Order extends Model
         "delivery_details",
         "orderState_id"
     ];
+
+    
+
+    public function order_states(): HasOne {
+        return $this->hasMany(OrderState::class);
+    }
 }

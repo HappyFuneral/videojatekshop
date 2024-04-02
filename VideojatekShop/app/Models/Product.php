@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
 {
@@ -20,9 +21,12 @@ class Product extends Model
         'publisher_id',
         'releaseDate'
     ];
-    /*
-     * Get the user that owns the Product
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+    
+    public function product_types(): HasOne {
+        return $this->hasMany(Product_type::class);
+    }
+
+    public function publishers(): HasOne {
+        return $this->hasMany(Publisher::class);
+    }
 }

@@ -16,4 +16,6 @@ class Contract extends Model
         "pdf",
         "contract_type_id"
     ];
+
+    
 }
