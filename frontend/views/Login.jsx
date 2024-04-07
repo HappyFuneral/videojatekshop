@@ -26,7 +26,6 @@ export default function Login(){
                     console.log(response.data.errors);
                 }
         })
-
         console.log(payload);
     }
     return (

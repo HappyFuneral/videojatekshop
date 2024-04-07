@@ -33,7 +33,6 @@ export default function Signup(){
 
         console.log(payload);
     }
-
     return (
         <div className="login-signup-form animated fadeInDown">
             <div className="form">
