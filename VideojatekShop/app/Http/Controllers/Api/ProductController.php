@@ -9,7 +9,7 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function products() {
-        $products = Product::all('name');
+        $products = Product::all();
         return response()->json($products);
     }
 }

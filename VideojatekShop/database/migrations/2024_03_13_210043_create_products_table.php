@@ -19,6 +19,7 @@ return new class extends Migration
             $table->double('price');
             $table->date('releaseDate');
             $table->timestamps();
+            $table->softdeletes();
             $table->foreignId('product_type_id')->constrained('product_types');
             $table->foreignId('publisher_id')->constrained('publishers');
         });

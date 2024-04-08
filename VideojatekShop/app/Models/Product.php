@@ -22,11 +22,5 @@ class Product extends Model
         'releaseDate'
     ];
     
-    public function product_types(): HasOne {
-        return $this->hasMany(Product_type::class);
-    }
-
-    public function publishers(): HasOne {
-        return $this->hasMany(Publisher::class);
-    }
+    
 }
