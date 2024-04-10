@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
             ProductTypeSeeder::class,
             PublisherSeeder::class,
             ProductSeeder::class,
+            OrderStateSeeder::class,
+            RoleSeeder::class,
+            StorageSeeder::class,
         ]);
     }
 }

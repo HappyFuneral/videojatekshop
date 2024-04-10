@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Contract;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Publisher extends Model
 {
@@ -14,13 +14,7 @@ class Publisher extends Model
         'name'
     ];
 
-    /**
-     * Get all of the comments for the Publisher
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function contracts(): HasMany
-    {
-        return $this->hasMany(Contract::class);
+    public function products(): BelongsToMany {
+        return $this->belongsToMany(Product::class);
     }
 }

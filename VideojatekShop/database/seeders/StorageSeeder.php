@@ -12,6 +12,13 @@ class StorageSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Storage::factory()->create([
+            'name' => 'Budapesti bolt',
+            'country' => 'Magyarország',
+            'province' => 'Budapest',
+            'city' => 'Budapest',
+            'address' => 'Petőfi utca 16',
+            'postal' => '1042',
+        ]);
     }
 }

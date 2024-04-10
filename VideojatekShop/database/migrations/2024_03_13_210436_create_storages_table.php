@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('storages', function (Blueprint $table) {
             $table->id();
             $table->string('storageName');
+            $table->integer('postal');
+            $table->string('country');
+            $table->string('province');
+            $table->string('city');
+            $table->string('address');
             $table->timestamps();
         });
     }

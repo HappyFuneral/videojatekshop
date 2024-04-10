@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Contract extends Model
 {
@@ -16,6 +17,10 @@ class Contract extends Model
         "pdf",
         "contract_type_id"
     ];
+
+    public function contract_types(): HasOne {
+        return $this->hasOne(ContractTypes::class);
+    }
 
     
 }

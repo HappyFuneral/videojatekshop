@@ -12,6 +12,20 @@ class OrderStateSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        OrderState::factory()->create(
+            ['name' => 'Törölve']  
+        );
+
+        OrderState::factory()->create(
+            ['name' => 'Megrendelve']  
+        );
+
+        OrderState::factory()->create(
+            ['name' => 'Szállítás alatt']  
+        );
+
+        OrderState::factory()->create(
+            ['name' => 'Félretéve']  
+        );
     }
 }

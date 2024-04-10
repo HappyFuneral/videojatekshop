@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Product;
-use App\Models\Storage;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class StorageProduct extends Model
 {
@@ -15,29 +14,19 @@ class StorageProduct extends Model
 
     protected $fillable = [
         'code',
-        'count',
+        'stock',
         'product_id',
         'storage_id'
     ];
 
-    /**
-     * Get the user that owns the StorageProduct
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function storage(): BelongsTo
+    public function storages(): HasOne
     {
-        return $this->belongsTo(Storage::class);
+        return $this->hasOne(Storage::class);
     }
 
-    /**
-     * Get the user that owns the StorageProduct
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function product(): BelongsTo
+    public function products(): HasOne
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasOne(Product::class);
     }
 }
 

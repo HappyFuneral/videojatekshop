@@ -17,6 +17,11 @@ return new class extends Migration
             $table->double('price');
             $table->date('delivery_date');
             $table->string('delivery_details');
+            $table->integer('postal')->nullable();
+            $table->string('country')->nullable();
+            $table->string('province')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address')->nullable();
             $table->foreignId('orderState_id')->constrained('order_states');
             $table->timestamps();
         });

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('storage_products', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->integer('count');
+            $table->bool('stock');
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('storage_id')->constrained('storages');
             $table->timestamps();
