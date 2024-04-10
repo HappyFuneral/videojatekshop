@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axiosClient from "../src/axios-client";
+import axiosClient from "../axios-client.js";
 
 export default function Home(){
     const [products,setProducts] = useState([])

@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import {useRef} from "react";
-import axiosClient from "../src/axios-client.js";
+import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 export default function Login(){
