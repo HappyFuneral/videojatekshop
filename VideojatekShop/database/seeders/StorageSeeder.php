@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Storage;
 
 class StorageSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class StorageSeeder extends Seeder
     public function run(): void
     {
         Storage::factory()->create([
-            'name' => 'Budapesti bolt',
+            'storageName' => 'Budapesti bolt',
             'country' => 'Magyarország',
             'province' => 'Budapest',
             'city' => 'Budapest',

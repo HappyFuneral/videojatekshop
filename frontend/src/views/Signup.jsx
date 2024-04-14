@@ -8,6 +8,7 @@ export default function Signup(){
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
+    const phoneRef = useRef();
 
     const {setUser,setToken} = useStateContext()
 
@@ -17,7 +18,8 @@ export default function Signup(){
             name: nameRef.current.value,
             email: emailRef.current.value,
             password: passwordRef.current.value,
-            password_confirmation: passwordConfirmRef.current.value
+            password_confirmation: passwordConfirmRef.current.value,
+            phoneRef: phoneRef.current.value
         }
         axiosClient.post('/signup',payload,{validateStatus: false})
             .then(({data})=> {
@@ -42,6 +44,7 @@ export default function Signup(){
                     </h1>
                     <input ref={nameRef} type="text" placeholder="Name"/>
                     <input ref={emailRef} type="email" placeholder="Email"/>
+                    <input ref={phoneRef} type="text" placeholder="Phone"/>
                     <input ref={passwordRef} type="password" placeholder="Password"/>
                     <input ref={passwordConfirmRef} type="password" placeholder="Password Confirm"/>
                     <button className="btn btn-block" type="submit">Login</button>

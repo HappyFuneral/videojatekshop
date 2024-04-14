@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\OrderState;
 
 class OrderStateSeeder extends Seeder
 {
@@ -13,19 +14,19 @@ class OrderStateSeeder extends Seeder
     public function run(): void
     {
         OrderState::factory()->create(
-            ['name' => 'Törölve']  
+            ['state' => 'Törölve']  
         );
 
         OrderState::factory()->create(
-            ['name' => 'Megrendelve']  
+            ['state' => 'Megrendelve']  
         );
 
         OrderState::factory()->create(
-            ['name' => 'Szállítás alatt']  
+            ['state' => 'Szállítás alatt']  
         );
 
         OrderState::factory()->create(
-            ['name' => 'Félretéve']  
+            ['state' => 'Félretéve']  
         );
     }
 }

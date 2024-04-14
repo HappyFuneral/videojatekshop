@@ -6,7 +6,7 @@ export default function Home(){
     const [loading,setLoading] = useState(false)
 
     useEffect(()=>{
-
+        getProducts()
     },[])
 
     const getProducts = () => {
@@ -14,7 +14,7 @@ export default function Home(){
         axiosClient.get("/products")
             .then(({data}) => {
                 setLoading(false)
-                console.log(data)
+                setProducts(products)
             }).catch(({err}) =>{
             setLoading(false)
         })
