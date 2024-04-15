@@ -20,7 +20,9 @@ import {
   CreditCardIcon,
   LockClosedIcon,
 } from "@heroicons/react/24/solid";
- 
+import { CartContext } from "../contexts/CartContext";
+
+
 function formatCardNumber(value) {
   const val = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
   const matches = val.match(/\d{4,16}/g);
@@ -52,7 +54,8 @@ export default function CheckoutForm() {
   const [type, setType] = React.useState("card");
   const [cardNumber, setCardNumber] = React.useState("");
   const [cardExpires, setCardExpires] = React.useState("");
- 
+  const { cart } = useContext(CartContext);
+
   return (
     <Card className="w-full max-w-[24rem]">
       <CardHeader
@@ -97,7 +100,7 @@ export default function CheckoutForm() {
             }}
           >
             <TabPanel value="card" className="p-0">
-              <form className="mt-12 flex flex-col gap-4">
+              <form method="POST" className="mt-12 flex flex-col gap-4">
                 <div>
                   <Typography
                     variant="small"

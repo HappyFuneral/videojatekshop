@@ -31,4 +31,22 @@ class ProductController extends Controller
         }
         return response()->json($response);
     }
+    public function checkout(Request $request){
+        
+    }
+
+    public function add(ProductStoreRequest $request){
+        $request->img->storeAs(
+            'picture',
+            'product_' . $request->name . '.jpg',
+            'public'
+        );
+        $file_name = 'product_' . $request->name . '.jpg';
+
+        $printer = Proiduct::create($request->all());
+        $printer->img = $file_name;
+        $printer->updated_at = now();
+        $printer->created_at = now();
+        $printer->update();
+    }
 }
