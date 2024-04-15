@@ -24,13 +24,22 @@ const Header = () => {
         isActive ? "bg-white py-4 shadow-md" : "bg-none py-6"
       } fixed w-full z-10 lg:px-8 transition-all`}
     >
-      <div className="container mx-auto flex items-center justify-between h-full">
+      <div className=" text-gray-400 container mx-auto flex items-center justify-between h-full">
         <Link to={"/"}>
           <div className="w-[40px]">
             <img src={Logo} alt="" />
           </div>
         </Link>
-
+        <Link to={"/signup"}>
+          <div>
+            Signup
+          </div>
+        </Link>
+        <Link to={"/login"}>
+          <div>
+            Login
+          </div>
+        </Link>
         {/* cart */}
         <div
           onClick={() => setIsOpen(!isOpen)}

@@ -49,4 +49,9 @@ class ProductController extends Controller
         $printer->created_at = now();
         $printer->update();
     }
+
+    public function delete(Product $product){
+        $product->delete();
+        return response()->json(['msg' => 'product deleted']);
+    }
 }
