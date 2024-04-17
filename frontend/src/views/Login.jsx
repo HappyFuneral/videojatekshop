@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {useRef} from "react";
+import {useRef,useState} from "react";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 
@@ -8,6 +8,7 @@ export default function Login(){
     const passwordRef = useRef();
 
     const {setUser,setToken} = useStateContext();
+    const [errors, setErrors] = useState(null);
 
     const onSubmit = (ev) => {
         ev.preventDefault();
@@ -15,7 +16,7 @@ export default function Login(){
             email: emailRef.current.value,
             password: passwordRef.current.value,
         }
-        axiosClient.post('/login',payload,{validateStatus: false})
+        axiosClient.post('/login',payload)
             .then(({data})=> {
                 setUser(data.user)
                 setToken(data.token)
@@ -23,15 +24,21 @@ export default function Login(){
                 console.log(err);
                 const response = err.response;
                 if(response && response.status === 422){
-                    console.log(response.data.errors);
+                    setErrors(response.data.errors);
                 }
         })
-        console.log(payload);
     }
     return (
      <div className="login-signup-form animated fadeInDown">
          <div className="form">
              <form onSubmit={onSubmit}>
+                {errors &&
+                    <div className="alert">
+                    {Object.keys(errors).map(key => (
+                        <p key={key}>{errors[key][0]}</p>
+                    ))}
+                    </div>
+                }
                  <h1 className="title">Please login</h1>
                  <input ref={emailRef} type="email" placeholder="Email"/>
                  <input ref={passwordRef} type="password" placeholder="Password"/>

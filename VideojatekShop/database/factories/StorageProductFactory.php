@@ -17,11 +17,8 @@ class StorageProductFactory extends Factory
     public function definition(): array
     {
         return [
-            /*
             'code' => fake() -> creditCardNumber(),
-            'storage_id' => fake(1),
-            'product_id' => fake()
-            */
+            'storage_id' => 1,
         ];
     }
 }

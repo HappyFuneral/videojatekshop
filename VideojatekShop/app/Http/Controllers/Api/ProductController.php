@@ -43,7 +43,7 @@ class ProductController extends Controller
         );
         $file_name = 'product_' . $request->name . '.jpg';
 
-        $printer = Proiduct::create($request->all());
+        $printer = Product::create($request->all());
         $printer->img = $file_name;
         $printer->updated_at = now();
         $printer->created_at = now();

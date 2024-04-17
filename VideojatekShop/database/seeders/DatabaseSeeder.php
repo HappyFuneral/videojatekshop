@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             OrderStateSeeder::class,
             RoleSeeder::class,
             StorageSeeder::class,
+            StorageProductSeeder::class,
         ]);
     }
 }

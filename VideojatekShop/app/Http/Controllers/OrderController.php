@@ -19,14 +19,8 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(StoreOrderRequest $request)
     {
         //
@@ -43,11 +37,6 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Order $order)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      */
@@ -61,6 +50,6 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        return response()->json([$order,'msg' => 'Deleted Order']);
     }
 }
