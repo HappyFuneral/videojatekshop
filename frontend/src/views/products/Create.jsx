@@ -1,12 +1,17 @@
+import {Link} from "react-router-dom";
+import {useRef, useState} from "react";
+import axiosClient from "../../axios-client.js";
+import {useStateContext} from "../../contexts/ContextProvider.jsx";
+
 export default function CreateProduct(){
     const nameRef = useRef();
     const imgRef = useRef();
     const titleRef = useRef();
     const descriptionRef = useRef();
     const priceRef = useRef();
-    const releaseDateRef = useRef();
+    const releaseDateRef = useRef(new Date());
     const productTypeRef = useRef();
-    const publisherRef = userRef();
+    const publisherRef = useRef();
 
 
     const onSubmit = (ev) => {
@@ -37,21 +42,28 @@ export default function CreateProduct(){
     return (
 
         <div>
-        <form>
-        <TEInput
-          type="email"
+        <form className="container text-left">
+        <input ref={nameRef}
+          type="text"
           label="Name"
           className="mb-6"
-        ></TEInput>
+        ></input>
 
         {/* <!--Email input--> */}
-        <TEInput
-          type="email"
-          label="Email address"
+        <input
+          ref={titleRef}
+          type="text"
+          label="Title"
           className="mb-6"
-        ></TEInput>
+        ></input>
+        <textarea
+         ref={descriptionRef}
+        >
 
-      
+        </textarea>
+        <input type="number" ref={priceRef}>
+
+        </input>
         <div className="mb-3 w-96">
             <label
                 htmlFor="formFile"
@@ -80,16 +92,13 @@ export default function CreateProduct(){
                 I have read and agree to the terms
             </label>
             </div>
-
             {/* <!--Submit button--> */}
-            <TERipple rippleColor="light" className="w-full">
             <button
-                type="button"
+                type="submit"
                 className="block w-full rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]]"
             >
                 Subscribe
             </button>
-            </TERipple>
         </form>
         </div>
     );

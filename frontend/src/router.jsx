@@ -7,12 +7,17 @@ import Signup from "./views/Signup.jsx";
 import Landing from "./views/Landing.jsx";
 import ProductDetails from "./views/ProductDetails.jsx";
 import CheckoutForm from "./views/Checkout.jsx";
+import CreateProduct from "./views/products/Create.jsx";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <DefaultLayout/>,
         children: [
+            {
+                path: '/productAdd',
+                element: <CreateProduct/>
+            },
             {
                 path: '/home',
                 element: <Home/>
@@ -23,6 +28,7 @@ const router = createBrowserRouter([
         path: '/',
         element: <GuestLayout/>,
         children: [
+    
             {
                 path: '/checkout',
                 element: <CheckoutForm/>
