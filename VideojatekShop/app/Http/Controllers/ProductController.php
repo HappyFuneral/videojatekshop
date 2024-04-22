@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Auth\Middleware\Authorize;
+use Intervention\Image\Facades\Image as ResizeImage;
 
 class ProductController extends Controller
 {
@@ -13,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::all();
+        return view("products.index", ['products' => $products]);
     }
 
     /**
@@ -21,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view("Products.create");
     }
 
     /**
@@ -29,7 +32,24 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+
+        //TODO product image upload
+
+        $product = new Product(
+            [
+                "name" => $request->name,
+                "title" => $request->title,
+                "description" => $request->description,
+                "price" => $request->price,
+                "releaseDate" => $request->releaseDate,
+                "product_type_id" => $request->product_type_id,
+                "publisher_id" => $request->publisher_id
+            ]
+        );
+
+        $product->save();
+
+        return back()->with("success", "Product created successfully.");
     }
 
     /**
@@ -37,7 +57,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('products.show', ['product' => $product]);
     }
 
     /**
@@ -45,7 +65,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('products.edit', ['product' => $product]);
     }
 
     /**
@@ -53,7 +73,26 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        if ($request->file != null) {
+            $filename = 'TN_product_' . $product->id . '.' . $request->file->extension();
+
+            $img = ResizeImage::make($request->file)
+                ->resize(500, 500)->save('storage/Product_Thumbnails/' . $filename);
+
+            $product->product_img = $filename;
+            
+        }
+
+        $product->name = $request->name;
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->releaseDate = $request->releaseDate;
+        $product->product_type_id = $request->product_type_id;
+        $product->publisher_id = $request->publisher_id;
+
+        $product->update();
+        return back()->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -61,6 +100,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
     }
 }

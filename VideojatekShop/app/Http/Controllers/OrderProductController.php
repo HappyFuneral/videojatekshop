@@ -29,7 +29,15 @@ class OrderProductController extends Controller
      */
     public function store(StoreOrderProductRequest $request)
     {
-        //
+        $orderproduct = new OrderProduct(
+            [
+                "order_id" => $request->order_id,
+                "product_id" => $request->product_id,
+                "quntity" => $request->quntity
+            ]
+        );
+
+        $orderproduct->save();
     }
 
     /**

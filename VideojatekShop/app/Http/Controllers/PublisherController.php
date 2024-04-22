@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Publisher;
 use App\Http\Requests\StorePublisherRequest;
 use App\Http\Requests\UpdatePublisherRequest;
+use Illuminate\Auth\Middleware\Authorize;
 
 class PublisherController extends Controller
 {
@@ -13,7 +14,8 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        //
+        $publisher = Publisher::all();
+        return view("publishers.index", ['publishers' => $publishers]);
     }
 
     /**
@@ -21,7 +23,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        //
+        return view("publishers.create");
     }
 
     /**
@@ -29,7 +31,15 @@ class PublisherController extends Controller
      */
     public function store(StorePublisherRequest $request)
     {
-        //
+        $publisher = new Publisher(
+            [
+                "name" => $request->name
+            ]
+        );
+
+        $publisher->save();
+
+        return back()->with("success", "Publisher created successfully.");
     }
 
     /**
@@ -45,7 +55,7 @@ class PublisherController extends Controller
      */
     public function edit(Publisher $publisher)
     {
-        //
+        return view("publishers.edit", ['publisher' => $publisher]);
     }
 
     /**
@@ -53,7 +63,9 @@ class PublisherController extends Controller
      */
     public function update(UpdatePublisherRequest $request, Publisher $publisher)
     {
-        //
+        $publisher->update($request->all());
+
+        return redirect()->route('publishers.index')->with('success', 'The publisher was updated successfully.');
     }
 
     /**
@@ -61,6 +73,6 @@ class PublisherController extends Controller
      */
     public function destroy(Publisher $publisher)
     {
-        //
+        $publisher->delete();
     }
 }

@@ -5,64 +5,76 @@ namespace App\Http\Controllers;
 use App\Models\StorageProduct;
 use App\Http\Requests\StoreStorageProductRequest;
 use App\Http\Requests\UpdateStorageProductRequest;
+use Illuminate\Auth\Middleware\Authorize;
 
 class StorageProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
-    public function products() {
-        $storageproducts = StorageProduct::all();
-        $response = array();
-        foreach ($storageproducts as $item) {
-   
-            $productname = Product::find($item->product_id);
-            $storagename = Product::find($item->storage_id);
-    
-            $response[] =
-                array(
-                    'code' => $item->code,
-                    'stock' => $item->stock,
-                    'product' => $productname,
-                    'storage_id' => $storagename
-                );
-        }
-        return response()->json($response);
+    public function index()
+    {
+        $storageproduct = StorageProduct::all();
+        return view("storageproduts.index", ['storageproduts' => $storageproducts]);
     }
-    
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view("storageproduts.create");
+    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function add(StoreStorageProductRequest $request){
-        $request->img->storeAs(
-            'picture',
-            'product_' . $request->name . '.jpg',
-            'public'
+    public function store(StoreStorageProductRequest $request)
+    {
+        $storageproduct = new StorageProduct(
+            [
+                "code" => $request->code,
+                "product_id" => $request->product_id,
+                "storage_id" => $request->storage_id,
+            ]
         );
-        $file_name = 'product_' . $request->name . '.jpg';
 
-        $printer = Product::create($request->all());
-        $printer->img = $file_name;
-        $printer->updated_at = now();
-        $printer->created_at = now();
-        $printer->update();
+        $storageproduct->save();
+
+        return back()->with("success", "StorageProduct created successfully.");
     }
 
     /**
-     * Update the specified resource in storage.
+     * Display the specified resource.
      */
-    public function update(UpdateStorageProductRequest $request, StorageProduct $storageProduct)
+    public function show(StorageProduct $storageproduct)
     {
         //
     }
 
     /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(StorageProduct $storageproduct)
+    {
+        return view("storageproducts.edit", ['storageproduct' => $storageproduct]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateStorageProductRequest $request, StorageProduct $storageproduct)
+    {
+        $storageproduct->update($request->all());
+
+        return redirect()->route('storageproducts.index')->with('success', 'The storageproduct was updated successfully.');
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
-    public function delete(Product $product){
-        $product->delete();
-        return response()->json(['msg' => 'storage deleted']);
+    public function destroy(StorageProduct $storageproduct)
+    {
+        $storageproduct->delete();
     }
 }

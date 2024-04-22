@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Storage;
 use App\Http\Requests\StoreStorageRequest;
 use App\Http\Requests\UpdateStorageRequest;
+use Illuminate\Auth\Middleware\Authorize;
 
 class StorageController extends Controller
 {
@@ -13,7 +14,8 @@ class StorageController extends Controller
      */
     public function index()
     {
-        //
+        $storage = Storage::all();
+        return view("storages.index", ['storages' => $storages]);
     }
 
     /**
@@ -21,7 +23,7 @@ class StorageController extends Controller
      */
     public function create()
     {
-        
+        return view("storages.create");
     }
 
     /**
@@ -29,7 +31,20 @@ class StorageController extends Controller
      */
     public function store(StoreStorageRequest $request)
     {
-        //
+        $storage = new Storage(
+            [
+                "storageName" => $request->storageName,
+                "postal" => $request->postal,
+                "country" => $request->country,
+                "provincie" => $request->provincie,
+                "city" => $request->city,
+                "address" => $request->address,
+            ]
+        );
+
+        $storage->save();
+
+        return back()->with("success", "Storage created successfully.");
     }
 
     /**
@@ -45,7 +60,7 @@ class StorageController extends Controller
      */
     public function edit(Storage $storage)
     {
-        //
+        return view("storages.edit", ['storage' => $storage]);
     }
 
     /**
@@ -53,7 +68,9 @@ class StorageController extends Controller
      */
     public function update(UpdateStorageRequest $request, Storage $storage)
     {
-        //
+        $storage->update($request->all());
+
+        return redirect()->route('storages.index')->with('success', 'The storage was updated successfully.');
     }
 
     /**
@@ -61,6 +78,6 @@ class StorageController extends Controller
      */
     public function destroy(Storage $storage)
     {
-        //
+        $storage->delete();
     }
 }

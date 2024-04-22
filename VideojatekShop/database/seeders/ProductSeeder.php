@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
     {
         Product::create([
             'name' => 'Kontroller',
-            'img' => '',
+            'product_img' => '',
             'title' => 'Kontrollerr',
             'description' => 'péló',
             'price' => 12000,
@@ -25,7 +25,7 @@ class ProductSeeder extends Seeder
         ]);
         Product::create([
             'name' => 'Kontroller 2',
-            'img' => 'kuki',
+            'product_img' => 'kuki',
             'description' => '',
             'title' => 'Kontroller',
             'price' => 12000,

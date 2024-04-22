@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contract;
 use App\Http\Requests\StoreContractRequest;
 use App\Http\Requests\UpdateContractRequest;
+use Illuminate\Auth\Middleware\Authorize;
 
 class ContractController extends Controller
 {
@@ -13,7 +14,8 @@ class ContractController extends Controller
      */
     public function index()
     {
-        //
+        $contract = Contract::all();
+        return view("contracts.index", ['contracts' => $contracts]);
     }
 
     /**
@@ -21,7 +23,7 @@ class ContractController extends Controller
      */
     public function create()
     {
-        //
+        return view("contracts.create");
     }
 
     /**
@@ -37,7 +39,7 @@ class ContractController extends Controller
      */
     public function show(Contract $contract)
     {
-        //
+        //PDF file lementése
     }
 
     /**
@@ -45,7 +47,7 @@ class ContractController extends Controller
      */
     public function edit(Contract $contract)
     {
-        //
+        return view("contracts.edit", ['contract' => $contract]);
     }
 
     /**
@@ -53,7 +55,7 @@ class ContractController extends Controller
      */
     public function update(UpdateContractRequest $request, Contract $contract)
     {
-        //
+        //pdf file
     }
 
     /**
@@ -61,6 +63,6 @@ class ContractController extends Controller
      */
     public function destroy(Contract $contract)
     {
-        //
+        $contract->delete();
     }
 }
