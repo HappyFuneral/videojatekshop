@@ -57,22 +57,45 @@
                             <small id="helpId" class="text-muted">The email the teacher has expertise in.</small>
                         </div>
                         <div class="mb-3">
-                            <label for="degree" class="form-label">Degree</label>
-                            <input type="text" name="description" id="degree" class="form-control"
-                                placeholder="f.e. example@test.hu" aria-describedby="helpId" maxlength="255" value="{{old('description', $product->description)}}">
+                            <label for="degree" class="form-label">description</label>
+                            <textarea name="description" id="degree" class="form-control"
+                                placeholder="description" aria-describedby="helpId" maxlength="255" value="">{{old('description', $product->description)}}
+                            </textarea>
                             <small id="helpId" class="text-muted">The degree the teacher has expertise in.</small>
                         </div>
                         <div class="mb-3">
-                            <label for="subjects" class="form-label">Subjects</label>
+                            <label for="subjects" class="form-label">price</label>
                             <input type="number" name="price" id="subjects" class="form-control"
                                 placeholder="f.e. Web development" aria-describedby="helpId" maxlength="255" value="{{old('subjects', $product->price)}}">
                             <small id="helpId" class="text-muted">The subjects the teacher has expertise in.</small>
                         </div>
                         <div class="mb-3">
+                            <label for="subjects" class="form-label">releaseDate</label>
+                            <input type="date" name="releaseDate" id="subjects" class="form-control"
+                                placeholder="f.e. Web development" aria-describedby="helpId" maxlength="255" value="{{old('subjects', $product->releaseDate)}}">
+                            <small id="helpId" class="text-muted">The subjects the teacher has expertise in.</small>
+                        </div>
+                        <div class="mb-3">
                             <label for="picture" class="form-label">Profil image</label>
-                            <input type="file" name="picture" id="picture" class="form-control"
+                            <input type="file" name="product_img" id="picture" class="form-control"
                                 aria-describedby="helpId">
                             <small id="helpId" class="text-muted">Portrait image of the teacher</small>
+                        </div>
+                        <div class="mb-3">
+                            <select name="publisher_id" class="h-10 border mt-1 rounded px-4 bg-gray" data-te-select-init>
+                                @foreach(\App\Models\Publisher::all() as $publisher)
+                                    <option value="{{$publisher->id}}">{{$publisher->name}}</option>
+                                @endforeach
+                            </select>
+                            <label data-te-select-label-ref for="brand">Publisher</label>
+                        </div>
+                        <div class="mb-3">
+                            <select name="product_type_id" class="h-10 border mt-1 rounded px-4 bg-gray" data-te-select-init>
+                                @foreach(\App\Models\ProductType::all() as $productType)
+                                    <option value="{{$productType->id}}">{{$productType->name}}</option>
+                                @endforeach
+                            </select>
+                            <label data-te-select-label-ref for="brand">Product Type</label>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-warning">Submit</button>

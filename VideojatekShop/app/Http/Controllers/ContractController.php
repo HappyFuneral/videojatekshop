@@ -14,7 +14,7 @@ class ContractController extends Controller
      */
     public function index()
     {
-        $contract = Contract::all();
+        $contracts = Contract::all();
         return view("contracts.index", ['contracts' => $contracts]);
     }
 

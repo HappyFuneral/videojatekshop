@@ -14,7 +14,7 @@ class StorageProductController extends Controller
      */
     public function index()
     {
-        $storageproduct = StorageProduct::all();
+        $storageproducts = StorageProduct::all();
         return view("storageproduts.index", ['storageproduts' => $storageproducts]);
     }
 

@@ -73,16 +73,14 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        if ($request->file != null) {
-            $filename = 'TN_product_' . $product->id . '.' . $request->file->extension();
+        $request->product_img->storeAs(
+            'products',
+            'product_' . $request->name . '_' . $request->title . '.jpg',
+            'public'
+        );
+        $file_name = 'product_' . $request->name . '_' . $request->title . '.jpg';
 
-            $img = ResizeImage::make($request->file)
-                ->resize(500, 500)->save('storage/Product_Thumbnails/' . $filename);
-
-            $product->product_img = $filename;
-            
-        }
-
+        $product->product_img = $file_name;
         $product->name = $request->name;
         $product->title = $request->title;
         $product->description = $request->description;
