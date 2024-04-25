@@ -7,15 +7,14 @@
         <div class="col">
             <div class="card bg-white text-black border-dark">
                 <div class="card-body">
-                    <h4 class="card-title">Add a Teacher</h4>
-                    <p class="card-text text-danger">Inputs marked with * shall be filled.</p>
+                    <h4 class="card-title">Termék edit</h4>
 
                     @if ($errors->any())
                         <div class="mb-3 mt-3">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
-                                <strong>Holy guacamole!</strong>
+                                <strong>OOPS!</strong>
 
                                 <ul>
                                     @foreach ($errors->all() as $error)
@@ -30,7 +29,7 @@
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                          
-                            <strong>Holy guacamole!</strong> 
+                            <strong>OOPS!</strong> 
                             <p>{{Session::get('success')}}</p>
                         </div>
                     @endif
@@ -39,7 +38,7 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
+                            <label for="name" class="form-label">Címe</label>
                             <input type="text" name="name" id="name" class="form-control @if($errors->has('name')) border border-danger @endif"
                                 placeholder="Teacher Name" aria-describedby="helpId" value="{{old('name', $product->name)}}">
 
@@ -57,9 +56,9 @@
                             <small id="helpId" class="text-muted">The email the teacher has expertise in.</small>
                         </div>
                         <div class="mb-3">
-                            <label for="degree" class="form-label">description</label>
+                            <label for="degree" class="form-label">Leírás</label>
                             <textarea name="description" id="degree" class="form-control"
-                                placeholder="description" aria-describedby="helpId" maxlength="255" value="">{{old('description', $product->description)}}
+                                placeholder="description" aria-describedby="helpId" maxlength="" value="">{{old('description', $product->description)}}
                             </textarea>
                             <small id="helpId" class="text-muted">The degree the teacher has expertise in.</small>
                         </div>
@@ -70,32 +69,37 @@
                             <small id="helpId" class="text-muted">The subjects the teacher has expertise in.</small>
                         </div>
                         <div class="mb-3">
-                            <label for="subjects" class="form-label">releaseDate</label>
+                            <label for="subjects" class="form-label">Kiadás időpontja</label>
                             <input type="date" name="releaseDate" id="subjects" class="form-control"
                                 placeholder="f.e. Web development" aria-describedby="helpId" maxlength="255" value="{{old('subjects', $product->releaseDate)}}">
                             <small id="helpId" class="text-muted">The subjects the teacher has expertise in.</small>
                         </div>
                         <div class="mb-3">
-                            <label for="picture" class="form-label">Profil image</label>
+                            <label for="picture" class="form-label">Termék képe</label>
                             <input type="file" name="product_img" id="picture" class="form-control"
                                 aria-describedby="helpId">
                             <small id="helpId" class="text-muted">Portrait image of the teacher</small>
                         </div>
                         <div class="mb-3">
+                            <label data-te-select-label-ref for="brand">Kiadó</label>
                             <select name="publisher_id" class="h-10 border mt-1 rounded px-4 bg-gray" data-te-select-init>
                                 @foreach(\App\Models\Publisher::all() as $publisher)
                                     <option value="{{$publisher->id}}">{{$publisher->name}}</option>
                                 @endforeach
                             </select>
-                            <label data-te-select-label-ref for="brand">Publisher</label>
                         </div>
                         <div class="mb-3">
+                            <label data-te-select-label-ref for="brand">Termék típusa</label>
                             <select name="product_type_id" class="h-10 border mt-1 rounded px-4 bg-gray" data-te-select-init>
                                 @foreach(\App\Models\ProductType::all() as $productType)
+                                @if ($productType->id == $product->product_type_id)
+                                    <option selected value="{{$productType->id}}">{{$productType->name}}</option>
+
+                                @else
                                     <option value="{{$productType->id}}">{{$productType->name}}</option>
-                                @endforeach
+                                @endif
+                                    @endforeach
                             </select>
-                            <label data-te-select-label-ref for="brand">Product Type</label>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-warning">Submit</button>

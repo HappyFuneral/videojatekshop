@@ -35,9 +35,17 @@ class ProductController extends Controller
 
         //TODO product image upload
 
+        $request->product_img->storeAs(
+            'products',
+            'product_' . $request->name . '_' . $request->title . '.jpg',
+            'public'
+        );
+        $file_name = 'product_' . $request->name . '_' . $request->title . '.jpg';
+        
         $product = new Product(
             [
                 "name" => $request->name,
+                "product_img" => $file_name,
                 "title" => $request->title,
                 "description" => $request->description,
                 "price" => $request->price,
