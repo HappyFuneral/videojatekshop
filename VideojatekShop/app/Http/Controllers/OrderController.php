@@ -14,7 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = Order::all();
+        $orders = Order::all();
         return view("orders.index", ['orders' => $orders]);
     }
 
@@ -31,7 +31,7 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        $product = new Product(
+        $order = new Order(
             [
                 //user ID
                 "price" => $request->price,

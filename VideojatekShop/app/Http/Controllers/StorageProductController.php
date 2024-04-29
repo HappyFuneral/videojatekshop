@@ -14,8 +14,8 @@ class StorageProductController extends Controller
      */
     public function index()
     {
-        $storageproduct = StorageProduct::all();
-        return view("storageproduts.index", ['storageproduts' => $storageproducts]);
+        $storageproducts = StorageProduct::all();
+        return view("storageproducts.index", ['storageproducts' => $storageproducts]);
     }
 
     /**
@@ -23,7 +23,7 @@ class StorageProductController extends Controller
      */
     public function create()
     {
-        return view("storageproduts.create");
+        return view("storageproducts.create");
     }
 
     /**
@@ -76,5 +76,6 @@ class StorageProductController extends Controller
     public function destroy(StorageProduct $storageproduct)
     {
         $storageproduct->delete();
+        return back()->with("success","Sikeres Törlés");
     }
 }

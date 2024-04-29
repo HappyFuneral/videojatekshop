@@ -1,0 +1,134 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    max-width: 100;
+    overflow-x: hidden;
+}
+
+#container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#content {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#app {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #000420 50%, #760DBC 100%) !important;
+}
+
+footer {
+    background-color: #000420 !important;
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+}
+
+nav {
+    background: #000420 !important;
+    border-bottom: 2px solid #4D47EB;
+}
+
+.navbar-brand {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+}
+
+.nav-link {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+}
+
+.dropdown-menu {
+    background: #000420 !important;
+}
+
+.dropdown-item {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+}
+
+.dropdown-item:hover {
+    background: #760DBC !important;
+}
+
+.homeFront-div {
+    min-width: 100%;
+    max-height: 20%;
+}
+
+#homeFront-video {
+    
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.cardform {
+    text-align: center;
+    border: 2px solid #4D47EB !important;
+    top: 5%;
+}
+
+.cardform-header {
+    background-color: #000420 !important;
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    border-top-left-radius: 0.7% !important;
+    border-top-right-radius: 0.7% !important;
+}
+
+.cardform-body {
+    background: linear-gradient(180deg, #000420 0%, #190229 50%, #760DBC 100%) !important;
+    padding: 10%;
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    border-bottom-right-radius: 0.5%;
+    border-bottom-left-radius: 0.5%;
+}
+
+.form-control {
+    text-align: center;
+}
+
+.submit-btn {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #4D47EB !important;
+    width: 50%;
+}
+
+
+
+
+
+

@@ -14,7 +14,7 @@ class ContractController extends Controller
      */
     public function index()
     {
-        $contract = Contract::all();
+        $contracts = Contract::all();
         return view("contracts.index", ['contracts' => $contracts]);
     }
 
@@ -64,5 +64,6 @@ class ContractController extends Controller
     public function destroy(Contract $contract)
     {
         $contract->delete();
+        return back()->with("success","Sikeres Törlés");
     }
 }

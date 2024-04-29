@@ -14,7 +14,7 @@ class StorageController extends Controller
      */
     public function index()
     {
-        $storage = Storage::all();
+        $storages = Storage::all();
         return view("storages.index", ['storages' => $storages]);
     }
 
@@ -79,5 +79,6 @@ class StorageController extends Controller
     public function destroy(Storage $storage)
     {
         $storage->delete();
+        return back()->with("success","Sikeres Törlés");
     }
 }

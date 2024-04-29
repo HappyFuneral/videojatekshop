@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
+        $products = Product::all();
         return view("products.index", ['products' => $products]);
     }
 
@@ -101,5 +101,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+        return back()->with("success","Sikeres Törlés");
     }
 }
