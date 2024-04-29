@@ -15,7 +15,7 @@
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
-                                <strong>OOPS!</strong>
+                                <strong>Holy guacamole!</strong>
 
                                 <ul>
                                     @foreach ($errors->all() as $error)
@@ -30,7 +30,7 @@
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                          
-                            <strong>Success!</strong> 
+                            <strong>Holy guacamole!</strong> 
                             <p>{{Session::get('success')}}</p>
                         </div>
                     @endif
