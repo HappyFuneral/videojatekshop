@@ -15,6 +15,6 @@ class ContractType extends Model
     ];
 
     public function contracts(): BelongsToMany {
-        return $this->belongsToMany(Constract::class);
+        return $this->belongsToMany(Contract::class);
     }
 }

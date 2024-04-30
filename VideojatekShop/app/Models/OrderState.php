@@ -15,6 +15,6 @@ class OrderState extends Model
     ];
 
     public function orders(): BelongsToMany {
-        return $this->belongsTo(Order::class);
+        return $this->belongsToMany(Order::class);
     }
 }

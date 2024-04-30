@@ -50,7 +50,6 @@
                                         <button type="submit" class="btn btn-danger">Törlés</button>
                                     </form>
                                 </td>
-                                
                             </tr>
                         @endforeach
                     </tbody>

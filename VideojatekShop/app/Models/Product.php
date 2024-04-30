@@ -33,7 +33,7 @@ class Product extends Model
     }
 
     public function storages(): BelongsToMany {
-        return $this->belongsToMany(Storages::class);
+        return $this->belongsToMany(Storage::class);
     }
 
     public function orders(): BelongsToMany {

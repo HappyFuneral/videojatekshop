@@ -67,15 +67,19 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <!-- Contract -->
-                                <!-- Publisher -->
-                                <a class="dropdown-item nav-dropdown" href="{{ route('publishers.index') }}">Kiadók</a>
-                                <!-- Product -->
-                                
-                                <!-- StorageProduct -->
-                                <a class="dropdown-item nav-dropdown" href="{{ route('storageproducts.index') }}">Raktár</a>
-                                <!-- Storage -->
-                                <a class="dropdown-item nav-dropdown" href="{{ route('storages.index') }}">Raktár Cím</a>
+                                <!-- Order -->
+
+                                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                                    <!-- Contract -->
+                                    <!-- Publisher -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('publishers.index') }}">Kiadók</a>
+                                    <!-- Product -->
+                                    
+                                    <!-- StorageProduct -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('storageproducts.index') }}">Raktár</a>
+                                    <!-- Storage -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('storages.index') }}">Raktár Cím</a>
+                                @endif
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

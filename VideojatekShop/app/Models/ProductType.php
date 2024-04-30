@@ -15,6 +15,6 @@ class ProductType extends Model
     ];
 
     public function products(): BelongsToMany {
-        return $this->belongsTo(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 }

@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contract extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = 
     [
@@ -19,7 +21,7 @@ class Contract extends Model
     ];
 
     public function contract_types(): HasOne {
-        return $this->hasOne(ContractTypes::class);
+        return $this->hasOne(ContractType::class);
     }
 
     

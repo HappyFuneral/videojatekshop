@@ -93,7 +93,7 @@ nav {
 .cardform {
     text-align: center;
     border: 2px solid #4D47EB !important;
-    top: 5%;
+    margin-top: 5%;
 }
 
 .cardform-header {
@@ -126,7 +126,6 @@ nav {
     background-color: #4D47EB !important;
     width: 50%;
 }
-
 
 
 
