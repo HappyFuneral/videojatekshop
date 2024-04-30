@@ -45,7 +45,7 @@ export default function Signup(){
                     <input ref={emailRef} type="email" placeholder="Email"/>
                     <input ref={passwordRef} type="password" placeholder="Password"/>
                     <input ref={passwordConfirmRef} type="password" placeholder="Password Confirm"/>
-                    <button className="btn btn-block" type="submit">Login</button>
+                    <button className="btn btn-block" type="submit">Signup</button>
                     <p className="message">
                         Already Registered? <Link to="/login">Sign in</Link>
                     </p>
