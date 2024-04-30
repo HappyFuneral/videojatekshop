@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/css/intlTelInput.css">
+
+<style>
+    .row *{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -35,10 +45,10 @@
                             @enderror
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="phoneNumber" class="col-form-label">{{ __('Telefonszám') }}</label>
+                        <div class="row mb-3 text-black">
+                            <label for="phoneNumber" class="col-form-label text-white">{{ __('Telefonszám') }}</label>
 
-                            <input id="phoneNumber" type="tel" class="form-control @error('phoneNumber') is-invalid @enderror" pattern="[0-9]{8,15}" name="phoneNumber" value="{{ old('phoneNumber') }}" placeholder="" data-mask="(99) 999-9999" required autocomplete="phoneNumber">
+                            <input id="phone" type="tel" class="form-control">
                             <small id="helpId" class="text-muted">Egybe írja be a telefonszámát, szimbólum nélkül!</small>
                             @error('phoneNumber')
                                 <span class="invalid-feedback" role="alert">
@@ -73,7 +83,16 @@
                     </form>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/intlTelInput.min.js"></script>
+<script>
+  const input = document.querySelector("#phone");
+  window.intlTelInput(input, {
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js",
+  });
+</script>
 @endsection
