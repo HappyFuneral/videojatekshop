@@ -38,8 +38,11 @@
                         <div class="row mb-3">
                             <label for="phoneNumber" class="col-form-label">{{ __('Telefonszám') }}</label>
 
-                            <input id="phoneNumber" type="tel" class="form-control @error('phoneNumber') is-invalid @enderror" pattern="[0-9]{8,15}" name="phoneNumber" value="{{ old('phoneNumber') }}" placeholder="" data-mask="(99) 999-9999" required autocomplete="phoneNumber">
+                            <input id="phoneNumber" type="tel" class="form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ old('phoneNumber') }}" placeholder="" required autocomplete="phoneNumber">
                             <small id="helpId" class="text-muted">Egybe írja be a telefonszámát, szimbólum nélkül!</small>
+                            <button class="button" id="btn" type="button">Validate</button>
+                            <span id="valid-msg" class="hide" style="color: red">✓ Valid</span>
+                            <span id="error-msg" class="hide" style="color: red"></span>
                             @error('phoneNumber')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -76,4 +79,51 @@
         </div>
     </div>
 </div>
+
+<script>
+    const input = document.querySelector("#phoneNumber");
+    const button = document.querySelector("#btn");
+    const errorMsg = document.querySelector("#error-msg");
+    const validMsg = document.querySelector("#valid-msg");
+
+    // here, the index maps to the error code returned from getValidationError - see readme
+    const errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+
+    // initialise plugin
+    const iti = window.intlTelInput(input, {
+    initialCountry: "us",
+    utilsScript: "/intl-tel-input/js/utils.js?1714308177587"
+    });
+
+    const reset = () => {
+    input.classList.remove("error");
+    errorMsg.innerHTML = "";
+    errorMsg.classList.add("hide");
+    validMsg.classList.add("hide");
+    };
+
+    const showError = (msg) => {
+    input.classList.add("error");
+    errorMsg.innerHTML = msg;
+    errorMsg.classList.remove("hide");
+    };
+
+    // on click button: validate
+    button.addEventListener('click', () => {
+    reset();
+    if (!input.value.trim()) {
+        showError("Required");
+    } else if (iti.isValidNumber()) {
+        validMsg.classList.remove("hide");
+    } else {
+        const errorCode = iti.getValidationError();
+        const msg = errorMap[errorCode] || "Invalid number";
+        showError(msg);
+    }
+    });
+
+    // on keyup / change flag: reset
+    input.addEventListener('change', reset);
+    input.addEventListener('keyup', reset);
+  </script>
 @endsection
