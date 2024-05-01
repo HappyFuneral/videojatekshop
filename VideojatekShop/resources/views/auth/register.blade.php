@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/css/intlTelInput.css">
+
+<style>
+    .row *{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -35,10 +45,14 @@
                             @enderror
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="phoneNumber" class="col-form-label">{{ __('Telefonszám') }}</label>
+                        <div class="row mb-3 text-black">
+                            <label for="phoneNumber" class="col-form-label text-white">{{ __('Telefonszám') }}</label>
 
+<<<<<<< HEAD
                             <input id="phoneNumber" type="tel" class="form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ old('phoneNumber') }}" placeholder="" required autocomplete="phoneNumber">
+=======
+                            <input id="phone" type="tel" class="form-control">
+>>>>>>> b6beebd5df36b97718382194e0f0800b5985a4c6
                             <small id="helpId" class="text-muted">Egybe írja be a telefonszámát, szimbólum nélkül!</small>
                             <button class="button" id="btn" type="button">Validate</button>
                             <span id="valid-msg" class="hide" style="color: red">✓ Valid</span>
@@ -76,6 +90,7 @@
                     </form>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
