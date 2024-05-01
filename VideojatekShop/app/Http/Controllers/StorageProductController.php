@@ -78,4 +78,13 @@ class StorageProductController extends Controller
         $storageproduct->delete();
         return back()->with("success","Sikeres Törlés");
     }
+
+    /**
+     * Display a listing of the deleted data.
+     */
+    public function show_deleted()
+    {
+        $deleted_storageproduts = StorageProduct::onlyTrashed()->get();
+        return view('storageproducts.show_deleted', ['storageproducts' => $deleted_storageproduts]);
+    }
 }

@@ -31,8 +31,8 @@
                             <tr class="">
                                 <td scope="row">{{ $item->id }}</td>
                                 <td>{{ $item->code }}</td>
-                                <td>{{ $item->product_id }}</td>
-                                <td>{{ $item->storage_id }}</td>
+                                <td>{{ \App\Models\Product::all()->find($item->product_id)->name }}</td>
+                                <td>{{ \App\Models\Storage::all()->find($item->storage_id)->storageName}}</td>
                                 <td>{{ $item->created_at }}</td>
                                 <td>
                                     <form action="{{ route('storageproducts.edit', $item) }}" method="GET">

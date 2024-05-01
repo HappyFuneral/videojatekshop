@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Middleware\VerifyUserRole;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Authenticate;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +33,10 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-
-
+Route::get('/cart', [CartController::class, 'Cart'])->name('cart');
+Route::get('/cart/add/{id}',[CartController::class, 'addProductToCart'])->name('addProductToCart');
+Route::patch('/cart/update',[CartController::class, 'updateCart'])->name('updateCart');
+Route::delete('/cart/remove',[CartController::class, 'deleteProduct'])->name('deleteProduct');
 
 Route::middleware(Authenticate::class)->group(function () {
 

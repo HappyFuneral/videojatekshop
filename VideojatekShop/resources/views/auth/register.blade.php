@@ -48,13 +48,8 @@
                         <div class="row mb-3 text-black">
                             <label for="phoneNumber" class="col-form-label text-white">{{ __('Telefonszám') }}</label>
 
-<<<<<<< HEAD
                             <input id="phoneNumber" type="tel" class="form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ old('phoneNumber') }}" placeholder="" required autocomplete="phoneNumber">
-=======
-                            <input id="phone" type="tel" class="form-control">
->>>>>>> b6beebd5df36b97718382194e0f0800b5985a4c6
-                            <small id="helpId" class="text-muted">Egybe írja be a telefonszámát, szimbólum nélkül!</small>
-                            <button class="button" id="btn" type="button">Validate</button>
+
                             <span id="valid-msg" class="hide" style="color: red">✓ Valid</span>
                             <span id="error-msg" class="hide" style="color: red"></span>
                             @error('phoneNumber')
@@ -83,7 +78,7 @@
                         </div>
 
                         <div class="row mb-0 col-md-4 offset-md-4">
-                            <button type="submit" class="btn submit-btn">
+                            <button id="btn" type="submit" class="btn submit-btn">
                                 {{ __('Regisztrálás') }}
                             </button>
                         </div>
@@ -106,9 +101,15 @@
 
     // initialise plugin
     const iti = window.intlTelInput(input, {
-    initialCountry: "us",
-    utilsScript: "/intl-tel-input/js/utils.js?1714308177587"
-    });
+        initialCountry: "auto",
+  geoIpLookup: callback => {
+      fetch("https://ipapi.co/json")
+      .then(res => res.json())
+      .then(data => callback(data.country_code))
+      .catch(() => callback("us"));
+  },
+  utilsScript: "../../node_modules/intl-tel-input/build/js/utils.js",
+   });
 
     const reset = () => {
     input.classList.remove("error");
