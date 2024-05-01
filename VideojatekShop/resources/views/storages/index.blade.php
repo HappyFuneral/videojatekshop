@@ -13,7 +13,7 @@
                 </div>
             @endif
             <div class="table-responsive">
-                <table class="table table-dark">
+                <table class="table" id="">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -23,7 +23,8 @@
                             <th scope="col">Megye</th>
                             <th scope="col">Város</th>
                             <th scope="col">Cím</th>
-                            <th scope="col" colspan="2">Actions</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,4 +60,23 @@
         </div>
         <div class="col-2"></div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#listTable').DataTable({
+                "language": {
+                    "search": "Keresés: ",
+                    "lengthMenu": "_MENU_ sor mutatása",
+                    "zeroRecords": "Nothing found - sorry",
+                    "info": "Showing page _PAGE_ of _PAGES_",
+                    "infoEmpty": "No records available",
+                    "infoFiltered": "(filtered from _MAX_ total records)"
+                },
+                ordering: false,
+            });
+        });
+
+        let table = new DataTable('#listTable');
+         
+    </script>
 @endsection

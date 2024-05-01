@@ -48,8 +48,11 @@
                         <div class="row mb-3 text-black">
                             <label for="phoneNumber" class="col-form-label text-white">{{ __('Telefonszám') }}</label>
 
-                            <input id="phone" name="phoneNumber" type="tel" class="form-control">
+                            <input id="phone" type="tel" class="form-control">
                             <small id="helpId" class="text-muted">Egybe írja be a telefonszámát, szimbólum nélkül!</small>
+                            <button class="button" id="btn" type="button">Validate</button>
+                            <span id="valid-msg" class="hide" style="color: red">✓ Valid</span>
+                            <span id="error-msg" class="hide" style="color: red"></span>
                             @error('phoneNumber')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -88,8 +91,10 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/intlTelInput.min.js"></script>
 <script>
-
+  const input = document.querySelector("#phone");
+  window.intlTelInput(input, {
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js",
+  });
 </script>
 @endsection

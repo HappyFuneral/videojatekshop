@@ -21,7 +21,7 @@
                             <th scope="col">Termék</th>
                             <th scope="col">Raktár</th>
                             <th scope="col">Felvétele</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -61,14 +61,10 @@
         $(document).ready(function() {
             $('#listTable').DataTable({
                 "language": {
-                    "search": "Keresés: ",
-                    "lengthMenu": "_MENU_ sor mutatása",
-                    "zeroRecords": "Nothing found - sorry",
-                    "info": "Showing page _PAGE_ of _PAGES_",
-                    "infoEmpty": "No records available",
-                    "infoFiltered": "(filtered from _MAX_ total records)"
+                    url: '//cdn.datatables.net/plug-ins/2.0.5/i18n/hu.json',
                 },
-                ordering: false,
+                retrieve: true,
+                responsive: true
             });
         });
 

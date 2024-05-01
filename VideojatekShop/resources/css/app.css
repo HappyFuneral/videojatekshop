@@ -46,6 +46,7 @@ footer {
     text-transform: uppercase !important;
 }
 
+/* NAVBAR */
 nav {
     background: #000420 !important;
     border-bottom: 2px solid #4D47EB;
@@ -77,6 +78,7 @@ nav {
     background: #760DBC !important;
 }
 
+/* HOME PAGE FIRST DIV */
 .homeFront-div {
     min-width: 100%;
     max-height: 20%;
@@ -90,6 +92,7 @@ nav {
     
 }
 
+/* CARD FORM PAGE */
 .cardform {
     text-align: center;
     border: 2px solid #4D47EB !important;
@@ -127,7 +130,61 @@ nav {
     width: 50%;
 }
 
+/* TABLE */
 
+.dt-container {
+    background-color: #000420 !important;
+    border: 2px solid #4D47EB !important;
+    text-align: center;
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    width: 100%;
+}
 
+.dt-layout-table {
+    width: 100%;
+}
 
+.dt-length {
+    margin-top: 0.5%;
+    margin-left: 1%;
+}
+
+.dt-search {
+    margin-top: 0.5%;
+    margin-right: 1%;
+}
+
+.dt-info {
+    margin-bottom: 0.5%;
+    margin-left: 1%;
+}
+
+.dt-paging {
+    margin-bottom: 0.5%;
+    margin-right: 1%;
+}
+
+.dt-paging-button:hover {
+    background: #760DBC !important
+}
+
+th {
+    background-color: #000420 !important;
+    border-bottom: 2px solid #4D47EB !important;
+}
+
+td {
+    background-color: #190229 !important;
+    border-bottom: 1px solid #4D47EB !important;
+}
+
+.dt-type-numeric {
+    text-align: center !important;
+}
+
+.dt-type-date {
+    text-align: center !important;
+}
 
