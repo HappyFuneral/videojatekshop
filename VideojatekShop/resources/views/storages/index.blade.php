@@ -8,12 +8,12 @@
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
-                    <strong>Success!</strong>
+                    <strong>Siker!</strong>
                     <p>{{ Session::get('success') }}</p>
                 </div>
             @endif
             <div class="table-responsive">
-                <table class="table" id="">
+                <table class="table table-dark" id="listTable">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -34,10 +34,10 @@
                                 <td scope="row">{{ $item->id }}</td>
                                 <td>{{ $item->storageName }}</td>
                                 <td>{{ $item->postal }}</td>
-                                <td>{{ $item->country }}</td>
-                                <td>{{ $item->provincie }}</td>
-                                <td>{{ $item->city }}</td>
-                                <td>{{ $item->address }}</td>
+                                <td>{{ $item->country}}</td>
+                                <td>{{ $item->province }}</td>
+                                <td>{{ $item->city}}</td>
+                                <td>{{ $item->address}}</td>
                                 <td>
                                     <form action="{{ route('storages.edit', $item) }}" method="GET">
                                         @csrf
@@ -65,14 +65,10 @@
         $(document).ready(function() {
             $('#listTable').DataTable({
                 "language": {
-                    "search": "Keresés: ",
-                    "lengthMenu": "_MENU_ sor mutatása",
-                    "zeroRecords": "Nothing found - sorry",
-                    "info": "Showing page _PAGE_ of _PAGES_",
-                    "infoEmpty": "No records available",
-                    "infoFiltered": "(filtered from _MAX_ total records)"
+                    url: '//cdn.datatables.net/plug-ins/2.0.5/i18n/hu.json',
                 },
-                ordering: false,
+                retrieve: true,
+                responsive: true
             });
         });
 

@@ -160,7 +160,7 @@ table {
 }
 
 .dt-paging-button:hover {
-    background: #760DBC !important
+    background: #760DBC !important;
 }
 
 th {
@@ -185,3 +185,9 @@ td {
     text-align: center !important;
 }
 
+option {
+    background-color: #000420 !important;
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+}

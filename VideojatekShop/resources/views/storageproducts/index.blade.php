@@ -20,7 +20,7 @@
                             <th scope="col">Code</th>
                             <th scope="col">Termék</th>
                             <th scope="col">Raktár</th>
-                            <th scope="col">Felvétele</th>
+                            <th scope="col">Felvétele időpontja</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>

@@ -8,17 +8,18 @@
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
-                    <strong>Success!</strong>
+                    <strong>Siker!</strong>
                     <p>{{ Session::get('success') }}</p>
                 </div>
             @endif
             <div class="table-responsive">
-                <table class="table table-dark">
+                <table class="table table-dark" id="listTable">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Kiadó</th>
-                            <th scope="col" colspan="2">Actions</th>
+                            <th scope="col">Név</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,7 +41,6 @@
                                         <button type="submit" class="btn btn-danger">Törlés</button>
                                     </form>
                                 </td>
-                                
                             </tr>
                         @endforeach
                     </tbody>
@@ -50,4 +50,19 @@
         </div>
         <div class="col-2"></div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#listTable').DataTable({
+                "language": {
+                    url: '//cdn.datatables.net/plug-ins/2.0.5/i18n/hu.json',
+                },
+                retrieve: true,
+                responsive: true
+            });
+        });
+
+        let table = new DataTable('#listTable');
+         
+    </script>
 @endsection
