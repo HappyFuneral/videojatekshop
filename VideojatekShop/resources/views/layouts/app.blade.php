@@ -96,7 +96,6 @@
 
 
                                     <!-- Publisher -->
-                                    <a class="dropdown-item nav-dropdown" href="{{ route('publishers.show_deleted') }}">törölt Kiadók</a>
                                     <a class="dropdown-item nav-dropdown" href="{{ route('publishers.index') }}">Kiadók</a>
 
                                     <!-- Product -->

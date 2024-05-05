@@ -79,9 +79,25 @@ nav {
 
 /* HOME PAGE FIRST DIV */
 
+
+/* SHOW PAGE */
+.showpage {
+    width: 100%;
+    text-align: center;
+    border: 2px solid #4D47EB !important;
+    margin-top: 5%;
+}
+
+.buy-btn {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #4D47EB !important;
+    width: 20%;
+}
+
 /* CARD FORM PAGE */
 .cardform {
-    text-align: center;
     border: 2px solid #4D47EB !important;
     margin-top: 5%;
 }

@@ -80,5 +80,13 @@ class PublisherSeeder extends Seeder
         Publisher::create([
             'name' => 'Etalon Film Kiadó'
         ]);
+
+        Publisher::create([
+            'name' => 'Ubisoft'
+        ]);
+
+        Publisher::create([
+            'name' => 'Trust'
+        ]);
     }
 }
