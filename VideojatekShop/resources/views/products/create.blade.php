@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card cardform">
-                <div class="card-header cardform-header">{{ __('Egyedi termék hozzáadása') }}</div>
+                <div class="card-header cardform-header">{{ __('Új termék hozzáadása') }}</div>
 
                 <div class="card-body cardform-body p-md-5">
                     @if ($errors->any())

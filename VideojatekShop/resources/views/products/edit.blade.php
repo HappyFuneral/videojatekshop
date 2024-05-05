@@ -80,7 +80,7 @@
                             <label for="product_type_id" class="form-label">Termék Típus</label>
                             <select name="product_type_id" class="form-control @if($errors->has('product_type_id')) border border-danger @endif" data-te-select-init>
                                 @foreach(\App\Models\ProductType::all() as $producttype)
-                                    <option value="{{$producttype->id}}">{{$producttype->name}}</option>
+                                    <option value="{{old('producttype', $product->price)}}">{{$producttype->name}}</option>
                                 @endforeach
                             </select>
 

@@ -53,7 +53,7 @@ Route::middleware(Authenticate::class)->group(function () {
     | Products Routes
     |--------------------------------------------------------------------------
     */
-    Route::resource('/products', ProductController::class)->middleware(VerifyUserRole::class);
+    Route::resource('/products', ProductController::class)->middleware(VerifyUserRole::class);;
     Route::get('/products/show_deleted', [ProductController::class, 'show_deleted'])->name('products.show_deleted')->middleware(VerifyUserRole::class);
 
     /*

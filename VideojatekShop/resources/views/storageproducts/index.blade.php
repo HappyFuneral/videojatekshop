@@ -22,6 +22,7 @@
                     @csrf
                     <button type="submit" class="btn show_deleted-btn">Törölt adatok</button>
                 </form>
+                
                 <table class="table table-dark" id="listTable">
                     <thead>
                         <tr>

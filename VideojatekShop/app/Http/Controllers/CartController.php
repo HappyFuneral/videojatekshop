@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\StorageProduct;
 class CartController extends Controller
 {
 
@@ -13,16 +13,15 @@ class CartController extends Controller
     }
     public function addProductToCart($id)
     {
-        $product = Product::findOrFail($id);
+        $product = StorageProduct::findOrFail($id);
         $cart = session()->get('cart', []);
         if(isset($cart[$id])) {
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
-                "name" => $product->name,
+                "product_id" => $product->product_id,
+                "storage_id" => $product->storage_id,
                 "quantity" => 1,
-                "price" => $product->price,
-                "image" => $product->product_image
             ];
         }
         session()->put('cart', $cart);
@@ -49,5 +48,8 @@ class CartController extends Controller
             }
             session()->flash('success', 'Product successfully deleted.');
         }
+    }
+    public function getCart() {
+        return session()->get('cart');
     }
 }

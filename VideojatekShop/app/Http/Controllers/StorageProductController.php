@@ -85,6 +85,6 @@ class StorageProductController extends Controller
     public function show_deleted()
     {
         $deleted_storageproduts = StorageProduct::onlyTrashed()->get();
-        return view('storageproducts.show_deleted', ['storageproducts' => $deleted_storageproduts]);
+        return view('storageproducts.show_deleted', ['deleted_storageproducts' => $deleted_storageproduts]);
     }
 }
