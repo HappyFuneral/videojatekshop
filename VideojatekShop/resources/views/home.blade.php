@@ -91,7 +91,8 @@
             </div>
             
            
-            @foreach(App\Models\Product::all() as $product)
+            @foreach(App\Models\StorageProduct::all() as $storageProduct)
+            {{$product = App\Models\Product::all()->find($storageProduct->product_id)}}
             <div class="col mb-5">
                 <div class="card h-100">
                     <!-- Sale badge-->
@@ -117,7 +118,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center"><form method="GET" action={{}}>@csrf @method('GET') value=""> <button class="btn btn-outline-dark mt-auto" href="">Add to cart</a></form></div>
                     </div>
                 </div>
             </div>

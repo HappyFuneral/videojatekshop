@@ -13,14 +13,25 @@
                 </div>
             @endif
             <div class="table-responsive">
+
+                <form action="{{ route('storageproducts.create') }}">
+                    @csrf
+                    <button type="submit" class="btn create-btn">+ Hozzáadás</button>
+                </form>
+                <form action="{{ route('storageproducts.show_deleted') }}">
+                    @csrf
+                    <button type="submit" class="btn show_deleted-btn">Törölt adatok</button>
+                </form>
+                
                 <table class="table table-dark" id="listTable">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Code</th>
+                            <th scope="col">Mennyiség</th>
                             <th scope="col">Termék</th>
                             <th scope="col">Raktár</th>
                             <th scope="col">Felvétele időpontja</th>
+                            <th scope="col">Alkalmazott</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
@@ -30,10 +41,11 @@
                         @foreach ($storageproducts as $item)
                             <tr class="">
                                 <td scope="row">{{ $item->id }}</td>
-                                <td>{{ $item->code }}</td>
+                                <td>{{ $item->quantity }}</td>
                                 <td>{{ \App\Models\Product::all()->find($item->product_id)->name }}</td>
                                 <td>{{ \App\Models\Storage::all()->find($item->storage_id)->storageName}}</td>
                                 <td>{{ $item->created_at }}</td>
+                                <td>{{ $item->created_by }}</td>
                                 <td>
                                     <form action="{{ route('storageproducts.edit', $item) }}" method="GET">
                                         @csrf

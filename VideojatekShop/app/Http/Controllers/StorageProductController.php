@@ -33,7 +33,7 @@ class StorageProductController extends Controller
     {
         $storageproduct = new StorageProduct(
             [
-                "code" => $request->code,
+                "quantity" => $request->quantity,
                 "product_id" => $request->product_id,
                 "storage_id" => $request->storage_id,
             ]
@@ -85,6 +85,6 @@ class StorageProductController extends Controller
     public function show_deleted()
     {
         $deleted_storageproduts = StorageProduct::onlyTrashed()->get();
-        return view('storageproducts.show_deleted', ['storageproducts' => $deleted_storageproduts]);
+        return view('storageproducts.show_deleted', ['deleted_storageproducts' => $deleted_storageproduts]);
     }
 }

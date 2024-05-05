@@ -104,7 +104,8 @@
                                     <!-- Publisher -->
                                     <a class="dropdown-item nav-dropdown" href="{{ route('publishers.index') }}">Kiadók</a>
                                     <!-- Product -->
-                                    
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('products.index') }}">Termék lista</a>
+
                                     <!-- StorageProduct -->
                                     <a class="dropdown-item nav-dropdown" href="{{ route('storageproducts.index') }}">Raktár</a>
                                     <!-- Storage -->

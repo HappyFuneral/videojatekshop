@@ -19,6 +19,9 @@ return new class extends Migration
             $table->text('description');
             $table->double('price');
             $table->date('releaseDate');
+            $table->integer('quantity')->nullable();
+            $table->double('tariff_number');
+            $table->string('tariff_description');
             $table->timestamps();
             $table->foreignId('product_type_id')->constrained('product_types');
             $table->foreignId('publisher_id')->constrained('publishers');

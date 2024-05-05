@@ -14,6 +14,7 @@ class StorageProductSeeder extends Seeder
      */
     public function run(): void
     {
+        /*
         StorageProduct::factory(10)->create([
             'product_id' => 1
         ]);
@@ -21,5 +22,6 @@ class StorageProductSeeder extends Seeder
         StorageProduct::factory(10)->create([
             'product_id' => 2
         ]);
+        */
     }
 }

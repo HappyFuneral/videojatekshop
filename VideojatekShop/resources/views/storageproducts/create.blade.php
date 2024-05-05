@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card cardform">
-                <div class="card-header cardform-header">{{ __('Egyedi termék hozzáadása') }}</div>
+                <div class="card-header cardform-header">{{ __('Termék hozzáadása a raktárhoz') }}</div>
 
                 <div class="card-body cardform-body p-md-5">
                     @if ($errors->any())
@@ -37,12 +37,12 @@
                         @csrf
                         @method('POST')
                         <div class="mb-3">
-                            <label for="code" class="form-label">code</label>
-                            <input type="text" name="code" id="code" class="form-control @if($errors->has('code')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('code')}}">
+                            <label for="quantity" class="form-label">Mennyiség</label>
+                            <input type="number" name="quantity" id="quantity" class="form-control @if($errors->has('quantity')) border border-danger @endif"
+                                aria-describedby="helpId" value="{{old('quantity')}}">
 
-                            @if ($errors->has('code'))
-                                <small class="text-danger">{{ $errors->first('code') }}</small>
+                            @if ($errors->has('quantity'))
+                                <small class="text-danger">{{ $errors->first('quantity') }}</small>
                             @endif
                         </div>
 
