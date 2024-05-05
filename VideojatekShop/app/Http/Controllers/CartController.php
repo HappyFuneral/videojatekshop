@@ -25,6 +25,7 @@ class CartController extends Controller
             ];
         }
         session()->put('cart', $cart);
+        
         return redirect()->back()->with('success', 'Product has been added to cart!');
     }
      

@@ -27,5 +27,9 @@ class StorageProduct extends Model
     {
         return $this->hasOne(Product::class);
     }
+
+    public static function product($id){
+        return Product::all()->find($id);
+    }
 }
 

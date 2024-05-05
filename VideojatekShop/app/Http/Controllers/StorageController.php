@@ -36,7 +36,7 @@ class StorageController extends Controller
                 "storageName" => $request->storageName,
                 "postal" => $request->postal,
                 "country" => $request->country,
-                "provincie" => $request->provincie,
+                "province" => $request->province,
                 "city" => $request->city,
                 "address" => $request->address,
             ]

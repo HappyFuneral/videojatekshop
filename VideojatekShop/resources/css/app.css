@@ -83,7 +83,6 @@ nav {
 /* SHOW PAGE */
 .showpage {
     width: 100%;
-    text-align: center;
     border: 2px solid #4D47EB !important;
     margin-top: 5%;
 }
@@ -98,6 +97,7 @@ nav {
 
 /* CARD FORM PAGE */
 .cardform {
+    text-align: center;
     border: 2px solid #4D47EB !important;
     margin-top: 5%;
 }

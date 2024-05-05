@@ -41,5 +41,14 @@ class Product extends Model
     public function orders(): BelongsToMany {
         return $this->belongsToMany(Order::class);
     }
+    public static function productQuantity($id) : int{
+        $quantity = 0;
+        foreach(StorageProduct::all() as $storageProduct){
+            if ($storageProduct->product_id == $id){
+                $quantity+=$storageProduct->quantity;
+            }
+        }
+        return $quantity;
+    }
 
 }
