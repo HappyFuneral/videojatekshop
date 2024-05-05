@@ -31,7 +31,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('storages.update', $storage) }}" method="PUT" enctype="multipart/form-data">
+                    <form action="{{ route('storages.update', $storage) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 

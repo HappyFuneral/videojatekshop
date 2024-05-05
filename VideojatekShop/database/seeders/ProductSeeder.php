@@ -14,9 +14,9 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::create([
+            'code' => '8713439174168',
             'name' => 'Kontroller',
             'product_img' => '',
-            'title' => 'Kontrollerr',
             'description' => 'péló',
             'price' => 12000,
             'releaseDate' => now(),
@@ -26,10 +26,10 @@ class ProductSeeder extends Seeder
             'publisher_id' => 1 
         ]);
         Product::create([
+            'code' => '',
             'name' => 'Kontroller 2',
             'product_img' => 'kuki',
             'description' => '',
-            'title' => 'Kontroller',
             'price' => 12000,
             'releaseDate' => now(),
             'tariff_number' => 95045000,

@@ -27,20 +27,12 @@
     <link rel="stylesheet" href="//cdn.datatables.net/2.0.5/css/dataTables.dataTables.min.css">
     <script src="//cdn.datatables.net/2.0.5/js/dataTables.min.js"></script>
 
-    <!-- PHONE TEST -->
+    <!-- PHONE Validate -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/css/intlTelInput.css">
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/intlTelInput.min.js"></script>
-    
-
-    <!-- TEST -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/css/intlTelInput.css">
-
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/intlTelInput.min.js"></script>
-    
 
 </head>
 <body>
-
 
     <nav class="navbar navbar-expand-md shadow-sm">
         <div class="container">
@@ -101,15 +93,21 @@
 
                                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                                     <!-- Contract -->
+
+
                                     <!-- Publisher -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('publishers.show_deleted') }}">törölt Kiadók</a>
                                     <a class="dropdown-item nav-dropdown" href="{{ route('publishers.index') }}">Kiadók</a>
+
                                     <!-- Product -->
                                     <a class="dropdown-item nav-dropdown" href="{{ route('products.index') }}">Termék lista</a>
 
                                     <!-- StorageProduct -->
                                     <a class="dropdown-item nav-dropdown" href="{{ route('storageproducts.index') }}">Raktár</a>
+
                                     <!-- Storage -->
                                     <a class="dropdown-item nav-dropdown" href="{{ route('storages.index') }}">Raktár Cím</a>
+
                                 @endif
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -132,11 +130,7 @@
     </nav>
 
     <div id="app">
-     
-    
         <main class="py-4" style="flex: 1; min-height:100%">
-            
-
             @yield('content')
         </main>
     </div>

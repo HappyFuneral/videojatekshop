@@ -76,4 +76,16 @@ class PublisherController extends Controller
         $publisher->delete();
         return back()->with("success","Sikeres Törlés");
     }
+
+    public function show_deleted()
+    {
+        $deleted_publishers = Publisher::onlyTrashed()->get();
+        return view('publishers.show_deleted', ['publishers' => $deleted_publishers]);
+    }
+
+    public function restore(Publisher $publisher)
+    {
+        $publisher->restore();
+        return back()->with('success', '' . $publisher->name . ' was successfully restored.');
+    }
 }
