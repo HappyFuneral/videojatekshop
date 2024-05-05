@@ -46,10 +46,11 @@ class ProductController extends Controller
             [
                 "name" => $request->name,
                 "product_img" => $file_name,
-                "title" => $request->title,
                 "description" => $request->description,
                 "price" => $request->price,
                 "releaseDate" => $request->releaseDate,
+                "tariff_number" => $request->tariff_number,
+                "tariff_description" => $request->tariff_description,
                 "product_type_id" => $request->product_type_id,
                 "publisher_id" => $request->publisher_id
             ]
@@ -90,10 +91,11 @@ class ProductController extends Controller
 
         $product->product_img = $file_name;
         $product->name = $request->name;
-        $product->title = $request->title;
         $product->description = $request->description;
         $product->price = $request->price;
         $product->releaseDate = $request->releaseDate;
+        $product->taricff_number = $request->taricff_number;
+        $product->tariff_description = $request->tariff_description;
         $product->product_type_id = $request->product_type_id;
         $product->publisher_id = $request->publisher_id;
 

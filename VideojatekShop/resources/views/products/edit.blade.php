@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card cardform">
+                <div class="card-header cardform-header">{{ __('Termék módosítása') }}</div>
 
-    <div class="row">
-        <div class="col"></div>
-        <div class="col">
-            <div class="card bg-white text-black border-dark">
-                <div class="card-body">
-                    <h4 class="card-title">Termék edit</h4>
-
+                <div class="card-body cardform-body p-md-5">
                     @if ($errors->any())
                         <div class="mb-3 mt-3">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -29,87 +28,85 @@
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                          
-                            <strong>OOPS!</strong> 
+                            <strong>Siker!</strong> 
                             <p>{{Session::get('success')}}</p>
                         </div>
                     @endif
 
-                    <form action="{{ route('products.update', $product) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('products.update', $product) }}" method="PUT" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="name" class="form-label">Címe</label>
+                            <label for="name" class="form-label">Cím</label>
                             <input type="text" name="name" id="name" class="form-control @if($errors->has('name')) border border-danger @endif"
-                                placeholder="Teacher Name" aria-describedby="helpId" value="{{old('name', $product->name)}}">
+                                aria-describedby="helpId" value="{{old('name', $product->name)}}">
 
                             @if ($errors->has('name'))
                                 <small class="text-danger">{{ $errors->first('name') }}</small>
-                            @else
-                                <small id="helpId" class="text-muted">The name of the teacher to be created.</small>
                             @endif
+                        </div>
 
-                        </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Title</label>
-                            <input type="text" name="title" id="title" class="form-control"
-                                placeholder="f.e. Game controller" aria-describedby="helpId" maxlength="255" value="{{old('title', $product->title)}}"> 
-                            <small id="helpId" class="text-muted">The email the teacher has expertise in.</small>
+                            <label for="product_img" class="form-label">Kép</label>
+                            <input type="file" name="product_img" id="product_img" class="form-control @if($errors->has('product_img')) border border-danger @endif"
+                                aria-describedby="helpId" value="{{old('product_img', $product->product_img)}}">
+
+                            @if ($errors->has('product_img'))
+                                <small class="text-danger">{{ $errors->first('product_img') }}</small>
+                            @endif
                         </div>
+
                         <div class="mb-3">
-                            <label for="degree" class="form-label">Leírás</label>
-                            <textarea name="description" id="degree" class="form-control"
-                                placeholder="description" aria-describedby="helpId" maxlength="" value="">{{old('description', $product->description)}}
-                            </textarea>
-                            <small id="helpId" class="text-muted">The degree the teacher has expertise in.</small>
+                            <label for="description" class="form-label">Leírás</label>
+                            <input type="text" name="description" id="description" class="form-control @if($errors->has('description')) border border-danger @endif"
+                                aria-describedby="helpId" value="{{old('description', $product->description)}}">
+
+                            @if ($errors->has('description'))
+                                <small class="text-danger">{{ $errors->first('description') }}</small>
+                            @endif
                         </div>
+
                         <div class="mb-3">
-                            <label for="subjects" class="form-label">price</label>
-                            <input type="number" name="price" id="subjects" class="form-control"
-                                placeholder="f.e. Web development" aria-describedby="helpId" maxlength="255" value="{{old('subjects', $product->price)}}">
-                            <small id="helpId" class="text-muted">The subjects the teacher has expertise in.</small>
+                            <label for="price" class="form-label">Ár</label>
+                            <input type="number" name="price" id="price" class="form-control @if($errors->has('price')) border border-danger @endif"
+                                aria-describedby="helpId" value="{{old('price', $product->price)}}">
+
+                            @if ($errors->has('price'))
+                                <small class="text-danger">{{ $errors->first('price') }}</small>
+                            @endif
                         </div>
+
                         <div class="mb-3">
-                            <label for="subjects" class="form-label">Kiadás időpontja</label>
-                            <input type="date" name="releaseDate" id="subjects" class="form-control"
-                                placeholder="f.e. Web development" aria-describedby="helpId" maxlength="255" value="{{old('subjects', $product->releaseDate)}}">
-                            <small id="helpId" class="text-muted">The subjects the teacher has expertise in.</small>
+                            <label for="product_type_id" class="form-label">Termék Típus</label>
+                            <select name="product_type_id" class="form-control @if($errors->has('product_type_id')) border border-danger @endif" data-te-select-init>
+                                @foreach(\App\Models\ProductType::all() as $producttype)
+                                    <option value="{{$producttype->id}}">{{$producttype->name}}</option>
+                                @endforeach
+                            </select>
+
+                            @if ($errors->has('product_type_id'))
+                                <small class="text-danger">{{ $errors->first('product_type_id') }}</small>
+                            @endif
                         </div>
+
                         <div class="mb-3">
-                            <label for="picture" class="form-label">Termék képe</label>
-                            <input type="file" name="product_img" id="picture" class="form-control"
-                                aria-describedby="helpId">
-                            <small id="helpId" class="text-muted">Portrait image of the teacher</small>
-                        </div>
-                        <div class="mb-3">
-                            <label data-te-select-label-ref for="brand">Kiadó</label>
-                            <select name="publisher_id" class="h-10 border mt-1 rounded px-4 bg-gray" data-te-select-init>
+                            <label for="publisher_id" class="form-label">Kiadó</label>
+                            <select name="publisher_id" class="form-control @if($errors->has('publisher_id')) border border-danger @endif" data-te-select-init>
                                 @foreach(\App\Models\Publisher::all() as $publisher)
                                     <option value="{{$publisher->id}}">{{$publisher->name}}</option>
                                 @endforeach
                             </select>
-                        </div>
-                        <div class="mb-3">
-                            <label data-te-select-label-ref for="brand">Termék típusa</label>
-                            <select name="product_type_id" class="h-10 border mt-1 rounded px-4 bg-gray" data-te-select-init>
-                                @foreach(\App\Models\ProductType::all() as $productType)
-                                @if ($productType->id == $product->product_type_id)
-                                    <option selected value="{{$productType->id}}">{{$productType->name}}</option>
 
-                                @else
-                                    <option value="{{$productType->id}}">{{$productType->name}}</option>
-                                @endif
-                                    @endforeach
-                            </select>
+                            @if ($errors->has('publisher_id'))
+                                <small class="text-danger">{{ $errors->first('publisher_id') }}</small>
+                            @endif
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-warning">Submit</button>
-                        </div>
+                        
+                        <button type="submit" class="btn submit-btn">Módosítás</button>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col"></div>
     </div>
-
+</div>
 @endsection
-

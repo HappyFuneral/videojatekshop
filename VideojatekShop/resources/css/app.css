@@ -117,6 +117,26 @@ nav {
     width: 50%;
 }
 
+/* CREATED BUTTON */
+.create-btn {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #4D47EB !important;
+    margin-bottom: 0.5% !important;
+    float: left;
+}
+
+.show_deleted-btn {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #4D47EB !important;
+    margin-bottom: 0.5% !important;
+    float:inherit;
+    margin-left: 0.5%;
+}
+
 /* TABLE */
 .dt-container {
     background-color: #000420 !important;

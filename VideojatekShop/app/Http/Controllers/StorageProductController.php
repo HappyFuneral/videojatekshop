@@ -33,7 +33,7 @@ class StorageProductController extends Controller
     {
         $storageproduct = new StorageProduct(
             [
-                "code" => $request->code,
+                "quantity" => $request->quantity,
                 "product_id" => $request->product_id,
                 "storage_id" => $request->storage_id,
             ]

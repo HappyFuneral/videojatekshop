@@ -20,6 +20,8 @@ class Product extends Model
         'product_type_id',
         'description',
         'price',
+        'tariff_number',
+        'tariff_description',
         'publisher_id',
         'releaseDate'
     ];

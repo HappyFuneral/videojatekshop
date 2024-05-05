@@ -53,7 +53,7 @@ Route::middleware(Authenticate::class)->group(function () {
     | Products Routes
     |--------------------------------------------------------------------------
     */
-    Route::resource('/products', ProductController::class);
+    Route::resource('/products', ProductController::class)->middleware(VerifyUserRole::class);
     Route::get('/products/show_deleted', [ProductController::class, 'show_deleted'])->name('products.show_deleted')->middleware(VerifyUserRole::class);
 
     /*
@@ -70,6 +70,7 @@ Route::middleware(Authenticate::class)->group(function () {
     |--------------------------------------------------------------------------
     */
     Route::resource('/storages', StorageController::class)->middleware(VerifyUserRole::class);
+    Route::get('/storages/show_deleted', [StorageController::class, 'show_deleted'])->name('storages.show_deleted')->middleware(VerifyUserRole::class);
 
     /*
     |--------------------------------------------------------------------------
@@ -77,6 +78,7 @@ Route::middleware(Authenticate::class)->group(function () {
     |--------------------------------------------------------------------------
     */
     Route::resource('/storageproducts', StorageProductController::class)->middleware(VerifyUserRole::class);
+    Route::get('/storageproducts/show_deleted', [StorageProductController::class, 'show_deleted'])->name('storageproducts.show_deleted')->middleware(VerifyUserRole::class);
 
     /*
     |--------------------------------------------------------------------------
@@ -84,6 +86,7 @@ Route::middleware(Authenticate::class)->group(function () {
     |--------------------------------------------------------------------------
     */
     Route::resource('/contracts', ContractController::class)->middleware(VerifyUserRole::class);
+    Route::get('/contracts/show_deleted', [ContractController::class, 'show_deleted'])->name('contracts.show_deleted')->middleware(VerifyUserRole::class);
 
 });
 

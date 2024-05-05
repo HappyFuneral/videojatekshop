@@ -37,12 +37,12 @@
                         @csrf
                         @method('POST')
                         <div class="mb-3">
-                            <label for="code" class="form-label">code</label>
-                            <input type="text" name="code" id="code" class="form-control @if($errors->has('code')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('code')}}">
+                            <label for="quantity" class="form-label">Mennyiség</label>
+                            <input type="number" name="quantity" id="quantity" class="form-control @if($errors->has('quantity')) border border-danger @endif"
+                                aria-describedby="helpId" value="{{old('quantity')}}">
 
-                            @if ($errors->has('code'))
-                                <small class="text-danger">{{ $errors->first('code') }}</small>
+                            @if ($errors->has('quantity'))
+                                <small class="text-danger">{{ $errors->first('quantity') }}</small>
                             @endif
                         </div>
 

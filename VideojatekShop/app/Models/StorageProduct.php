@@ -13,8 +13,7 @@ class StorageProduct extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'code',
-        'stock',
+        'quantity',
         'product_id',
         'storage_id'
     ];

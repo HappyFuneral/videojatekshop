@@ -20,6 +20,8 @@ class ProductSeeder extends Seeder
             'description' => 'péló',
             'price' => 12000,
             'releaseDate' => now(),
+            'tariff_number' => 95045000,
+            'tariff_description' => 'Video game consoles and machines',
             'product_type_id' => 2,
             'publisher_id' => 1 
         ]);
@@ -30,6 +32,8 @@ class ProductSeeder extends Seeder
             'title' => 'Kontroller',
             'price' => 12000,
             'releaseDate' => now(),
+            'tariff_number' => 95045000,
+            'tariff_description' => 'Video game consoles and machines',
             'product_type_id' => 2,
             'publisher_id' => 1 
         ]);
