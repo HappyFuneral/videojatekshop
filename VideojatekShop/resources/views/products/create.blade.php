@@ -36,6 +36,17 @@
                     <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
+
+                        <div class="mb-3">
+                            <label for="code" class="form-label">Termék kód</label>
+                            <input type="text" name="code" id="code" class="form-control @if($errors->has('code')) border border-danger @endif"
+                                aria-describedby="helpId" value="{{old('code')}}">
+
+                            @if ($errors->has('code'))
+                                <small class="text-danger">{{ $errors->first('code') }}</small>
+                            @endif
+                        </div>
+
                         <div class="mb-3">
                             <label for="name" class="form-label">Cím</label>
                             <input type="text" name="name" id="name" class="form-control @if($errors->has('name')) border border-danger @endif"
@@ -77,6 +88,16 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="releaseDate" class="form-label">Megjelenés</label>
+                            <input type="date" name="releaseDate" id="releaseDate" class="form-control @if($errors->has('releaseDate')) border border-danger @endif"
+                                aria-describedby="helpId" value="{{old('releaseDate')}}">
+
+                            @if ($errors->has('releaseDate'))
+                                <small class="text-danger">{{ $errors->first('releaseDate') }}</small>
+                            @endif
+                        </div>
+
+                        <div class="mb-3">
                             <label for="product_type_id" class="form-label">Termék Típus</label>
                             <select name="product_type_id" class="form-control @if($errors->has('product_type_id')) border border-danger @endif" data-te-select-init>
                                 @foreach(\App\Models\ProductType::all() as $producttype)
@@ -99,6 +120,26 @@
 
                             @if ($errors->has('publisher_id'))
                                 <small class="text-danger">{{ $errors->first('publisher_id') }}</small>
+                            @endif
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tariff_number" class="form-label">Tarifa szám</label>
+                            <input type="number" name="tariff_number" id="tariff_number" class="form-control @if($errors->has('tariff_number')) border border-danger @endif"
+                                aria-describedby="helpId" value="{{old('tariff_number')}}">
+
+                            @if ($errors->has('tariff_number'))
+                                <small class="text-danger">{{ $errors->first('tariff_number') }}</small>
+                            @endif
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tariff_description" class="form-label">Tarifa leírás</label>
+                            <input type="text" name="tariff_description" id="tariff_description" class="form-control @if($errors->has('tariff_description')) border border-danger @endif"
+                                aria-describedby="helpId" value="{{old('tariff_description')}}">
+
+                            @if ($errors->has('tariff_description'))
+                                <small class="text-danger">{{ $errors->first('tariff_description') }}</small>
                             @endif
                         </div>
                         

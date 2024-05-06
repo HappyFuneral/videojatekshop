@@ -34,59 +34,27 @@ class PublisherSeeder extends Seeder
         ]);
 
         Publisher::create([
-            'name' => 'NEOWIZ'
-        ]);
-
-        Publisher::create([
-            'name' => 'ASUS'
-        ]);
-
-        Publisher::create([
-            'name' => 'Logitech'
-        ]);
-
-        Publisher::create([
-            'name' => 'Warner Bros Global Publishing'
-        ]);
-
-        Publisher::create([
-            'name' => 'Universal Music Group'
-        ]);
-
-        Publisher::create([
-            'name' => 'Stockfish Records'
-        ]);
-
-        Publisher::create([
-            'name' => 'ECM Records'
-        ]);
-
-        Publisher::create([
-            'name' => '2L Records'
-        ]);
-
-        Publisher::create([
-            'name' => 'DeLock'
-        ]);
-
-        Publisher::create([
-            'name' => 'EQUIP'
-        ]);
-
-        Publisher::create([
-            'name' => 'ROLINE'
-        ]);
-
-        Publisher::create([
-            'name' => 'Etalon Film Kiadó'
-        ]);
-
-        Publisher::create([
             'name' => 'Ubisoft'
         ]);
 
         Publisher::create([
             'name' => 'Trust'
+        ]);
+
+        Publisher::create([
+            'name' => 'CD PROJEKT RED'
+        ]);
+
+        Publisher::create([
+            'name' => 'Nintendo'
+        ]);
+
+        Publisher::create([
+            'name' => 'From Software'
+        ]);
+
+        Publisher::create([
+            'name' => 'CD PROJEKT RED'
         ]);
     }
 }

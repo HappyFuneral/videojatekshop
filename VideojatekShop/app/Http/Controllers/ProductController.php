@@ -45,6 +45,7 @@ class ProductController extends Controller
         $product = new Product(
             [
                 "name" => $request->name,
+                "code" => $request->code,
                 "product_img" => $file_name,
                 "description" => $request->description,
                 "price" => $request->price,
@@ -91,6 +92,7 @@ class ProductController extends Controller
 
         $product->product_img = $file_name;
         $product->name = $request->name;
+        $product->code = $request->code;
         $product->description = $request->description;
         $product->price = $request->price;
         $product->releaseDate = $request->releaseDate;

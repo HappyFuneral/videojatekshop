@@ -14,35 +14,32 @@
             @endif
             <div class="showpage">
                 <div class="row">
-                    <h1>{{$product->name}}</h1>
-                </div>
-                <div class="row">
-                    <div class="col-10">
+                    <div class="col-9">
+                        <div class="row showpage-main">
+                            <h1>{{$product->name}}</h1>
+                        </div>
+                        <div class="row showpage-main">
+                            <div class="showpage-img">
+                                <img class="center" src="{{ asset('storage/products/' . $product->product_img) }}" alt="Termék kép">
+                            </div>
 
-                        <img src="{{$product->product_img}}" alt="Termék kép">
+                            <hr class="text-white">
 
-                        <hr class="text-white">
-
-                        <p>{{$product->description}}</p>
+                            <p>{{$product->description}}</p>
+                        </div>
 
                     </div>
-                    <div class="col-2">
+                    <div class="col-3 showpage-sidebar">
 
-                        <p>{{$product->price}} Ft</p>
+                        <p class="showpage-price">{{$product->price}} Ft</p>
 
                         <form action="">
                             <button type="submit" class="btn buy-btn">Megvásárlás</button>
                         </form>
 
-                        <p>{{ \App\Models\Publisher::all()->find($product->publisher_id)->name }}</p>
-                        @if (Auth::product()->price > 0)
-                            <p>Készleten van</p>
-                        @else
-                            <p>Nincs készleten</p>
-                        @endif
+                        <p>Kiadó: {{ \App\Models\Publisher::all()->find($product->publisher_id)->name }}</p>
                         
                     </div>
-                </div>
             </div>
         </div>
         <div class="col-2"></div>
