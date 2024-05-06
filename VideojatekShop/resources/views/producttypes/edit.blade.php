@@ -38,7 +38,7 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Név</label>
                             <input type="text" name="name" id="name" class="form-control @if($errors->has('name')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('name', $publisher->name)}}">
+                                aria-describedby="helpId" value="{{old('name', $producttype->name)}}">
 
                             @if ($errors->has('name'))
                                 <small class="text-danger">{{ $errors->first('name') }}</small>

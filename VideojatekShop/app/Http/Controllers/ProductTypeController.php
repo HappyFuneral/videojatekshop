@@ -54,20 +54,20 @@ class ProductTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProductType $productType)
+    public function edit(ProductType $producttype)
     {
-        return view("producttypes.edit", ['productType' => $productType]);
+        return view("producttypes.edit", ['producttype' => $producttype]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductTypeRequest $request, ProductType $productType)
+    public function update(UpdateProductTypeRequest $request, ProductType $producttype)
     {
-        $productType->updated_by = Auth::user()->id;
-        $productType->update($request->all());
+        $producttype->updated_by = Auth::user()->id;
+        $producttype->update($request->all());
 
-        return redirect()->route('producttypes.index')->with('success', 'The productType was updated successfully.');
+        return redirect()->route('producttypes.index')->with('success', 'The producttype was updated successfully.');
     }
 
     /**
