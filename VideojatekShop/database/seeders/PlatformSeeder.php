@@ -36,5 +36,9 @@ class PlatformSeeder extends Seeder
         Platform::factory()->create(
             ['name' => 'Nintendo Switch']  
         );
+
+        Platform::factory()->create(
+            ['name' => 'Xbox Series']  
+        );
     }
 }

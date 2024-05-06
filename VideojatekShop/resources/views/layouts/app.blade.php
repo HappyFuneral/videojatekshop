@@ -94,15 +94,17 @@
                                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                                     <!-- Contract -->
 
+                                    <!-- Platform -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('platforms.index') }}">Platformok listája</a>
 
                                     <!-- Publisher -->
-                                    <a class="dropdown-item nav-dropdown" href="{{ route('publishers.index') }}">Kiadók</a>
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('publishers.index') }}">Kiadók listája</a>
 
                                     <!-- Product -->
                                     <a class="dropdown-item nav-dropdown" href="{{ route('products.index') }}">Termék lista</a>
 
                                     <!-- StorageProduct -->
-                                    <a class="dropdown-item nav-dropdown" href="{{ route('storageproducts.index') }}">Raktár</a>
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('storageproducts.index') }}">Termékek bevitelének naplózása</a>
 
                                     <!-- Storage -->
                                     <a class="dropdown-item nav-dropdown" href="{{ route('storages.index') }}">Raktár Cím</a>

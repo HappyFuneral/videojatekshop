@@ -23,6 +23,7 @@ class Product extends Model
         'tariff_number',
         'tariff_description',
         'publisher_id',
+        'platform_id',
         'releaseDate'
     ];
     
@@ -31,6 +32,10 @@ class Product extends Model
     }
 
     public function publishers(): HasOne {
+        return $this->hasOne(Publisher::class);
+    }
+
+    public function paltforms(): HasOne {
         return $this->hasOne(Publisher::class);
     }
 

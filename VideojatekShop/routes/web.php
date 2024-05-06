@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PublisherController;
@@ -64,6 +65,14 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::resource('/publishers', PublisherController::class)->middleware(VerifyUserRole::class);
     Route::get('/publishers/show_deleted', [PublisherController::class, 'show_deleted'])->name('publishers.show_deleted')->middleware(VerifyUserRole::class);
     
+    /*
+    |--------------------------------------------------------------------------
+    | Platforms Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('/platforms', PlatformController::class)->middleware(VerifyUserRole::class);
+    Route::get('/platforms/show_deleted', [PlatformController::class, 'show_deleted'])->name('platforms.show_deleted')->middleware(VerifyUserRole::class);
+
     /*
     |--------------------------------------------------------------------------
     | Storages Routes

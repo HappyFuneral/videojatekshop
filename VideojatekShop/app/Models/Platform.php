@@ -16,7 +16,7 @@ class Platform extends Model
         'name'
     ] ;
 
-    public function platform(): BelongsToMany {
-        return $this->belongsToMany(Platform::class);
+    public function products(): BelongsToMany {
+        return $this->belongsToMany(Product::class);
     }
 }

@@ -27,12 +27,15 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
+                            <th scope="col">Árú Kód</th>
                             <th scope="col">Cím</th>
                             <th scope="col">Ár</th>
                             <th scope="col">Mennyiség</th>
                             <th scope="col">Tariffa szám</th>
                             <th scope="col">Tariffa szöveg</th>
                             <th scope="col">Termék Típus</th>
+                            <th scope="col">Platform</th>
+                            <th scope="col">Kiadó</th>
                             <th scope="col">Létrehozás dátuma</th>
                             <th scope="col">Létrehozója</th>
                             <th scope="col">Utolsó módosítás</th>
@@ -47,12 +50,15 @@
                         @foreach ($products as $item)
                             <tr class="">
                                 <td scope="row">{{ $item->id }}</td>
+                                <td>{{ $item->code }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->price }}</td>
                                 <td>{{ $item->quantity }}</td>
                                 <td>{{ $item->tariff_number }}</td>
                                 <td>{{ $item->tariff_description }}</td>
                                 <td>{{ \App\Models\ProductType::all()->find($item->product_type_id)->name }}</td>
+                                <td>{{ \App\Models\Platform::all()->find($item->platform_id)->name }}</td>
+                                <td>{{ \App\Models\Publisher::all()->find($item->publisher_id)->name }}</td>
                                 <td>{{ $item->created_at }}</td>
                                 <td>{{ $item->created_by }}</td>
                                 <td>{{ $item->updated_at }}</td>

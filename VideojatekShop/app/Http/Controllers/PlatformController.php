@@ -13,7 +13,8 @@ class PlatformController extends Controller
      */
     public function index()
     {
-        //
+        $platforms = Platform::all();
+        return view("platforms.index", ['platforms' => $platforms]);
     }
 
     /**
@@ -21,7 +22,7 @@ class PlatformController extends Controller
      */
     public function create()
     {
-        //
+        return view("platforms.create");
     }
 
     /**
@@ -29,7 +30,15 @@ class PlatformController extends Controller
      */
     public function store(StorePlatformRequest $request)
     {
-        //
+        $platform = new Platform(
+            [
+                "name" => $request->name
+            ]
+        );
+
+        $platform->save();
+
+        return back()->with("success", "Platform created successfully.");
     }
 
     /**
@@ -45,7 +54,7 @@ class PlatformController extends Controller
      */
     public function edit(Platform $platform)
     {
-        //
+        return view("platforms.edit", ['platform' => $platform]);
     }
 
     /**
@@ -53,7 +62,9 @@ class PlatformController extends Controller
      */
     public function update(UpdatePlatformRequest $request, Platform $platform)
     {
-        //
+        $platform->update($request->all());
+
+        return redirect()->route('platforms.index')->with('success', 'The platform was updated successfully.');
     }
 
     /**
@@ -61,6 +72,19 @@ class PlatformController extends Controller
      */
     public function destroy(Platform $platform)
     {
-        //
+        $platform->delete();
+        return back()->with("success","Sikeres Törlés");
+    }
+
+    public function show_deleted()
+    {
+        $deleted_platforms = Platform::onlyTrashed()->get();
+        return view('platforms.show_deleted', ['platforms' => $deleted_platforms]);
+    }
+
+    public function restore(Platform $platform)
+    {
+        $platform->restore();
+        return back()->with('success', '' . $platform->name . ' was successfully restored.');
     }
 }

@@ -32,7 +32,6 @@ class ProductSeeder extends Seeder
             'name' => 'Far Cry New Dawn',
             'product_img' => 'product_farcrynewdawn_pc.jpg',
             'description' => 'A Far Cry 5 közvetlen folytatásában visszatérhetsz Hope County-ba, amit jórészt elpusztított egy atomcsapás. 17 évvel az események után a természet kezdi visszahódítani a tájat, amit elfajzott bandák uralnak összetákolt fegyvereikkel és járműveikkel. A nukleáris pusztaságban rajtad áll, hogy felvedd a harcot a legfélelmetesebb bandával, és békét hozz az emberek számára.
-
             A Far Cry: New Dawn ugyanazt a nyílt világú játékmenetet és gyönyörű grafikát nyújtja, amit a sorozattól megszoktunk és megszerettünk. Mindezt a Ubisoft fejlesztői vadonatúj mechanikákkal, fantáziadús fegyverekkel és járművekkel dobták fel, és bemutatkozik számos új karakter is, de visszatérő arcokkal is találkozhatunk a Far Cry 5-ből. Ez a harc lesz a végső? Csak rajtad áll!',
             'price' => 6000,
             'releaseDate' => '2019-02-15',
@@ -48,7 +47,6 @@ class ProductSeeder extends Seeder
             'name' => 'Far Cry New Dawn',
             'product_img' => 'product_farcrynewdawn_xboxone.jpg',
             'description' => 'A Far Cry 5 közvetlen folytatásában visszatérhetsz Hope County-ba, amit jórészt elpusztított egy atomcsapás. 17 évvel az események után a természet kezdi visszahódítani a tájat, amit elfajzott bandák uralnak összetákolt fegyvereikkel és járműveikkel. A nukleáris pusztaságban rajtad áll, hogy felvedd a harcot a legfélelmetesebb bandával, és békét hozz az emberek számára.
-
             A Far Cry: New Dawn ugyanazt a nyílt világú játékmenetet és gyönyörű grafikát nyújtja, amit a sorozattól megszoktunk és megszerettünk. Mindezt a Ubisoft fejlesztői vadonatúj mechanikákkal, fantáziadús fegyverekkel és járművekkel dobták fel, és bemutatkozik számos új karakter is, de visszatérő arcokkal is találkozhatunk a Far Cry 5-ből. Ez a harc lesz a végső? Csak rajtad áll!',
             'price' => 6000,
             'releaseDate' => '2019-02-15',
@@ -64,7 +62,6 @@ class ProductSeeder extends Seeder
             'name' => 'Far Cry New Dawn',
             'product_img' => 'product_farcrynewdawn_ps4.jpg',
             'description' => 'A Far Cry 5 közvetlen folytatásában visszatérhetsz Hope County-ba, amit jórészt elpusztított egy atomcsapás. 17 évvel az események után a természet kezdi visszahódítani a tájat, amit elfajzott bandák uralnak összetákolt fegyvereikkel és járműveikkel. A nukleáris pusztaságban rajtad áll, hogy felvedd a harcot a legfélelmetesebb bandával, és békét hozz az emberek számára.
-
             A Far Cry: New Dawn ugyanazt a nyílt világú játékmenetet és gyönyörű grafikát nyújtja, amit a sorozattól megszoktunk és megszerettünk. Mindezt a Ubisoft fejlesztői vadonatúj mechanikákkal, fantáziadús fegyverekkel és járművekkel dobták fel, és bemutatkozik számos új karakter is, de visszatérő arcokkal is találkozhatunk a Far Cry 5-ből. Ez a harc lesz a végső? Csak rajtad áll!',
             'price' => 6000,
             'releaseDate' => '2019-02-15',
@@ -258,6 +255,7 @@ class ProductSeeder extends Seeder
             'tariff_description' => 'Video game consoles and machines',
             'product_type_id' => 3,
             'publisher_id' => 2,
+            'platform_id' => 4,
         ]);
 
         Product::create([
@@ -273,6 +271,7 @@ class ProductSeeder extends Seeder
             'tariff_description' => 'Video game consoles and machines',
             'product_type_id' => 3,
             'publisher_id' => 9,
+            'platform_id' => 6,
         ]);
 
         Product::create([
@@ -286,21 +285,7 @@ class ProductSeeder extends Seeder
             'tariff_description' => 'Video game consoles and machines',
             'product_type_id' => 3,
             'publisher_id' => 1,
-        ]);
-
-        Product::create([
-            'code' => '3337216100535',
-            'name' => 'Xbox Series X 1TB',
-            'product_img' => 'product_xboxseriesx1tb.jpg',
-            'description' => 'Az új trendeknek megfelelően az Xbox Series X hardveres gyorsítású raytracinget is támogat, amely minden korábbinál élethűbb fényeket, árnyékokat és tükröződéseket képes megjeleníteni. A konzol célja a játékok 4K felbontású, 60 fps képfrissítésű futtatása, de támogatja a 120 fps-t is, így a leggyorsabb játékmenetű, versenyszerű (eSport) játékok is maximális sebességgel futhatnak. A Microsoft által kidolgozott Xbox Velocity Architecture a gyors hardveres elemeket és a szoftveres optimalizációt ötvözi azért, hogy a játékok minél nagyobb teljesítménnyel fussanak, és minél jobban lerövidüljenek a töltési idők.
-            Finomabb formát, de alapvetően változatlan működést kapott az Xbox Series X kontrollere, amely kompatibilis az Xbox One konzolokkal is. A kontroller formája még jobban beleillik a kézbe, textúrázott ütköző gombjai és ravaszai pedig még biztosabb fogást kínálnak. A kontrolleren dedikált Share (Megosztás) gomb biztosítja, hogy bármikor megoszthasd a legjobb pillanatokat barátaiddal. A még alacsonyabb válaszidejű vezeték nélküli protokollal a játékok érzékenyebbek és jobban játszhatóak, a beépített Bluetooth kapcsolattal pedig könnyen párosítható minden Windows 10-es PC-hez, illetve bármilyen mobil eszközhöz.
-            Az Xbox Series X példátlan kompatibilitást kínál, hiszen lejátszható rajta az összes Xbox One játék (amelyekhez nem szükséges Kinect), illetve minden visszafelé kompatibilis Xbox 360 és Eredeti Xbox cím, így négy generáció játékaival játszhatsz egyetlen konzolon.',
-            'price' => 198990,
-            'releaseDate' => '2020-01-01',
-            'tariff_number' => 95045000,
-            'tariff_description' => 'Video game consoles and machines',
-            'product_type_id' => 3,
-            'publisher_id' => 1,
+            'platform_id' => 7,
         ]);
 
         Product::create([
@@ -317,6 +302,7 @@ class ProductSeeder extends Seeder
             'tariff_description' => 'Video game consoles and machines',
             'product_type_id' => 3,
             'publisher_id' => 1,
+            'platform_id' => 7,
         ]);
 
         Product::create([
@@ -333,6 +319,7 @@ class ProductSeeder extends Seeder
             'tariff_description' => 'Video game consoles and machines',
             'product_type_id' => 3,
             'publisher_id' => 2,
+            'platform_id' => 5,
         ]);
 
         Product::create([
@@ -347,6 +334,7 @@ class ProductSeeder extends Seeder
             'tariff_description' => 'Video game consoles and machines',
             'product_type_id' => 4,
             'publisher_id' => 9,
+            'platform_id' => 6,
         ]);
 
         Product::create([
@@ -360,6 +348,7 @@ class ProductSeeder extends Seeder
             'tariff_description' => 'Video game consoles and machines',
             'product_type_id' => 4,
             'publisher_id' => 1,
+            'platform_id' => 7,
         ]);
 
     }

@@ -191,6 +191,11 @@ nav {
     width: 6px;
 }
 
+.dt-container::-webkit-scrollbar-thumb {
+    background-color: #290741;
+    border-radius: 6px;
+}
+
 .dt-container::-webkit-scrollbar-track {
     background: transparent;
 }
