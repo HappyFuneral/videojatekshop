@@ -18,7 +18,10 @@ class Storage extends Model
         'country',
         'province',
         'city',
-        'address'
+        'address',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
     
     public function storage_products(): BelongsToMany

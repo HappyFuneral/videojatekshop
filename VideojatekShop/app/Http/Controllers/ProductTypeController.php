@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ProductType;
 use App\Http\Requests\StoreProductTypeRequest;
 use App\Http\Requests\UpdateProductTypeRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProductTypeController extends Controller
 {
@@ -13,7 +14,8 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
-        //
+        $producttypes = ProductType::all();
+        return view("producttypes.index", ['producttypes' => $producttypes]);
     }
 
     /**
@@ -21,7 +23,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view("producttypes.create");
     }
 
     /**
@@ -29,7 +31,16 @@ class ProductTypeController extends Controller
      */
     public function store(StoreProductTypeRequest $request)
     {
-        //
+        $producttype = new ProductType(
+            [
+                "name" => $request->name,
+                "created_by" => Auth::user()->id,
+            ]
+        );
+
+        $producttype->save();
+
+        return back()->with("success", "producttypes created successfully.");
     }
 
     /**
@@ -43,17 +54,20 @@ class ProductTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProductType $productType)
+    public function edit(ProductType $producttype)
     {
-        //
+        return view("producttypes.edit", ['producttype' => $producttype]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductTypeRequest $request, ProductType $productType)
+    public function update(UpdateProductTypeRequest $request, ProductType $producttype)
     {
-        //
+        $producttype->updated_by = Auth::user()->id;
+        $producttype->update($request->all());
+
+        return redirect()->route('producttypes.index')->with('success', 'The producttype was updated successfully.');
     }
 
     /**
@@ -61,6 +75,21 @@ class ProductTypeController extends Controller
      */
     public function destroy(ProductType $productType)
     {
-        //
+        $productType->deleted_by = Auth::user()->id;
+        $productType->update();
+        $productType->delete();
+        return back()->with("success","Sikeres Törlés");
+    }
+
+    public function show_deleted()
+    {
+        $deleted_productTypes = ProductType::onlyTrashed()->get();
+        return view('publishers.show_deleted', ['producttypes' => $deleted_productTypes]);
+    }
+
+    public function restore(ProductType $productType)
+    {
+        $productType->restore();
+        return back()->with('success', '' . $productType->name . ' was successfully restored.');
     }
 }

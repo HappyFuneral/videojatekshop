@@ -6,6 +6,7 @@ use App\Models\Publisher;
 use App\Http\Requests\StorePublisherRequest;
 use App\Http\Requests\UpdatePublisherRequest;
 use Illuminate\Auth\Middleware\Authorize;
+use Illuminate\Support\Facades\Auth;
 
 class PublisherController extends Controller
 {
@@ -33,7 +34,8 @@ class PublisherController extends Controller
     {
         $publisher = new Publisher(
             [
-                "name" => $request->name
+                "name" => $request->name,
+                "created_by" => Auth::user()->id,
             ]
         );
 
@@ -63,6 +65,7 @@ class PublisherController extends Controller
      */
     public function update(UpdatePublisherRequest $request, Publisher $publisher)
     {
+        $publisher->updated_by = Auth::user()->id;
         $publisher->update($request->all());
 
         return redirect()->route('publishers.index')->with('success', 'The publisher was updated successfully.');
@@ -73,6 +76,8 @@ class PublisherController extends Controller
      */
     public function destroy(Publisher $publisher)
     {
+        $publisher->deleted_by = Auth::user()->id;
+        $publisher->update();
         $publisher->delete();
         return back()->with("success","Sikeres Törlés");
     }

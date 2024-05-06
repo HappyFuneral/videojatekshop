@@ -23,7 +23,10 @@ class Order extends Model
         "province",
         "city",
         "address",
-        "orderState_id"
+        "orderState_id",
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     public function users(): HasOne {

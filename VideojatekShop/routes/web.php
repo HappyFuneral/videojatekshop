@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderStateController;
+use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\StorageController;
 use App\Http\Controllers\StorageProductController;
@@ -45,8 +48,24 @@ Route::middleware(Authenticate::class)->group(function () {
     | Orders Routes
     |--------------------------------------------------------------------------
     */
+    Route::resource('/orderstates', OrderStateController::class);
+    Route::get('/orderstates/show_deleted', [OrderStateController::class, 'show_deleted'])->name('orderstates.show_deleted')->middleware(VerifyUserRole::class);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Orders Routes
+    |--------------------------------------------------------------------------
+    */
     Route::resource('/orders', OrderController::class);
     Route::get('/orders/show_deleted', [OrderController::class, 'show_deleted'])->name('orders.show_deleted')->middleware(VerifyUserRole::class);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Orders Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('/producttypes', ProductTypeController::class)->middleware(VerifyUserRole::class);;
+    Route::get('/producttypes/show_deleted', [ProductTypeController::class, 'show_deleted'])->name('producttypes.show_deleted')->middleware(VerifyUserRole::class);
 
     /*
     |--------------------------------------------------------------------------
@@ -64,6 +83,14 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::resource('/publishers', PublisherController::class)->middleware(VerifyUserRole::class);
     Route::get('/publishers/show_deleted', [PublisherController::class, 'show_deleted'])->name('publishers.show_deleted')->middleware(VerifyUserRole::class);
     
+    /*
+    |--------------------------------------------------------------------------
+    | Platforms Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('/platforms', PlatformController::class)->middleware(VerifyUserRole::class);
+    Route::get('/platforms/show_deleted', [PlatformController::class, 'show_deleted'])->name('platforms.show_deleted')->middleware(VerifyUserRole::class);
+
     /*
     |--------------------------------------------------------------------------
     | Storages Routes

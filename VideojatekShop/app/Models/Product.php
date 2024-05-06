@@ -15,15 +15,19 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'title',
-        'img',
+        'code',
+        'product_img',
         'product_type_id',
         'description',
         'price',
         'tariff_number',
         'tariff_description',
         'publisher_id',
-        'releaseDate'
+        'platform_id',
+        'releaseDate',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
     
     public function product_types(): HasOne {
@@ -31,6 +35,10 @@ class Product extends Model
     }
 
     public function publishers(): HasOne {
+        return $this->hasOne(Publisher::class);
+    }
+
+    public function paltforms(): HasOne {
         return $this->hasOne(Publisher::class);
     }
 

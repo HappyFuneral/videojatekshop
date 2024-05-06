@@ -46,7 +46,6 @@
                                 <small class="text-danger">{{ $errors->first('code') }}</small>
                             @endif
                         </div>
-
                         <div class="mb-3">
                             <label for="name" class="form-label">Cím</label>
                             <input type="text" name="name" id="name" class="form-control @if($errors->has('name')) border border-danger @endif"

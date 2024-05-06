@@ -18,23 +18,16 @@ class ProductTypeSeeder extends Seeder
         );
 
         ProductType::factory()->create(
-            ['name' => 'Album']  
-        );
-
-        ProductType::factory()->create(
-            ['name' => 'Film']  
-        );
-
-        ProductType::factory()->create(
             ['name' => 'Kontroller']  
+        );
+
+        ProductType::factory()->create(
+            ['name' => 'Konzol']  
         );
 
         ProductType::factory()->create(
             ['name' => 'Tartozékok']  
         );
-
-        ProductType::factory()->create(
-            ['name' => 'Perifériák']  
-        );
+        
     }
 }

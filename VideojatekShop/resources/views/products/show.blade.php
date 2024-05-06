@@ -12,38 +12,42 @@
                     <p>{{ Session::get('success') }}</p>
                 </div>
             @endif
-            <div class="showpage">
-                <div class="row">
-                    <h1>{{$product->name}}</h1>
-                </div>
-                <div class="row">
-                    <div class="col-10">
+            <div class="row showpage">
+                    <div class="col-9">
+                        <div class="row showpage-header">
+                            <h4>{{$product->name}}</h4>
+                        </div>
+                            
+                        <div class="row showpage-main">
+                            <img class="showpage-img" src="{{ asset('storage/products/' . $product->product_img) }}" alt="Termék kép">
+                            <hr class="text-dark">
 
-                        <img src="{{$product->product_img}}" alt="Termék kép">
-
-                        <hr class="text-white">
-
-                        <p>{{$product->description}}</p>
+                            <p class="showpage-description">{{$product->description}}</p>
+                        </div>
 
                     </div>
-                    <div class="col-2">
+                    <div class="col-3 showpage-sidebar">
 
-                        <p>{{$product->price}} Ft</p>
+                        <p class="showpage-price">{{$product->price}} Ft</p>
 
-                        <form action="">
+                        <form class="showpage-form" action="">
                             <button type="submit" class="btn buy-btn">Megvásárlás</button>
                         </form>
 
-                        <p>{{ \App\Models\Publisher::all()->find($product->publisher_id)->name }}</p>
-                        @if (Auth::product()->price > 0)
-                            <p>Készleten van</p>
-                        @else
-                            <p>Nincs készleten</p>
-                        @endif
+                        <hr class="text-white showpage-hr">
+
+                        <p class="showpage-info">Kiadó: {{ \App\Models\Publisher::all()->find($product->publisher_id)->name }}</p>
                         
+                        <hr class="text-white showpage-hr">
+
+                        <p class="showpage-info">Platform: {{ \App\Models\Platform::all()->find($product->platform_id)->name }}</p>
+
+                        <hr class="text-white showpage-hr">
+
+                        <p class="showpage-info">Készleten</p>
+
+                        <hr class="text-white showpage-hr">
                     </div>
-                </div>
-            </div>
         </div>
         <div class="col-2"></div>
     </div>

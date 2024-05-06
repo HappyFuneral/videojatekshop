@@ -28,6 +28,10 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Név</th>
+                            <th scope="col">Létrehozás dátuma</th>
+                            <th scope="col">Létrehozója</th>
+                            <th scope="col">Utolsó módosítás</th>
+                            <th scope="col">Módosította</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
@@ -38,6 +42,10 @@
                             <tr class="">
                                 <td scope="row">{{ $item->id }}</td>
                                 <td>{{ $item->name }}</td>
+                                <td>{{ $item->created_at }}</td>
+                                <td>{{ $item->created_by }}</td>
+                                <td>{{ $item->updated_at }}</td>
+                                <td>{{ $item->updated_by }}</td>
                                 <td>
                                     <form action="{{ route('publishers.edit', $item) }}" method="GET">
                                         @csrf
