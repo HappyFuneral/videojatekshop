@@ -90,23 +90,53 @@ nav {
     text-transform: uppercase !important;
 }
 
-.showpage-main {
-    padding: 5%;
+.showpage-header {
+    padding: 3%;
+    width: auto !important;
+    height: auto !important;
 }
 
-.showpage-sidebar {
-    padding: 3%;
-    border: 2px solid #4D47EB !important;
-    background-color: #190229 !important;
+.showpage-main {
+    padding-left: 5%;
+    padding-bottom: 5%;
+    padding-right: 5%;
+    background-color: white !important;
 }
 
 .showpage-img {
     width: 50% !important;
     height: 50% !important;
+    display: block;
+    margin: 0 auto;
+}
+
+.showpage-description {
+    color: black !important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: none;
+}
+
+.showpage-sidebar {
+    padding: 3%;
+    border-left: 2px solid #4D47EB !important;
+    background-color: #190229 !important;
 }
 
 .showpage-price {
-    font-size: 300%;
+    font-size: 230%;
+}
+
+.showpage-form {
+    text-align: center;
+}
+
+.showpage-info {
+    font-size: 100%;
+}
+
+.showpage-hr {
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 .buy-btn {
