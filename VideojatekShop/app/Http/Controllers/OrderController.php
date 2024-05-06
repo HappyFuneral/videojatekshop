@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use Illuminate\Auth\Middleware\Authorize;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -42,7 +43,8 @@ class OrderController extends Controller
                 "provincie" => $request->provincie,
                 "city" => $request->city,
                 "address" => $request->address,
-                "orderState_id" => $request->orderState_id
+                "orderState_id" => $request->orderState_id,
+                "created_by" => Auth::user()->id,
             ]
         );
 
@@ -72,6 +74,7 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
+        $order->updated_by = Auth::user()->id;
         $order->update($request->all());
 
         return redirect()->route('orders.index')->with('success', 'The order was updated successfully.');
@@ -82,6 +85,15 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
+        $order->deleted_by = Auth::user()->id;
+        $order->update();
         $order->delete();
+        return back()->with("success","Sikeres Törlés");
+    }
+
+    public function show_deleted()
+    {
+        $deleted_orders = Order::onlyTrashed()->get();
+        return view('orders.show_deleted', ['orders' => $deleted_orders]);
     }
 }

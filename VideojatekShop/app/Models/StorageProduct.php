@@ -15,7 +15,10 @@ class StorageProduct extends Model
     protected $fillable = [
         'quantity',
         'product_id',
-        'storage_id'
+        'storage_id',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     public function storages(): HasOne

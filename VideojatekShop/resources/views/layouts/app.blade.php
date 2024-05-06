@@ -94,6 +94,12 @@
                                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                                     <!-- Contract -->
 
+                                    <!-- OrderState -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('orderstates.index') }}">Rendelés folyamat típus listája</a>
+
+                                    <!-- ProductType -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('producttypes.index') }}">Termék típus listája</a>
+
                                     <!-- Platform -->
                                     <a class="dropdown-item nav-dropdown" href="{{ route('platforms.index') }}">Platformok listája</a>
 

@@ -15,7 +15,7 @@
             <div class="row showpage">
                     <div class="col-9">
                         <div class="row showpage-header">
-                            <h3>{{$product->name}}</h3>
+                            <h4>{{$product->name}}</h4>
                         </div>
                             
                         <div class="row showpage-main">

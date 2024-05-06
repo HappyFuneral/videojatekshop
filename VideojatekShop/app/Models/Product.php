@@ -24,7 +24,10 @@ class Product extends Model
         'tariff_description',
         'publisher_id',
         'platform_id',
-        'releaseDate'
+        'releaseDate',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
     
     public function product_types(): HasOne {

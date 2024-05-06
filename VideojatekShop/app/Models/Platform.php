@@ -13,7 +13,10 @@ class Platform extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name'
+        'name',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ] ;
 
     public function products(): BelongsToMany {

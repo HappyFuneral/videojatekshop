@@ -6,6 +6,7 @@ use App\Models\Storage;
 use App\Http\Requests\StoreStorageRequest;
 use App\Http\Requests\UpdateStorageRequest;
 use Illuminate\Auth\Middleware\Authorize;
+use Illuminate\Support\Facades\Auth;
 
 class StorageController extends Controller
 {
@@ -39,6 +40,7 @@ class StorageController extends Controller
                 "provincie" => $request->provincie,
                 "city" => $request->city,
                 "address" => $request->address,
+                "created_by" => Auth::user()->id,
             ]
         );
 
@@ -68,6 +70,7 @@ class StorageController extends Controller
      */
     public function update(UpdateStorageRequest $request, Storage $storage)
     {
+        $storage->updated_by = Auth::user()->id;
         $storage->update($request->all());
 
         return redirect()->route('storages.index')->with('success', 'The storage was updated successfully.');
@@ -78,7 +81,21 @@ class StorageController extends Controller
      */
     public function destroy(Storage $storage)
     {
+        $storage->deleted_by = Auth::user()->id;
+        $storage->update();
         $storage->delete();
         return back()->with("success","Sikeres Törlés");
+    }
+
+    public function show_deleted()
+    {
+        $deleted_storages = Storage::onlyTrashed()->get();
+        return view('storages.show_deleted', ['storages' => $deleted_storages]);
+    }
+
+    public function restore(Storage $storage)
+    {
+        $storage->restore();
+        return back()->with('success', '' . $storage->name . ' was successfully restored.');
     }
 }

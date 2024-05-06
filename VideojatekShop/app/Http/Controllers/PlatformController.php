@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Platform;
 use App\Http\Requests\StorePlatformRequest;
 use App\Http\Requests\UpdatePlatformRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PlatformController extends Controller
 {
@@ -32,7 +33,8 @@ class PlatformController extends Controller
     {
         $platform = new Platform(
             [
-                "name" => $request->name
+                "name" => $request->name,
+                "created_by" => Auth::user()->id,
             ]
         );
 
@@ -62,6 +64,7 @@ class PlatformController extends Controller
      */
     public function update(UpdatePlatformRequest $request, Platform $platform)
     {
+        $platform->updated_by = Auth::user()->id;
         $platform->update($request->all());
 
         return redirect()->route('platforms.index')->with('success', 'The platform was updated successfully.');
@@ -72,6 +75,8 @@ class PlatformController extends Controller
      */
     public function destroy(Platform $platform)
     {
+        $platform->deleted_by = Auth::user()->id;
+        $platform->update();
         $platform->delete();
         return back()->with("success","Sikeres Törlés");
     }

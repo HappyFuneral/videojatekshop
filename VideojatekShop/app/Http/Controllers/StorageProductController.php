@@ -6,6 +6,7 @@ use App\Models\StorageProduct;
 use App\Http\Requests\StoreStorageProductRequest;
 use App\Http\Requests\UpdateStorageProductRequest;
 use Illuminate\Auth\Middleware\Authorize;
+use Illuminate\Support\Facades\Auth;
 
 class StorageProductController extends Controller
 {
@@ -36,6 +37,7 @@ class StorageProductController extends Controller
                 "quantity" => $request->quantity,
                 "product_id" => $request->product_id,
                 "storage_id" => $request->storage_id,
+                "created_by" => Auth::user()->id,
             ]
         );
 
@@ -65,6 +67,7 @@ class StorageProductController extends Controller
      */
     public function update(UpdateStorageProductRequest $request, StorageProduct $storageproduct)
     {
+        $storageproduct->updated_by = Auth::user()->id;
         $storageproduct->update($request->all());
 
         return redirect()->route('storageproducts.index')->with('success', 'The storageproduct was updated successfully.');
@@ -75,6 +78,8 @@ class StorageProductController extends Controller
      */
     public function destroy(StorageProduct $storageproduct)
     {
+        $storageproduct->deleted_by = Auth::user()->id;
+        $storageproduct->update();
         $storageproduct->delete();
         return back()->with("success","Sikeres Törlés");
     }

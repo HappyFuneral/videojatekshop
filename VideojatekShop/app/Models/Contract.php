@@ -17,7 +17,10 @@ class Contract extends Model
         "contract_name",
         "contract_owner",
         "pdf",
-        "contract_type_id"
+        "contract_type_id",
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     public function contract_types(): HasOne {

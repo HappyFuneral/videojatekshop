@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Auth\Middleware\Authorize;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image as ResizeImage;
 
 class ProductController extends Controller
@@ -32,9 +33,6 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-
-        //TODO product image upload
-
         $request->product_img->storeAs(
             'products',
             'product_' . $request->name . '_' . $request->title . '.jpg',
@@ -53,7 +51,8 @@ class ProductController extends Controller
                 "tariff_number" => $request->tariff_number,
                 "tariff_description" => $request->tariff_description,
                 "product_type_id" => $request->product_type_id,
-                "publisher_id" => $request->publisher_id
+                "publisher_id" => $request->publisher_id,
+                "created_by" => Auth::user()->id,
             ]
         );
 
@@ -100,6 +99,7 @@ class ProductController extends Controller
         $product->tariff_description = $request->tariff_description;
         $product->product_type_id = $request->product_type_id;
         $product->publisher_id = $request->publisher_id;
+        $product->updated_by = Auth::user()->id;
 
         $product->update();
         return back()->with('success', 'Product updated successfully.');
@@ -110,6 +110,21 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $product->deleted_by = Auth::user()->id;
+        $product->update();
         $product->delete();
+        return back()->with("success","Sikeres Törlés");
+    }
+
+    public function show_deleted()
+    {
+        $deleted_products = Product::onlyTrashed()->get();
+        return view('products.show_deleted', ['products' => $deleted_products]);
+    }
+
+    public function restore(Product $product)
+    {
+        $product->restore();
+        return back()->with('success', '' . $product->name . ' was successfully restored.');
     }
 }
