@@ -91,7 +91,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <!-- Order -->
+                                
 
                                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                                     @if (Auth::user()->role_id == 1)
@@ -115,7 +115,9 @@
                                         <a class="dropdown-item nav-dropdown" href="{{ route('publishers.index') }}">Kiadók listája</a>
 
                                     @endif
-                                    
+                                    <!-- Order -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('orders.index') }}">Rendelések</a>
+
                                     <!-- Product -->
                                     <a class="dropdown-item nav-dropdown" href="{{ route('products.index') }}">Termék lista</a>
 
@@ -126,15 +128,21 @@
                                     <a class="dropdown-item nav-dropdown" href="{{ route('storages.index') }}">Raktár Cím</a>
 
                                 @endif
+                                    <a class="dropdown-item" href="cart">
+                                        {{ __('Kosár') }}
+                                    </a>
+
+                                <!-- Cart history -->
+                                @if (Auth::user()->role_id == 1)
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('cart_history') }}">Vásárlási előzmény</a>
+                                @endif
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                <a class="dropdown-item" href="">
-                                 {{ __('Kosár') }}
-                                </a>
+                                
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

@@ -57,16 +57,6 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="product_img" class="form-label">Kép</label>
-                            <input type="file" name="product_img" id="product_img" class="form-control @if($errors->has('product_img')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('product_img', $product->product_img)}}">
-
-                            @if ($errors->has('product_img'))
-                                <small class="text-danger">{{ $errors->first('product_img') }}</small>
-                            @endif
-                        </div>
-
-                        <div class="mb-3">
                             <label for="description" class="form-label">Leírás</label>
                             <input type="text" name="description" id="description" class="form-control @if($errors->has('description')) border border-danger @endif"
                                 aria-describedby="helpId" value="{{old('description', $product->description)}}">

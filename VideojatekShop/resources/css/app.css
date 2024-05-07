@@ -45,6 +45,30 @@ footer {
     text-transform: uppercase !important;
 }
 
+.btn-danger {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #760DBC  !important;
+    border: 2px solid #4D47EB !important;
+}
+
+.btn-success {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #760DBC  !important;
+    border: 2px solid #4D47EB !important;
+}
+
+.btn-warning {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #760DBC  !important;
+    border: 2px solid #4D47EB !important;
+}
+
 /* NAVBAR */
 nav {
     background: #000420 !important;
@@ -75,6 +99,19 @@ nav {
 
 .dropdown-item:hover {
     background: #760DBC !important;
+}
+
+/* CART TABLE */
+.cart-table {
+    border: 2px solid #4D47EB !important;
+    text-align: center;
+}
+
+.table-foot {
+    padding: 1% !important;
+    text-align: end;
+    border: none !important;
+    background-color: #000420 !important;
 }
 
 /* HOME PAGE */

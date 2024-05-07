@@ -13,16 +13,12 @@
                 </div>
             @endif
             <div class="table-responsive">
-
-                <form action="{{ route('orders.create') }}">
-                    @csrf
-                    <button type="submit" class="btn create-btn">+ Hozzáadás</button>
-                </form>
-                <form action="{{ route('orders.show_deleted') }}">
-                    @csrf
-                    <button type="submit" class="btn show_deleted-btn">Törölt adatok</button>
-                </form>
-
+                @if (Auth::user()->role_id == 1)
+                    <form action="{{ route('orders.show_deleted') }}">
+                        @csrf
+                        <button type="submit" class="btn show_deleted-btn">Törölt adatok</button>
+                    </form>
+                @endif
                 <table class="table table-dark" id="listTable">
                     <thead>
                         <tr>

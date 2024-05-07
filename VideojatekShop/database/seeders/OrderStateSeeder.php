@@ -28,5 +28,9 @@ class OrderStateSeeder extends Seeder
         OrderState::factory()->create(
             ['state' => 'Félretéve']  
         );
+
+        OrderState::factory()->create(
+            ['state' => 'Kézbesítve']  
+        );
     }
 }

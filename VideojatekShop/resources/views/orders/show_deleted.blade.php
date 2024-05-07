@@ -28,8 +28,8 @@
                             <th scope="col">Kiadó</th>
                             <th scope="col">Létrehozás dátuma</th>
                             <th scope="col">Létrehozója</th>
-                            <th scope="col">Utolsó módosítás</th>
-                            <th scope="col">Módosította</th>
+                            <th scope="col">Törlés időpontja</th>
+                            <th scope="col">Törölte</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>

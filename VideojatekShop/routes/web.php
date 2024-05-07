@@ -44,7 +44,13 @@ Route::patch('/cart/update',[CartController::class, 'updateCart'])->name('update
 Route::delete('/cart/remove',[CartController::class, 'deleteProduct'])->name('deleteProduct');
 
 Route::middleware(Authenticate::class)->group(function () {
-
+    /*
+    |--------------------------------------------------------------------------
+    | Cart History Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/carthistory', [CartController::class, 'cartHistory'])->name('cart_history');
+    
     /*
     |--------------------------------------------------------------------------
     | Orders Routes

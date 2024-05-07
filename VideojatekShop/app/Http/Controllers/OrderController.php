@@ -36,10 +36,10 @@ class OrderController extends Controller
             [
                 "user_id" => Auth::user()->id,
                 "price" => 0,
-                "delivery_details" => $request->delivery_details,
+                "delivery_details" => "Foxpost",
                 "postal" => $request->postal,
                 "country" => $request->country,
-                "provincie" => $request->provincie,
+                "province" => $request->province,
                 "city" => $request->city,
                 "address" => $request->address,
                 "orderState_id" => 2,
@@ -59,13 +59,12 @@ class OrderController extends Controller
                 'order_id' => $order->id,
                 'quantity' => $item['quantity']
             ]);
-
-            $storage_product = \App\Models\StorageProduct::all()->find($item['product_id']);
-            if ($storage_product->quantity <= $item['quantity']){
-                $storage_product->quantity = 0;
-            } else {
-                $storage_product->quantity-= $item['quantity'];    
-            }
+                $storage_product = \App\Models\StorageProduct::all()->find($item['product_id']);
+                if ($storage_product->quantity <= $item['quantity']){
+                    $storage_product->quantity = 0;
+                } else {
+                    $storage_product->quantity-= $item['quantity'];    
+                }
 
             $price += $item['quantity']*\App\Models\Product::all()->find($storage_product->product_id)->price;
 
@@ -76,6 +75,7 @@ class OrderController extends Controller
         $order->price = $price;
         $order->update();
         unset($cart);
+        session()->put('cart', $cart);
 
         return back()->with("success", "Order created successfully.");
     }
