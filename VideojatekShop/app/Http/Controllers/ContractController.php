@@ -15,6 +15,7 @@ class ContractController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewIndex', Contract::class);
         $contracts = Contract::all();
         return view("contracts.index", ['contracts' => $contracts]);
     }
