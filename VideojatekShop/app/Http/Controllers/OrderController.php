@@ -36,7 +36,8 @@ class OrderController extends Controller
             [
                 "user_id" => Auth::user()->id,
                 "price" => 0,
-                "delivery_details" => "Foxpost",
+                "delivery_date" => $request->delivery_date,
+                "delivery_details" => $request->delivery_details,
                 "postal" => $request->postal,
                 "country" => $request->country,
                 "province" => $request->province,
