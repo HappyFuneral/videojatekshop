@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->double('price');
-            $table->date('delivery_date');
+            $table->date('delivery_date')->nullable();
             $table->string('delivery_details');
             $table->integer('postal')->nullable();
             $table->string('country')->nullable();

@@ -6,6 +6,7 @@ use App\Models\Contract;
 use App\Http\Requests\StoreContractRequest;
 use App\Http\Requests\UpdateContractRequest;
 use Illuminate\Auth\Middleware\Authorize;
+use Illuminate\Support\Facades\Auth;
 
 class ContractController extends Controller
 {
@@ -14,6 +15,7 @@ class ContractController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewIndex', Contract::class);
         $contracts = Contract::all();
         return view("contracts.index", ['contracts' => $contracts]);
     }
@@ -31,7 +33,27 @@ class ContractController extends Controller
      */
     public function store(StoreContractRequest $request)
     {
-        //
+        $this->authorize('create', Contract::class);
+        $request->product_img->storeAs(
+            'contracts',
+            'contract_' . $request->name . '_' . $request->owner . '.pdf',
+            'public'
+        );
+        $file_name = 'contract_' . $request->name . '_' . $request->owner . '.pdf';
+        
+        $contract = new Contract(
+            [
+                "name" => $request->name,
+                "code" => $request->owner,
+                "product_img" => $file_name,
+                "contract_type_id" => $request->product_type_id,
+                "created_by" => Auth::user()->id,
+            ]
+        );
+
+        $contract->save();
+
+        return back()->with("success", "Szerződés hozzáadva.");
     }
 
     /**
@@ -39,7 +61,7 @@ class ContractController extends Controller
      */
     public function show(Contract $contract)
     {
-        //PDF file lementése
+        //
     }
 
     /**
@@ -55,7 +77,22 @@ class ContractController extends Controller
      */
     public function update(UpdateContractRequest $request, Contract $contract)
     {
-        //pdf file
+        $this->authorize('update', Contract::class);
+        $request->pdf->storeAs(
+            'contracts',
+            'contract_' . $request->name . '_' . $request->owner . '.pdf',
+            'public'
+        );
+        $file_name = 'contract_' . $request->name . '_' . $request->owner . '.pdf';
+
+        $contract->pdf = $file_name;
+        $contract->name = $request->name;
+        $contract->owner = $request->owner;
+        $contract->contract_type_id = $request->contract_type_id;
+        $contract->updated_by = Auth::user()->id;
+
+        $contract->update();
+        return back()->with('success', 'A szerződést módosítottad.');
     }
 
     /**
@@ -63,7 +100,23 @@ class ContractController extends Controller
      */
     public function destroy(Contract $contract)
     {
+        $this->authorize('delete', Contract::class);
+        $contract->deleted_by = Auth::user()->id;
+        $contract->update();
         $contract->delete();
         return back()->with("success","Sikeres Törlés");
+    }
+
+    public function show_deleted()
+    {
+        $deleted_contracts = Contract::onlyTrashed()->get();
+        return view('contracts.show_deleted', ['contracts' => $deleted_contracts]);
+    }
+
+    public function restore(Contract $contract)
+    {
+        $this->authorize('restore', Contract::class);
+        $contract->restore();
+        return back()->with('success', 'Visszaállítottad a szerződést.');
     }
 }

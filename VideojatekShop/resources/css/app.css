@@ -94,6 +94,9 @@ nav {
     padding: 3%;
     width: auto !important;
     height: auto !important;
+    background-color: white !important;
+    color: black !important;
+
 }
 
 .showpage-main {

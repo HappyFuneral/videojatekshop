@@ -14,6 +14,7 @@ class PlatformController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewIndex', Platform::class);
         $platforms = Platform::all();
         return view("platforms.index", ['platforms' => $platforms]);
     }
@@ -31,6 +32,7 @@ class PlatformController extends Controller
      */
     public function store(StorePlatformRequest $request)
     {
+        $this->authorize('create', Platform::class);
         $platform = new Platform(
             [
                 "name" => $request->name,
@@ -40,7 +42,7 @@ class PlatformController extends Controller
 
         $platform->save();
 
-        return back()->with("success", "Platform created successfully.");
+        return back()->with("success", "Hozzáadtad a platformot.");
     }
 
     /**
@@ -64,10 +66,11 @@ class PlatformController extends Controller
      */
     public function update(UpdatePlatformRequest $request, Platform $platform)
     {
+        $this->authorize('update', Platform::class);
         $platform->updated_by = Auth::user()->id;
         $platform->update($request->all());
 
-        return redirect()->route('platforms.index')->with('success', 'The platform was updated successfully.');
+        return redirect()->route('platforms.index')->with('success', 'A platformot módosítottad.');
     }
 
     /**
@@ -75,6 +78,7 @@ class PlatformController extends Controller
      */
     public function destroy(Platform $platform)
     {
+        $this->authorize('delete', Platform::class);
         $platform->deleted_by = Auth::user()->id;
         $platform->update();
         $platform->delete();
@@ -89,7 +93,8 @@ class PlatformController extends Controller
 
     public function restore(Platform $platform)
     {
+        $this->authorize('restore', Platform::class);
         $platform->restore();
-        return back()->with('success', '' . $platform->name . ' was successfully restored.');
+        return back()->with('success', 'Visszaállítottad a platformot.');
     }
 }

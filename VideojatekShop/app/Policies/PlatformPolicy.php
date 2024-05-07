@@ -13,7 +13,20 @@ class PlatformPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        if ($user->role_id === 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function viewIndex(User $user): bool
+    {
+        if ($user->role_id === 1) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -29,31 +42,47 @@ class PlatformPolicy
      */
     public function create(User $user): bool
     {
-        //
+        if ($user->role_id === 1) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Platform $platform): bool
+    public function update(User $user): bool
     {
-        //
+        if ($user->role_id === 1) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Platform $platform): bool
+    public function delete(User $user): bool
     {
-        //
+        if ($user->role_id === 1) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Platform $platform): bool
+    public function restore(User $user): bool
     {
-        //
+        if ($user->role_id === 1) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -61,6 +90,10 @@ class PlatformPolicy
      */
     public function forceDelete(User $user, Platform $platform): bool
     {
-        //
+        if ($user->role_id === 1) {
+            return true;
+        }
+
+        return false;
     }
 }

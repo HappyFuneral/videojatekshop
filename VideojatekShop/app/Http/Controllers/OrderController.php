@@ -34,21 +34,48 @@ class OrderController extends Controller
     {
         $order = new Order(
             [
-                //user ID
-                "price" => $request->price,
-                "delivery_date" => $request->delivery_date,
+                "user_id" => Auth::user()->id,
+                "price" => 0,
                 "delivery_details" => $request->delivery_details,
                 "postal" => $request->postal,
                 "country" => $request->country,
                 "provincie" => $request->provincie,
                 "city" => $request->city,
                 "address" => $request->address,
-                "orderState_id" => $request->orderState_id,
+                "orderState_id" => 2,
                 "created_by" => Auth::user()->id,
             ]
         );
 
+
         $order->save();
+
+        $cart = session()->get('cart');
+        $price = 0;
+        foreach($cart as $item)
+        {
+            \App\Models\OrderProduct::create([
+                'storage_product_id' => $item['product_id'],
+                'order_id' => $order->id,
+                'quantity' => $item['quantity']
+            ]);
+
+            $storage_product = \App\Models\StorageProduct::all()->find($item['product_id']);
+            if ($storage_product->quantity <= $item['quantity']){
+                $storage_product->quantity = 0;
+            } else {
+                $storage_product->quantity-= $item['quantity'];    
+            }
+
+            $price += $item['quantity']*\App\Models\Product::all()->find($storage_product->product_id)->price;
+
+            $storage_product->update();
+
+        }
+
+        $order->price = $price;
+        $order->update();
+        unset($cart);
 
         return back()->with("success", "Order created successfully.");
     }

@@ -16,6 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewIndex', Product::class);
         $products = Product::all();
         return view("products.index", ['products' => $products]);
     }
@@ -33,12 +34,13 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
+        $this->authorize('create', Product::class);
         $request->product_img->storeAs(
             'products',
-            'product_' . $request->name . '_' . $request->title . '.jpg',
+            'product_' . $request->name . '_' . $request->platform_id . '.jpg',
             'public'
         );
-        $file_name = 'product_' . $request->name . '_' . $request->title . '.jpg';
+        $file_name = 'product_' . $request->name . '_' . $request->platform_id . '.jpg';
         
         $product = new Product(
             [
@@ -52,13 +54,14 @@ class ProductController extends Controller
                 "tariff_description" => $request->tariff_description,
                 "product_type_id" => $request->product_type_id,
                 "publisher_id" => $request->publisher_id,
+                "platform_id" => $request->platform_id,
                 "created_by" => Auth::user()->id,
             ]
         );
 
         $product->save();
 
-        return back()->with("success", "Product created successfully.");
+        return back()->with("success", "Hozzáadtad a terméket.");
     }
 
     /**
@@ -82,12 +85,13 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
+        $this->authorize('update', Product::class);
         $request->product_img->storeAs(
             'products',
-            'product_' . $request->name . '_' . $request->title . '.jpg',
+            'product_' . $request->name . '_' . $request->platform_id . '.jpg',
             'public'
         );
-        $file_name = 'product_' . $request->name . '_' . $request->title . '.jpg';
+        $file_name = 'product_' . $request->name . '_' . $request->platform_id . '.jpg';
 
         $product->product_img = $file_name;
         $product->name = $request->name;
@@ -95,14 +99,15 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->releaseDate = $request->releaseDate;
-        $product->taricff_number = $request->taricff_number;
+        $product->tariff_number = $request->tariff_number;
         $product->tariff_description = $request->tariff_description;
         $product->product_type_id = $request->product_type_id;
         $product->publisher_id = $request->publisher_id;
+        $product->platform_id = $request->platform_id;
         $product->updated_by = Auth::user()->id;
 
         $product->update();
-        return back()->with('success', 'Product updated successfully.');
+        return back()->with('success', 'A terméket módosítottad.');
     }
 
     /**
@@ -110,6 +115,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $this->authorize('delete', Product::class);
         $product->deleted_by = Auth::user()->id;
         $product->update();
         $product->delete();
@@ -124,7 +130,8 @@ class ProductController extends Controller
 
     public function restore(Product $product)
     {
+        $this->authorize('restore', Product::class);
         $product->restore();
-        return back()->with('success', '' . $product->name . ' was successfully restored.');
+        return back()->with('success', 'Visszaállítottad a(z)' . $product->name . ' terméket.');
     }
 }

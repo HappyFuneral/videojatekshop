@@ -41,12 +41,12 @@
 
                         @foreach (session()->get('cart') as $item)
                             <tr class="">
-                                <td>{{ \App\Models\Product::all()->find($item['product_id'])->name }}</td>
-                                <td>{{ \App\Models\Product::all()->find($item['product_id'])->price }}</td>
+                                <td>{{\App\Models\Product::all()->find( \App\Models\StorageProduct::all()->find($item['product_id'])->product_id)->name }}</td>
+                                <td>{{ \App\Models\Product::all()->find(\App\Models\StorageProduct::all()->find($item['product_id'])->product_id)->price }}</td>
                                 <td>{{ $item['quantity']}}
                                </td>
                             
-                                <td>{{ \App\Models\ProductType::all()->find(\App\Models\Product::all()->find($item['product_id'])->product_type_id)->name }}</td>
+                                <td>{{ \App\Models\ProductType::all()->find(\App\Models\Product::all()->find(\App\Models\StorageProduct::all()->find($item['product_id'])->product_id)->product_type_id)->name }}</td>
                     
                               
                             </tr>

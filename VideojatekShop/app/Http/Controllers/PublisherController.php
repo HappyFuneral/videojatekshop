@@ -15,6 +15,7 @@ class PublisherController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewIndex', Publisher::class);
         $publishers = Publisher::all();
         return view("publishers.index", ['publishers' => $publishers]);
     }
@@ -32,6 +33,7 @@ class PublisherController extends Controller
      */
     public function store(StorePublisherRequest $request)
     {
+        $this->authorize('create', Publisher::class);
         $publisher = new Publisher(
             [
                 "name" => $request->name,
@@ -41,7 +43,7 @@ class PublisherController extends Controller
 
         $publisher->save();
 
-        return back()->with("success", "Publisher created successfully.");
+        return back()->with("success", "Hozzáadtad a kiadót.");
     }
 
     /**
@@ -65,10 +67,11 @@ class PublisherController extends Controller
      */
     public function update(UpdatePublisherRequest $request, Publisher $publisher)
     {
+        $this->authorize('update', Publisher::class);
         $publisher->updated_by = Auth::user()->id;
         $publisher->update($request->all());
 
-        return redirect()->route('publishers.index')->with('success', 'The publisher was updated successfully.');
+        return redirect()->route('publishers.index')->with('success', 'Az adatot módosítottad.');
     }
 
     /**
@@ -76,6 +79,7 @@ class PublisherController extends Controller
      */
     public function destroy(Publisher $publisher)
     {
+        $this->authorize('delete', Publisher::class);
         $publisher->deleted_by = Auth::user()->id;
         $publisher->update();
         $publisher->delete();
@@ -90,7 +94,8 @@ class PublisherController extends Controller
 
     public function restore(Publisher $publisher)
     {
+        $this->authorize('restore', Publisher::class);
         $publisher->restore();
-        return back()->with('success', '' . $publisher->name . ' was successfully restored.');
+        return back()->with('success', 'Visszaállítottad a(z) ' . $publisher->name . '.');
     }
 }

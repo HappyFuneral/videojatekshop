@@ -14,6 +14,7 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewIndex', ProductType::class);
         $producttypes = ProductType::all();
         return view("producttypes.index", ['producttypes' => $producttypes]);
     }
@@ -31,6 +32,7 @@ class ProductTypeController extends Controller
      */
     public function store(StoreProductTypeRequest $request)
     {
+        $this->authorize('create', ProductType::class);
         $producttype = new ProductType(
             [
                 "name" => $request->name,
@@ -40,7 +42,7 @@ class ProductTypeController extends Controller
 
         $producttype->save();
 
-        return back()->with("success", "producttypes created successfully.");
+        return back()->with("success", "Hozzáadtál egy termék típust.");
     }
 
     /**
@@ -64,10 +66,11 @@ class ProductTypeController extends Controller
      */
     public function update(UpdateProductTypeRequest $request, ProductType $producttype)
     {
+        $this->authorize('update', ProductType::class);
         $producttype->updated_by = Auth::user()->id;
         $producttype->update($request->all());
 
-        return redirect()->route('producttypes.index')->with('success', 'The producttype was updated successfully.');
+        return redirect()->route('producttypes.index')->with('success', 'A termékk típust módosítottad.');
     }
 
     /**
@@ -75,6 +78,7 @@ class ProductTypeController extends Controller
      */
     public function destroy(ProductType $productType)
     {
+        $this->authorize('delete', ProductType::class);
         $productType->deleted_by = Auth::user()->id;
         $productType->update();
         $productType->delete();
@@ -89,7 +93,8 @@ class ProductTypeController extends Controller
 
     public function restore(ProductType $productType)
     {
+        $this->authorize('restore', ProductType::class);
         $productType->restore();
-        return back()->with('success', '' . $productType->name . ' was successfully restored.');
+        return back()->with('success', 'Visszaállítottad a termék típust.');
     }
 }

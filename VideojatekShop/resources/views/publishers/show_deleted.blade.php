@@ -32,7 +32,7 @@
                                 <td>{{ $item->deleted_at}}</td>
                                 <td>{{ $item->deleted_by}}</td>
                                 <td>
-                                    <form action="{{ route('publishers.restore', ['publishers' => $item]) }}" method="POST">
+                                    <form action="{{ route('orderstates.restore', $item) }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <button type="submit" class="btn btn-info">Visszaállítás</button>

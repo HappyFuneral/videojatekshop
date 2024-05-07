@@ -110,6 +110,19 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="platform_id" class="form-label">Platform Típus</label>
+                            <select name="platform_id" class="form-control @if($errors->has('platform_id')) border border-danger @endif" data-te-select-init>
+                                @foreach(\App\Models\Platform::all() as $platform)
+                                    <option value="{{$platform->id}}">{{$platform->name}}</option>
+                                @endforeach
+                            </select>
+
+                            @if ($errors->has('platform_id'))
+                                <small class="text-danger">{{ $errors->first('platform_id') }}</small>
+                            @endif
+                        </div>
+                        
+                        <div class="mb-3">
                             <label for="publisher_id" class="form-label">Kiadó</label>
                             <select name="publisher_id" class="form-control @if($errors->has('publisher_id')) border border-danger @endif" data-te-select-init>
                                 @foreach(\App\Models\Publisher::all() as $publisher)

@@ -19,8 +19,7 @@ class CartController extends Controller
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
-                "product_id" => $product->product_id,
-                "storage_id" => $product->storage_id,
+                "product_id" => $product->id,
                 "quantity" => 1,
             ];
         }
@@ -50,6 +49,7 @@ class CartController extends Controller
             session()->flash('success', 'Product successfully deleted.');
         }
     }
+
     public function getCart() {
         return session()->get('cart');
     }

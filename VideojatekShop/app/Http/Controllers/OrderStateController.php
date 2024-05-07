@@ -14,8 +14,9 @@ class OrderStateController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewIndex', OrderState::class);
         $ordertates = OrderState::all();
-        return view("orderstates.index", ['ordertates' => $ordertates]);
+        return view("orderstates.index", ['orderstates' => $ordertates]);
     }
 
     /**
@@ -31,6 +32,7 @@ class OrderStateController extends Controller
      */
     public function store(StoreOrderStateRequest $request)
     {
+        $this->authorize('create', OrderState::class);
         $orderState = new OrderState(
             [
                 "state" => $request->state,
@@ -40,13 +42,13 @@ class OrderStateController extends Controller
 
         $orderState->save();
 
-        return back()->with("success", "Orderstate created successfully.");
+        return back()->with("success", "Hozzáadtad a orderstate.");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(OrderState $orderState)
+    public function show(OrderState $orderstate)
     {
         //
     }
@@ -54,42 +56,45 @@ class OrderStateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(OrderState $orderState)
+    public function edit(OrderState $orderstate)
     {
-        return view("orderstates.edit", ['orderState' => $orderState]);
+        return view("orderstates.edit", ['orderstate' => $orderstate]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateOrderStateRequest $request, OrderState $orderState)
+    public function update(UpdateOrderStateRequest $request, OrderState $orderstate)
     {
-        $orderState->updated_by = Auth::user()->id;
-        $orderState->update($request->all());
+        $this->authorize('update', OrderState::class);
+        $orderstate->updated_by = Auth::user()->id;
+        $orderstate->update($request->all());
 
-        return redirect()->route('orderstates.index')->with('success', 'The orderstate was updated successfully.');
+        return redirect()->route('orderstates.index')->with('success', 'Az orderstate módosult.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(OrderState $orderState)
+    public function destroy(OrderState $orderstate)
     {
-        $orderState->deleted_by = Auth::user()->id;
-        $orderState->update();
-        $orderState->delete();
+        $this->authorize('delete', OrderState::class);
+        $orderstate->deleted_by = Auth::user()->id;
+        $orderstate->update();
+        $orderstate->delete();
         return back()->with("success","Sikeres Törlés");
     }
 
     public function show_deleted()
     {
-        $deleted_orderStates = OrderState::onlyTrashed()->get();
-        return view('publishers.show_deleted', ['publishers' => $deleted_orderStates]);
+        $deleted_orderstates = OrderState::onlyTrashed()->get();
+        return view('publishers.show_deleted', ['deleted_orderstates' => $deleted_orderstates]);
     }
 
-    public function restore(OrderState $orderState)
+    public function restore(OrderState $orderstate)
     {
-        $orderState->restore();
-        return back()->with('success', '' . $orderState->name . ' was successfully restored.');
+        $this->authorize('restore', OrderState::class);
+        $orderstate->restore();
+        return back()->with('success', 'Visszaállítottad a(z) ' . $orderstate->name . ' orderstate.');
     }
 }

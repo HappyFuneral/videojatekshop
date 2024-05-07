@@ -37,8 +37,8 @@
 
                         <div class="mb-3">
                             <label for="name" class="form-label">Név</label>
-                            <input type="text" name="name" id="name" class="form-control @if($errors->has('name')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('name', $orderstate->name)}}">
+                            <input type="text" name="state" id="name" class="form-control @if($errors->has('state')) border border-danger @endif"
+                                aria-describedby="helpId" value="{{old('state', $orderstate->state)}}">
 
                             @if ($errors->has('name'))
                                 <small class="text-danger">{{ $errors->first('name') }}</small>

@@ -15,6 +15,7 @@ class StorageController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewIndex', Storage::class);
         $storages = Storage::all();
         return view("storages.index", ['storages' => $storages]);
     }
@@ -32,6 +33,7 @@ class StorageController extends Controller
      */
     public function store(StoreStorageRequest $request)
     {
+        $this->authorize('create', Storage::class);
         $storage = new Storage(
             [
                 "storageName" => $request->storageName,
@@ -46,7 +48,7 @@ class StorageController extends Controller
 
         $storage->save();
 
-        return back()->with("success", "Storage created successfully.");
+        return back()->with("success", "Hozzáadtál egy raktárat");
     }
 
     /**
@@ -70,10 +72,11 @@ class StorageController extends Controller
      */
     public function update(UpdateStorageRequest $request, Storage $storage)
     {
+        $this->authorize('update', Storage::class);
         $storage->updated_by = Auth::user()->id;
         $storage->update($request->all());
 
-        return redirect()->route('storages.index')->with('success', 'The storage was updated successfully.');
+        return redirect()->route('storages.index')->with('success', 'Módosult a raktár');
     }
 
     /**
@@ -81,6 +84,7 @@ class StorageController extends Controller
      */
     public function destroy(Storage $storage)
     {
+        $this->authorize('delete', Storage::class);
         $storage->deleted_by = Auth::user()->id;
         $storage->update();
         $storage->delete();
@@ -95,7 +99,8 @@ class StorageController extends Controller
 
     public function restore(Storage $storage)
     {
+        $this->authorize('restore', Storage::class);
         $storage->restore();
-        return back()->with('success', '' . $storage->name . ' was successfully restored.');
+        return back()->with('success', 'Visszaállítottad a ' . $storage->name . ' .');
     }
 }

@@ -14,14 +14,16 @@ class StorageProductSeeder extends Seeder
      */
     public function run(): void
     {
-        /*
-        StorageProduct::factory(10)->create([
-            'product_id' => 1
-        ]);
-
-        StorageProduct::factory(10)->create([
-            'product_id' => 2
-        ]);
-        */
+        foreach (\App\Models\Storage::all() as $storage){
+            foreach (\App\Models\Product::all() as $product){
+                StorageProduct::factory()->create(
+                [
+                    'storage_id' => $storage->id,
+                    'product_id' => $product->id,
+                    'quantity' => 10
+                ]
+                );
+            }
+        }
     }
 }

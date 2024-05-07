@@ -15,6 +15,7 @@ class StorageProductController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewIndex', StorageProduct::class);
         $storageproducts = StorageProduct::all();
         return view("storageproducts.index", ['storageproducts' => $storageproducts]);
     }
@@ -32,6 +33,7 @@ class StorageProductController extends Controller
      */
     public function store(StoreStorageProductRequest $request)
     {
+        $this->authorize('create', StorageProduct::class);
         $storageproduct = new StorageProduct(
             [
                 "quantity" => $request->quantity,
@@ -43,7 +45,7 @@ class StorageProductController extends Controller
 
         $storageproduct->save();
 
-        return back()->with("success", "StorageProduct created successfully.");
+        return back()->with("success", "Sikeresen naplóztad.");
     }
 
     /**
@@ -67,10 +69,11 @@ class StorageProductController extends Controller
      */
     public function update(UpdateStorageProductRequest $request, StorageProduct $storageproduct)
     {
+        $this->authorize('update', StorageProduct::class);
         $storageproduct->updated_by = Auth::user()->id;
         $storageproduct->update($request->all());
 
-        return redirect()->route('storageproducts.index')->with('success', 'The storageproduct was updated successfully.');
+        return redirect()->route('storageproducts.index')->with('success', 'Módosult az adat.');
     }
 
     /**
@@ -78,6 +81,7 @@ class StorageProductController extends Controller
      */
     public function destroy(StorageProduct $storageproduct)
     {
+        $this->authorize('delete', StorageProduct::class);
         $storageproduct->deleted_by = Auth::user()->id;
         $storageproduct->update();
         $storageproduct->delete();
@@ -91,5 +95,12 @@ class StorageProductController extends Controller
     {
         $deleted_storageproduts = StorageProduct::onlyTrashed()->get();
         return view('storageproducts.show_deleted', ['deleted_storageproducts' => $deleted_storageproduts]);
+    }
+
+    public function restore(StorageProduct $storageproduct)
+    {
+        $this->authorize('restore', StorageProduct::class);
+        $storageproduct->restore();
+        return back()->with('success', 'Visszaállítottad a napló bejegyzésd.');
     }
 }

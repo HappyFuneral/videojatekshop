@@ -53,8 +53,7 @@
                                 <td>{{ $item->code }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->price }}</td>
-                                <td>{{App\Models\Product::productQuantity($item->id)}}
-                               </td>
+                                <td>{{App\Models\Product::productQuantity($item->id)}}</td>
                                 <td>{{ $item->tariff_number }}</td>
                                 <td>{{ $item->tariff_description }}</td>
                                 <td>{{ \App\Models\ProductType::all()->find($item->product_type_id)->name }}</td>
