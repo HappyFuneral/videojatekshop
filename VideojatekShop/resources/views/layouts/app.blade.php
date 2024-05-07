@@ -154,7 +154,7 @@
     </div>
 
     <footer class="py-5">
-        <div class="container"><h5 class="m-0 text-center text-white">Copyright &copy; Your Website 2024</h5></div>
+        <div class="container"><h5 class="m-0 text-center text-white">Copyright &copy; KOCKADOBOZ 2024</h5></div>
     </footer>
 
 </body>

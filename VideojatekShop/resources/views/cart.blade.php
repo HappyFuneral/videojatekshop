@@ -27,6 +27,7 @@
                         @php $total = 0 @endphp
                         @if (session()->get('cart') !== null)
                         @foreach (session()->get('cart') as $item)
+                        @php $total+=$item['quantity']*\App\Models\Product::all()->find(\App\Models\StorageProduct::all()->find($item['product_id'])->product_id)->price @endphp
                             <tr class="">
                                 <td>{{\App\Models\Product::all()->find( \App\Models\StorageProduct::all()->find($item['product_id'])->product_id)->name }}</td>
                                 <td>{{ \App\Models\Product::all()->find(\App\Models\StorageProduct::all()->find($item['product_id'])->product_id)->price }}</td>
@@ -56,7 +57,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td class="table-foot" rowspan="2" colspan="5"><h3><strong>Total ${{ $total }}</strong></h3><a href="{{ url('/') }}" class="btn btn-danger"> <i class="fa fa-arrow-left"></i> Még vásárolok</a>
+                            <td class="table-foot" rowspan="2" colspan="5"><h3><strong>Összesen: {{ $total }} FT</strong></h3><a href="{{ url('/') }}" class="btn btn-danger"> <i class="fa fa-arrow-left"></i> Még vásárolok</a>
                                 <a href={{route('orders.create')}} class="btn btn-success"><i class="fa fa-money"></i> Rendelés</a></td>
                         </tr>
                         <tr>
