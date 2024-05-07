@@ -212,7 +212,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'code' => '3307216100531',
             'name' => 'Cyberpunk 2077',
-            'product_img' => 'product_cyberpunk2077_ps5.jpg',
+            'product_img' => 'product_cyberpunk2077_ps4.jpg',
             'description' => 'A Cyberpunk 2077 egy nyílt világú akció-kaland-RPG, amely Night City metropoliszába vezet, ahol cyberpunk zsoldosként az események sodrában kell megharcolnod a túlélésért. Tovább csiszolt játékmenet és számos új ingyenes bónusztartalom vár! Szabd testre karakteredet és játékstílusodat melókat vállalva, hírnevet gyarapítva és fejlesztéseket feloldva. Meghozott döntéseid és kialakított kapcsolataid formálják majd a kalandot és a világot magad körül. Itt legendák születnek. A tiéd miről mesél majd?',
             'price' => 9900,
             'releaseDate' => '2021-06-21',
@@ -244,7 +244,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'code' => '3307216100533',
             'name' => 'PlayStation 5 (Slim)',
-            'product_img' => 'product_palystation5(slim).jpg',
+            'product_img' => 'product_playstation5(slim).jpg',
             'description' => 'Ugyanaz a hihetetlen erő, kisebb méretben – az új PlayStation 5 konzol változatlan játékélményt kínál kisebb, alacsonyabb fogyasztású, praktikusabb formában.
             A világ legsikeresebb konzolja, a Sony PlayStation az ötödik generációjához érkezett a PlayStation 5-tel, amely a Sony által valaha gyártott legerősebb és leggyorsabb konzol, egyedi megoldásaival a játékok valóban új generációját hozta el játékosok milliói számára. A bivalyerős AMD Zen 2 és RDNA 2 architektúrájú processzort és videokártyát forradalmi 3D hangzással egészíti ki a különleges Tempest technológiának köszönhetően. A PlayStation 5 egyik legnagyobb innovációja a hihetetlenül gyors SSD tárhely, amely nagyobb sebességre képes, mint bármi, ami jelenleg elérhető, ezáltal szinte teljesen eltünteti a töltési időket. Nincs többé várakozás, a játékok egy pillanat alatt elindíthatók, a virtuális világok pedig nagyobbak és élethűbbek lehetnek, mint korábban bármikor.
             PlayStation 5 konzollal nem kell lemondanod PS4 játékaidról sem. A Sony kilencedik generációs konzolja visszafelé kompatibilis, és minden népszerű PlayStation 4 játékot lejátszik, a megvásárolt címeidet is tovább élvezheted a következő években is.
