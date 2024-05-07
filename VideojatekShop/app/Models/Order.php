@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relation\HasOne;
-use Illuminate\Database\Eloquent\Relation\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
@@ -23,7 +23,10 @@ class Order extends Model
         "province",
         "city",
         "address",
-        "orderState_id"
+        "orderState_id",
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     public function users(): HasOne {
@@ -35,6 +38,16 @@ class Order extends Model
     }
 
     public function products(): BelongsToMany {
-        return $this->belongsToMany(Produt::class);
+        return $this->belongsToMany(Product::class);
+    }
+
+    public static function orderPrice($id) : int{
+        $price = 0;
+        foreach(OrderProduct::all() as $orderproduct){
+            if ($orderproduct->order_id == $id){
+                $price+=$orderproduct->price;
+            }
+        }
+        return $price;
     }
 }

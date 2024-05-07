@@ -15,13 +15,19 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'title',
+        'code',
         'product_img',
         'product_type_id',
         'description',
         'price',
+        'tariff_number',
+        'tariff_description',
         'publisher_id',
-        'releaseDate'
+        'platform_id',
+        'releaseDate',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
     
     public function product_types(): HasOne {
@@ -32,12 +38,25 @@ class Product extends Model
         return $this->hasOne(Publisher::class);
     }
 
+    public function paltforms(): HasOne {
+        return $this->hasOne(Publisher::class);
+    }
+
     public function storages(): BelongsToMany {
-        return $this->belongsToMany(Storages::class);
+        return $this->belongsToMany(Storage::class);
     }
 
     public function orders(): BelongsToMany {
         return $this->belongsToMany(Order::class);
+    }
+    public static function productQuantity($id) : int{
+        $quantity = 0;
+        foreach(StorageProduct::all() as $storageProduct){
+            if ($storageProduct->product_id == $id){
+                $quantity+=$storageProduct->quantity;
+            }
+        }
+        return $quantity;
     }
 
 }

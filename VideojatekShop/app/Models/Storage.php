@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Storage extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'storageName',
@@ -16,7 +18,10 @@ class Storage extends Model
         'country',
         'province',
         'city',
-        'address'
+        'address',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
     
     public function storage_products(): BelongsToMany

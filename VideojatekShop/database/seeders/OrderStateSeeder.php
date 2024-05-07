@@ -20,6 +20,9 @@ class OrderStateSeeder extends Seeder
         OrderState::factory()->create(
             ['state' => 'Megrendelve']  
         );
+        OrderState::factory()->create(
+            ['state' => 'Megerősítve']  
+        );
 
         OrderState::factory()->create(
             ['state' => 'Szállítás alatt']  
@@ -27,6 +30,10 @@ class OrderStateSeeder extends Seeder
 
         OrderState::factory()->create(
             ['state' => 'Félretéve']  
+        );
+
+        OrderState::factory()->create(
+            ['state' => 'Kézbesítve']  
         );
     }
 }

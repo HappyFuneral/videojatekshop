@@ -14,9 +14,13 @@ return new class extends Migration
         Schema::create('order_products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained('orders');
-            $table->foreignId('product_id')->constrained('products');
-            $table->integer('quntity');
+            $table->foreignId('storage_product_id')->constrained('storage_products');
+            $table->integer('quantity');
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
         });
     }
 

@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use Illuminate\Auth\Middleware\Authorize;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -34,21 +35,50 @@ class OrderController extends Controller
         $order = new Order(
             [
                 "user_id" => Auth::user()->id,
-                "price" => $request->price,
+                "price" => 0,
                 "delivery_date" => $request->delivery_date,
                 "delivery_details" => $request->delivery_details,
                 "postal" => $request->postal,
                 "country" => $request->country,
-                "provincie" => $request->provincie,
+                "province" => $request->province,
                 "city" => $request->city,
                 "address" => $request->address,
-                "orderState_id" => $request->orderState_id
+                "orderState_id" => 2,
+                "created_by" => Auth::user()->id,
             ]
         );
 
+
         $order->save();
 
-        return back()->with("success", "Order created successfully.");
+        $cart = session()->get('cart');
+        $price = 0;
+        foreach($cart as $item)
+        {
+            \App\Models\OrderProduct::create([
+                'storage_product_id' => $item['product_id'],
+                'order_id' => $order->id,
+                'quantity' => $item['quantity']
+            ]);
+                $storage_product = \App\Models\StorageProduct::all()->find($item['product_id']);
+                if ($storage_product->quantity <= $item['quantity']){
+                    $storage_product->quantity = 0;
+                } else {
+                    $storage_product->quantity-= $item['quantity'];    
+                }
+
+            $price += $item['quantity']*\App\Models\Product::all()->find($storage_product->product_id)->price;
+
+            $storage_product->update();
+
+        }
+
+        $order->price = $price;
+        $order->update();
+        unset($cart);
+        session()->put('cart', []);
+
+        return back()->with("success", "Sikeresen leadtad a rendelést!");
     }
 
     /**
@@ -72,9 +102,9 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
+        $order->updated_by = Auth::user()->id;
         $order->update($request->all());
-
-        return redirect()->route('orders.index')->with('success', 'The order was updated successfully.');
+        return redirect()->route('orders.index')->with('success', 'A rendelés státusza megváltozott!');
     }
 
     /**
@@ -82,6 +112,15 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
+        $order->deleted_by = Auth::user()->id;
+        $order->update();
         $order->delete();
+        return back()->with("success","Sikeres Törlés");
+    }
+
+    public function show_deleted()
+    {
+        $deleted_orders = Order::onlyTrashed()->get();
+        return view('orders.show_deleted', ['orders' => $deleted_orders]);
     }
 }

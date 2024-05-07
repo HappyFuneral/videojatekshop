@@ -13,16 +13,22 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
             $table->string('name');
             $table->string('product_img');
-            $table->string('title');
             $table->text('description');
             $table->double('price');
             $table->date('releaseDate');
+            $table->integer('quantity')->default(0);
+            $table->double('tariff_number');
+            $table->string('tariff_description');
             $table->timestamps();
-            $table->softdeletes();
             $table->foreignId('product_type_id')->constrained('product_types');
             $table->foreignId('publisher_id')->constrained('publishers');
+            $table->softDeletes();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
         });
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ProductType;
 use App\Http\Requests\StoreProductTypeRequest;
 use App\Http\Requests\UpdateProductTypeRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProductTypeController extends Controller
 {
@@ -13,7 +14,9 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('viewIndex', ProductType::class);
+        $producttypes = ProductType::all();
+        return view("producttypes.index", ['producttypes' => $producttypes]);
     }
 
     /**
@@ -21,7 +24,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view("producttypes.create");
     }
 
     /**
@@ -29,7 +32,17 @@ class ProductTypeController extends Controller
      */
     public function store(StoreProductTypeRequest $request)
     {
-        //
+        $this->authorize('create', ProductType::class);
+        $producttype = new ProductType(
+            [
+                "name" => $request->name,
+                "created_by" => Auth::user()->id,
+            ]
+        );
+
+        $producttype->save();
+
+        return back()->with("success", "Hozzáadtál egy termék típust.");
     }
 
     /**
@@ -43,17 +56,21 @@ class ProductTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProductType $productType)
+    public function edit(ProductType $producttype)
     {
-        //
+        return view("producttypes.edit", ['producttype' => $producttype]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductTypeRequest $request, ProductType $productType)
+    public function update(UpdateProductTypeRequest $request, ProductType $producttype)
     {
-        //
+        $this->authorize('update', ProductType::class);
+        $producttype->updated_by = Auth::user()->id;
+        $producttype->update($request->all());
+
+        return redirect()->route('producttypes.index')->with('success', 'A termékk típust módosítottad.');
     }
 
     /**
@@ -61,6 +78,23 @@ class ProductTypeController extends Controller
      */
     public function destroy(ProductType $productType)
     {
-        //
+        $this->authorize('delete', ProductType::class);
+        $productType->deleted_by = Auth::user()->id;
+        $productType->update();
+        $productType->delete();
+        return back()->with("success","Sikeres Törlés");
+    }
+
+    public function show_deleted()
+    {
+        $deleted_productTypes = ProductType::onlyTrashed()->get();
+        return view('publishers.show_deleted', ['producttypes' => $deleted_productTypes]);
+    }
+
+    public function restore(ProductType $productType)
+    {
+        $this->authorize('restore', ProductType::class);
+        $productType->restore();
+        return back()->with('success', 'Visszaállítottad a termék típust.');
     }
 }

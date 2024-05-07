@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="hu">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
+    <title>Kockadoboz</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -24,69 +25,137 @@
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     
     <!-- Jquery Table -->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-    <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="//cdn.datatables.net/2.0.5/css/dataTables.dataTables.min.css">
+    <script src="//cdn.datatables.net/2.0.5/js/dataTables.min.js"></script>
+
+    <!-- PHONE Validate -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/css/intlTelInput.css">
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/intlTelInput.min.js"></script>
 
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+    <nav class="navbar navbar-expand-md shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url('/home') }}">
+                <!--{{ config('app.name', 'Videogame') }}-->
+                Kockadoboz
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url('/home')}}">Főoldal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Rólunk</a></li>
+                   
+                </ul>
+              
             </div>
-        </nav>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav me-auto">
 
-        <main class="py-4">
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ms-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                    <a class="nav-link" href="{{route('cart')}}">
+                        {{ __('Kosár') }}
+                    </a>
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Belépés') }}</a>
+                            </li>
+                        @endif
+
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Regisztrálás') }}</a>
+                            </li>
+                        @endif
+                    @else
+                    <a class="nav-link" href="{{route('cart')}}">
+                        {{ __('Kosár') }}
+                    </a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->email }}
+                            </a>
+                  
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                
+
+                                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                                    @if (Auth::user()->role_id == 1)
+
+                                        <!-- Contract Type -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('contracttypes.index') }}">Szerződés típus listája</a>
+
+                                        <!-- Contract -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('contracts.index') }}">Szerződések</a>
+
+                                        <!-- OrderState -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('orderstates.index') }}">Rendelés folyamat típus listája</a>
+
+                                        <!-- ProductType -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('producttypes.index') }}">Termék típus listája</a>
+
+                                        <!-- Platform -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('platforms.index') }}">Platformok listája</a>
+
+                                        <!-- Publisher -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('publishers.index') }}">Kiadók listája</a>
+
+                                    @endif
+                                    <!-- Order -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('orders.index') }}">Rendelések</a>
+
+                                    <!-- Product -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('products.index') }}">Termék lista</a>
+
+                                    <!-- StorageProduct -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('storageproducts.index') }}">Termékek bevitelének naplózása</a>
+
+                                    <!-- Storage -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('storages.index') }}">Raktár Cím</a>
+
+                                @endif
+               
+
+                                <!-- Cart history -->
+                                @if (Auth::user()->role_id == 1)
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('cart_history') }}">Vásárlási előzmény</a>
+                                @endif
+
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Kijelentkezés') }}
+                                </a>
+                                
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="app">
+        <main class="py-4" style="flex: 1; min-height:100%">
             @yield('content')
         </main>
     </div>
+
+    <footer class="py-5">
+        <div class="container"><h5 class="m-0 text-center text-white">Copyright &copy; Your Website 2024</h5></div>
+    </footer>
+
 </body>
 </html>

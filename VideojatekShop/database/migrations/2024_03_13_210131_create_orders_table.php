@@ -15,15 +15,19 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->double('price');
-            $table->date('delivery_date');
-            $table->string('delivery_details');
+            $table->date('delivery_date')->nullable();
+            $table->string('delivery_details')->nullable();
             $table->integer('postal')->nullable();
             $table->string('country')->nullable();
             $table->string('province')->nullable();
             $table->string('city')->nullable();
             $table->string('address')->nullable();
-            $table->foreignId('orderState_id')->constrained('order_states');
+            $table->foreignId('orderState_id')->default(2)->constrained('order_states');
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
         });
     }
 

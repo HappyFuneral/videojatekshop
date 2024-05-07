@@ -1,0 +1,337 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    max-width: 100;
+    overflow-x: hidden;
+}
+
+#container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#content {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#app {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #000420 50%, #760DBC 100%) !important;
+}
+
+footer {
+    background-color: #000420 !important;
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+}
+
+.btn-danger {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #760DBC  !important;
+    border: 2px solid #4D47EB !important;
+}
+
+.btn-success {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #760DBC  !important;
+    border: 2px solid #4D47EB !important;
+}
+
+.btn-warning {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #760DBC  !important;
+    border: 2px solid #4D47EB !important;
+}
+
+/* NAVBAR */
+nav {
+    background: #000420 !important;
+    border-bottom: 2px solid #4D47EB;
+}
+
+.navbar-brand {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+}
+
+.nav-link {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+}
+
+.dropdown-menu {
+    background: #000420 !important;
+}
+
+.dropdown-item {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+}
+
+.dropdown-item:hover {
+    background: #760DBC !important;
+}
+
+/* CART TABLE */
+.cart-table {
+    border: 2px solid #4D47EB !important;
+    text-align: center;
+}
+
+.table-foot {
+    padding: 1% !important;
+    text-align: end;
+    border: none !important;
+    background-color: #000420 !important;
+}
+
+/* HOME PAGE */
+.card-home {
+    height: 100% !important;
+}
+
+.home-btn {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #4D47EB !important;
+}
+
+
+/* SHOW PAGE */
+.showpage {
+    width: 100%;
+    border: 2px solid #4D47EB !important;
+    margin-top: 5%;
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+}
+
+.showpage-header {
+    padding: 3%;
+    width: auto !important;
+    height: auto !important;
+    background-color: white !important;
+    color: black !important;
+
+}
+
+.showpage-main {
+    padding-left: 5%;
+    padding-bottom: 5%;
+    padding-right: 5%;
+    background-color: white !important;
+    height: auto !important;
+}
+
+.showpage-img {
+    width: 50% !important;
+    height: 50% !important;
+    display: block;
+    margin: 0 auto;
+}
+
+.showpage-description {
+    color: black !important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: none;
+}
+
+.showpage-sidebar {
+    padding: 3%;
+    border-left: 2px solid #4D47EB !important;
+    background-color: #190229 !important;
+}
+
+.showpage-price {
+    font-size: 230%;
+}
+
+.showpage-form {
+    text-align: center;
+}
+
+.showpage-info {
+    font-size: 100%;
+}
+
+.showpage-hr {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.buy-btn {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #4D47EB !important;
+    width: 80%;
+}
+
+/* CARD FORM PAGE */
+.cardform {
+    text-align: center;
+    border: 2px solid #4D47EB !important;
+    margin-top: 5%;
+}
+
+.cardform-header {
+    background-color: #000420 !important;
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    border-top-left-radius: 0.7% !important;
+    border-top-right-radius: 0.7% !important;
+}
+
+.cardform-body {
+    background: linear-gradient(180deg, #000420 0%, #190229 50%, #760DBC 100%) !important;
+    padding: 10%;
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    border-bottom-right-radius: 0.5%;
+    border-bottom-left-radius: 0.5%;
+}
+
+.form-control {
+    text-align: center;
+}
+
+.submit-btn {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #4D47EB !important;
+    width: 50%;
+}
+
+/* CREATED BUTTON */
+.create-btn {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #4D47EB !important;
+    margin-bottom: 0.5% !important;
+    float: left;
+}
+
+.show_deleted-btn {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    background-color: #4D47EB !important;
+    margin-bottom: 0.5% !important;
+    float:inherit;
+    margin-left: 0.5%;
+}
+
+/* TABLE */
+.dt-container {
+    background-color: #000420 !important;
+    border: 2px solid #4D47EB !important;
+    text-align: center;
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.dt-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dt-container::-webkit-scrollbar-thumb {
+    background-color: #290741;
+    border-radius: 6px;
+}
+
+.dt-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+table {
+    width: 100% !important;
+}
+
+.dt-length {
+    margin-top: 0.5%;
+    margin-left: 1%;
+}
+
+.dt-search {
+    margin-top: 0.5%;
+    margin-right: 1%;
+}
+
+.dt-info {
+    margin-left: 1%;
+}
+
+.dt-paging {
+    margin-right: 1%;
+}
+
+.dt-paging-button:hover {
+    background: #760DBC !important;
+}
+
+th {
+    background-color: #000420 !important;
+    border-bottom: 2px solid #4D47EB !important;
+}
+
+td {
+    background-color: #190229 !important;
+    border-bottom: 1px solid #4D47EB !important;
+}
+
+.dt-orderable-asc {
+    text-align: center !important;
+}
+
+.dt-type-numeric {
+    text-align: center !important;
+}
+
+.dt-type-date {
+    text-align: center !important;
+}
+
+option {
+    background-color: #000420 !important;
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+}

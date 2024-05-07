@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class StorageProduct extends Model
 {
@@ -13,10 +13,12 @@ class StorageProduct extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'code',
-        'stock',
+        'quantity',
         'product_id',
-        'storage_id'
+        'storage_id',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     public function storages(): HasOne
@@ -27,6 +29,10 @@ class StorageProduct extends Model
     public function products(): HasOne
     {
         return $this->hasOne(Product::class);
+    }
+
+    public static function product($id){
+        return Product::all()->find($id);
     }
 }
 

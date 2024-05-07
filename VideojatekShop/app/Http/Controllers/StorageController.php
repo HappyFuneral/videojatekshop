@@ -6,6 +6,7 @@ use App\Models\Storage;
 use App\Http\Requests\StoreStorageRequest;
 use App\Http\Requests\UpdateStorageRequest;
 use Illuminate\Auth\Middleware\Authorize;
+use Illuminate\Support\Facades\Auth;
 
 class StorageController extends Controller
 {
@@ -14,6 +15,7 @@ class StorageController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewIndex', Storage::class);
         $storages = Storage::all();
         return view("storages.index", ['storages' => $storages]);
     }
@@ -31,20 +33,22 @@ class StorageController extends Controller
      */
     public function store(StoreStorageRequest $request)
     {
+        $this->authorize('create', Storage::class);
         $storage = new Storage(
             [
                 "storageName" => $request->storageName,
                 "postal" => $request->postal,
                 "country" => $request->country,
-                "provincie" => $request->provincie,
+                "province" => $request->province,
                 "city" => $request->city,
                 "address" => $request->address,
+                "created_by" => Auth::user()->id,
             ]
         );
 
         $storage->save();
 
-        return back()->with("success", "Storage created successfully.");
+        return back()->with("success", "Hozzáadtál egy raktárat");
     }
 
     /**
@@ -68,9 +72,11 @@ class StorageController extends Controller
      */
     public function update(UpdateStorageRequest $request, Storage $storage)
     {
+        $this->authorize('update', Storage::class);
+        $storage->updated_by = Auth::user()->id;
         $storage->update($request->all());
 
-        return redirect()->route('storages.index')->with('success', 'The storage was updated successfully.');
+        return redirect()->route('storages.index')->with('success', 'Módosult a raktár');
     }
 
     /**
@@ -78,6 +84,23 @@ class StorageController extends Controller
      */
     public function destroy(Storage $storage)
     {
+        $this->authorize('delete', Storage::class);
+        $storage->deleted_by = Auth::user()->id;
+        $storage->update();
         $storage->delete();
+        return back()->with("success","Sikeres Törlés");
+    }
+
+    public function show_deleted()
+    {
+        $deleted_storages = Storage::onlyTrashed()->get();
+        return view('storages.show_deleted', ['storages' => $deleted_storages]);
+    }
+
+    public function restore(Storage $storage)
+    {
+        $this->authorize('restore', Storage::class);
+        $storage->restore();
+        return back()->with('success', 'Visszaállítottad a ' . $storage->name . ' .');
     }
 }

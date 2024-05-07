@@ -37,7 +37,11 @@ class OrderPolicy
      */
     public function update(User $user, Order $order): bool
     {
-        //
+        if ($user->role_id === 1 || $user->id === 2) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -45,7 +49,11 @@ class OrderPolicy
      */
     public function delete(User $user, Order $order): bool
     {
-        //
+        if ($user->role_id === 1) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -53,7 +61,11 @@ class OrderPolicy
      */
     public function restore(User $user, Order $order): bool
     {
-        //
+        if ($user->role_id === 1) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
