@@ -13,19 +13,6 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        Product::create([
-            'code' => '8713439174168',
-            'name' => 'Compact Gamepad GXT 24',
-            'product_img' => 'product_gxt24runa_controller.jpg',
-            'description' => 'Kompakt PC gamepad 2 analóg joystickkal, 8 irányú D-paddal, 4 vállgombbal és összesen 12 programozható akciógombbal.',
-            'price' => 15000,
-            'releaseDate' => '2017-11-1',
-            'tariff_number' => 95045000,
-            'tariff_description' => 'Video game consoles and machines',
-            'product_type_id' => 2,
-            'publisher_id' => 7,
-            'platform_id' => 1,
-        ]);
         
         Product::create([
             'code' => '3307216100522',

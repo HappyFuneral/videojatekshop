@@ -14,11 +14,11 @@
             @endif
             <div class="table-responsive">
 
-                <form action="{{ route('products.create') }}">
+                <form action="{{ route('orders.create') }}">
                     @csrf
                     <button type="submit" class="btn create-btn">+ Hozzáadás</button>
                 </form>
-                <form action="{{ route('products.show_deleted') }}">
+                <form action="{{ route('orders.show_deleted') }}">
                     @csrf
                     <button type="submit" class="btn show_deleted-btn">Törölt adatok</button>
                 </form>
@@ -27,15 +27,14 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Árú Kód</th>
-                            <th scope="col">Cím</th>
+                            <th scope="col">Felhasználói ID</th>
                             <th scope="col">Ár</th>
-                            <th scope="col">Mennyiség</th>
-                            <th scope="col">Tariffa szám</th>
-                            <th scope="col">Tariffa szöveg</th>
-                            <th scope="col">Termék Típus</th>
-                            <th scope="col">Platform</th>
-                            <th scope="col">Kiadó</th>
+                            <th scope="col">Postal</th>
+                            <th scope="col">Ország</th>
+                            <th scope="col">Megye</th>
+                            <th scope="col">Város</th>
+                            <th scope="col">Cím</th>
+                            <th scope="col">Rendelés állapota</th>
                             <th scope="col">Létrehozás dátuma</th>
                             <th scope="col">Létrehozója</th>
                             <th scope="col">Utolsó módosítás</th>
@@ -47,36 +46,35 @@
                     </thead>
                     <tbody>
 
-                        @foreach ($products as $item)
+                        @foreach ($orders as $item)
                             <tr class="">
                                 <td scope="row">{{ $item->id }}</td>
-                                <td>{{ $item->code }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->price }}</td>
-                                <td>{{App\Models\Product::productQuantity($item->id)}}</td>
-                                <td>{{ $item->tariff_number }}</td>
-                                <td>{{ $item->tariff_description }}</td>
-                                <td>{{ \App\Models\ProductType::all()->find($item->product_type_id)->name }}</td>
-                                <td>{{ \App\Models\Platform::all()->find($item->platform_id)->name }}</td>
-                                <td>{{ \App\Models\Publisher::all()->find($item->publisher_id)->name }}</td>
+                                <td>{{ $item->user_id }}</td>
+                                <td>{{App\Models\OrderProduct::orderPrice($item->id)}}</td>
+                                <td>{{ $item->postal }}</td>
+                                <td>{{ $item->country }}</td>
+                                <td>{{ $item->provincie }}</td>
+                                <td>{{ $item->city }}</td>
+                                <td>{{ $item->address }}</td>
+                                <td>{{ \App\Models\OrderState::all()->find($item->orderState_id)->state }}</td>
                                 <td>{{ $item->created_at }}</td>
                                 <td>{{ $item->created_by }}</td>
                                 <td>{{ $item->updated_at }}</td>
                                 <td>{{ $item->updated_by }}</td>
                                 <td>
-                                    <form action="{{ route('products.edit', $item) }}" method="GET">
+                                    <form action="{{ route('orders.edit', $item) }}" method="GET">
                                         @csrf
                                         <button type="submit" class="btn btn-warning">Módosítás</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="{{ route('products.show', $item) }}" method="GET">
+                                    <form action="{{ route('orders.show', $item) }}" method="GET">
                                         @csrf
                                         <button type="submit" class="btn btn-warning">Kinézet</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="{{ route('products.destroy', $item) }}" method="POST">
+                                    <form action="{{ route('orders.destroy', $item) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Törlés</button>

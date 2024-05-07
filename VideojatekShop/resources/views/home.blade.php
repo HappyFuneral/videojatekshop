@@ -91,35 +91,33 @@
             </div>
             
            
-            @foreach(App\Models\StorageProduct::all() as $storageProduct)
+            @foreach(App\Models\Product::all() as $product)
           
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="{{asset('storage/products/'.$storageProduct->product($storageProduct->product_id)->product_img)}}" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">{{$storageProduct->product($storageProduct->product_id)->name}}</h5>
-                            <!-- Product reviews-->
-                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                            </div> 
-                            <!-- Product price-->
-                           {{$storageProduct->product($storageProduct->product_id)->price}} <span class="italic">FT</span>
+            <div class="col mb-5 card-home-col">
+                <div class="card card-home" onclick="submitForm(this)">
+                    <form action="{{ route('products.show', $product) }}">
+                        <div class="row card-image">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="{{asset('storage/products/'.$product->product_img)}}" alt="Termék kép" />
                         </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><form method="GET" action={{route('addProductToCart',$storageProduct->product($storageProduct->product_id)->id)}}>@csrf @method('GET') <button class="btn btn-outline-dark mt-auto" type="submit" href="">Add to cart</a></form></div>
-                    </div>
+                        <hr class="showpage-hr">
+                        <div class="row card-description">
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{$product->name}}</h5>
+                                    <!-- Product price-->
+                                    {{$product->price}} <span class="italic">FT</span>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><form method="GET" action={{route('addProductToCart',$product->id)}}>@csrf @method('GET') <button class="btn home-btn mt-auto" type="submit" href="">Add to cart</a></form></div>
+                            </div>
+                        </div>
+                        
+                    </form>
                 </div>
             </div>
             @endforeach

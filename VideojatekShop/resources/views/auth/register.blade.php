@@ -62,7 +62,7 @@
                         <div class="row mb-3">
                             <label for="password" class="col-form-label">{{ __('Jelszó') }}</label>
 
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" minlength="8" name="password" required autocomplete="new-password">
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">

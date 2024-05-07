@@ -40,4 +40,14 @@ class Order extends Model
     public function products(): BelongsToMany {
         return $this->belongsToMany(Product::class);
     }
+
+    public static function orderPrice($id) : int{
+        $price = 0;
+        foreach(OrderProduct::all() as $orderproduct){
+            if ($orderproduct->order_id == $id){
+                $price+=$orderproduct->price;
+            }
+        }
+        return $price;
+    }
 }

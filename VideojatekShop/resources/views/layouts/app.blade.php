@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
+    <title>Kockadoboz</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -37,7 +38,8 @@
     <nav class="navbar navbar-expand-md shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/home') }}">
-                {{ config('app.name', 'Videogame') }}
+                <!--{{ config('app.name', 'Videogame') }}-->
+                Kockadoboz
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -92,25 +94,28 @@
                                 <!-- Order -->
 
                                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
-                                
-                                    <!-- Contract Type -->
-                                    <a class="dropdown-item nav-dropdown" href="{{ route('contracttypes.index') }}">Szerződés típus listája</a>
+                                    @if (Auth::user()->role_id == 1)
 
-                                    <!-- Contract -->
-                                    <a class="dropdown-item nav-dropdown" href="{{ route('contracts.index') }}">Szerződések</a>
+                                        <!-- Contract Type -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('contracttypes.index') }}">Szerződés típus listája</a>
 
-                                    <!-- OrderState -->
-                                    <a class="dropdown-item nav-dropdown" href="{{ route('orderstates.index') }}">Rendelés folyamat típus listája</a>
+                                        <!-- Contract -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('contracts.index') }}">Szerződések</a>
 
-                                    <!-- ProductType -->
-                                    <a class="dropdown-item nav-dropdown" href="{{ route('producttypes.index') }}">Termék típus listája</a>
+                                        <!-- OrderState -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('orderstates.index') }}">Rendelés folyamat típus listája</a>
 
-                                    <!-- Platform -->
-                                    <a class="dropdown-item nav-dropdown" href="{{ route('platforms.index') }}">Platformok listája</a>
+                                        <!-- ProductType -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('producttypes.index') }}">Termék típus listája</a>
 
-                                    <!-- Publisher -->
-                                    <a class="dropdown-item nav-dropdown" href="{{ route('publishers.index') }}">Kiadók listája</a>
+                                        <!-- Platform -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('platforms.index') }}">Platformok listája</a>
 
+                                        <!-- Publisher -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('publishers.index') }}">Kiadók listája</a>
+
+                                    @endif
+                                    
                                     <!-- Product -->
                                     <a class="dropdown-item nav-dropdown" href="{{ route('products.index') }}">Termék lista</a>
 

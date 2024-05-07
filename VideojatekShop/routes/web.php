@@ -83,7 +83,7 @@ Route::middleware(Authenticate::class)->group(function () {
     |--------------------------------------------------------------------------
     */
     Route::resource('/publishers', PublisherController::class)->middleware(VerifyAdminRole::class);
-    Route::get('/publishers/show_deleted', [PublisherController::class, 'show_deleted'])->name('publishers.show_deleted')->middleware(VerifyUsVerifyAdminRoleerRole::class);
+    Route::get('/publishers/show_deleted', [PublisherController::class, 'show_deleted'])->name('publishers.show_deleted')->middleware(VerifyAdminRole::class);
     
     /*
     |--------------------------------------------------------------------------

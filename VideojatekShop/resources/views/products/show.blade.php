@@ -30,7 +30,7 @@
 
                         <p class="showpage-price text-center">ÁR: {{$product->price}} Ft</p>
 
-                        <form class="showpage-form" action="">
+                        <form class="showpage-form" action="{{route('addProductToCart',$product->id)}}">
                             <button type="submit" class="btn buy-btn">Megvásárlás</button>
                         </form>
 
