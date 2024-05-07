@@ -92,7 +92,12 @@
                                 <!-- Order -->
 
                                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                                
+                                    <!-- Contract Type -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('contracttypes.index') }}">Szerződés típus listája</a>
+
                                     <!-- Contract -->
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('contracts.index') }}">Szerződések</a>
 
                                     <!-- OrderState -->
                                     <a class="dropdown-item nav-dropdown" href="{{ route('orderstates.index') }}">Rendelés folyamat típus listája</a>

@@ -34,7 +34,7 @@ class ContractController extends Controller
     public function store(StoreContractRequest $request)
     {
         $this->authorize('create', Contract::class);
-        $request->product_img->storeAs(
+        $request->pdf->storeAs(
             'contracts',
             'contract_' . $request->name . '_' . $request->owner . '.pdf',
             'public'
@@ -43,10 +43,10 @@ class ContractController extends Controller
         
         $contract = new Contract(
             [
-                "name" => $request->name,
-                "code" => $request->owner,
-                "product_img" => $file_name,
-                "contract_type_id" => $request->product_type_id,
+                "contract_name" => $request->contract_name,
+                "contract_owner" => $request->contract_owner,
+                "pdf" => $file_name,
+                "contract_type_id" => $request->contract_type_id,
                 "created_by" => Auth::user()->id,
             ]
         );
@@ -86,8 +86,8 @@ class ContractController extends Controller
         $file_name = 'contract_' . $request->name . '_' . $request->owner . '.pdf';
 
         $contract->pdf = $file_name;
-        $contract->name = $request->name;
-        $contract->owner = $request->owner;
+        $contract->contract_name = $request->contract_name;
+        $contract->contract_owner = $request->contract_owner;
         $contract->contract_type_id = $request->contract_type_id;
         $contract->updated_by = Auth::user()->id;
 

@@ -148,7 +148,7 @@
 
                         <div class="mb-3">
                             <label for="tariff_description" class="form-label">Tarifa leírás</label>
-                            <input type="number" name="tariff_description" id="tariff_description" class="form-control @if($errors->has('tariff_description')) border border-danger @endif"
+                            <input type="text" name="tariff_description" id="tariff_description" class="form-control @if($errors->has('tariff_description')) border border-danger @endif"
                                 aria-describedby="helpId" value="{{old('tariff_description')}}">
 
                             @if ($errors->has('tariff_description'))

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContractTypeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderStateController;
 use App\Http\Controllers\PlatformController;
@@ -116,5 +117,12 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::resource('/contracts', ContractController::class)->middleware(VerifyAdminRole::class);
     Route::get('/contracts/show_deleted', [ContractController::class, 'show_deleted'])->name('contracts.show_deleted')->middleware(VerifyAdminRole::class);
 
+    /*
+    |--------------------------------------------------------------------------
+    | Contract types Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('/contracttypes', ContractTypeController::class)->middleware(VerifyAdminRole::class);
+    Route::get('/contracttypes/show_deleted', [ContractTypeController::class, 'show_deleted'])->name('contracttypes.show_deleted')->middleware(VerifyAdminRole::class);
 });
 
