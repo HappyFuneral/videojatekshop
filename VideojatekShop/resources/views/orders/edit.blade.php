@@ -33,104 +33,29 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('products.update', $product) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('orders.update', $order) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
+                       
                         <div class="mb-3">
-                            <label for="code" class="form-label">Termék kód</label>
-                            <input type="text" name="code" id="code" class="form-control @if($errors->has('code')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('code', $product->code)}}">
-
-                            @if ($errors->has('code'))
-                                <small class="text-danger">{{ $errors->first('code') }}</small>
-                            @endif
-                        </div>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Cím</label>
-                            <input type="text" name="name" id="name" class="form-control @if($errors->has('name')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('name', $product->name)}}">
-
-                            @if ($errors->has('name'))
-                                <small class="text-danger">{{ $errors->first('name') }}</small>
-                            @endif
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="description" class="form-label">Leírás</label>
-                            <input type="text" name="description" id="description" class="form-control @if($errors->has('description')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('description', $product->description)}}">
-
-                            @if ($errors->has('description'))
-                                <small class="text-danger">{{ $errors->first('description') }}</small>
-                            @endif
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="price" class="form-label">Ár</label>
-                            <input type="number" name="price" id="price" class="form-control @if($errors->has('price')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('price', $product->price)}}">
-
-                            @if ($errors->has('price'))
-                                <small class="text-danger">{{ $errors->first('price') }}</small>
-                            @endif
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="releaseDate" class="form-label">Megjelenés</label>
-                            <input type="date" name="releaseDate" id="releaseDate" class="form-control @if($errors->has('releaseDate')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('releaseDate')}}">
-
-                            @if ($errors->has('releaseDate'))
-                                <small class="text-danger">{{ $errors->first('releaseDate', $product->releaseDate) }}</small>
-                            @endif
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="product_type_id" class="form-label">Termék Típus</label>
-                            <select name="product_type_id" class="form-control @if($errors->has('product_type_id')) border border-danger @endif" data-te-select-init>
-                                @foreach(\App\Models\ProductType::all() as $producttype)
-                                    <option value="{{old('producttype', $product->price)}}">{{$producttype->name}}</option>
+                            <label for="orderState_id" class="form-label">Rendelés állapota</label>
+                            <select name="orderState_id" class="form-control @if($errors->has('orderState_id')) border border-danger @endif" data-te-select-init>
+                                @foreach(\App\Models\OrderState::all() as $orderstate)
+                                @if ($orderstate->id == $order->orderState_id)
+                                    <option selected value="{{$orderstate->id}}">{{$orderstate->state}}</option>
+                                @else
+                                    <option value="{{$orderstate->id}}">{{$orderstate->state}}</option>
+                                @endif
                                 @endforeach
                             </select>
 
-                            @if ($errors->has('product_type_id'))
-                                <small class="text-danger">{{ $errors->first('product_type_id') }}</small>
+                            @if ($errors->has('orderState_id'))
+                                <small class="text-danger">{{ $errors->first('orderState_id') }}</small>
                             @endif
                         </div>
 
-                        <div class="mb-3">
-                            <label for="publisher_id" class="form-label">Kiadó</label>
-                            <select name="publisher_id" class="form-control @if($errors->has('publisher_id')) border border-danger @endif" data-te-select-init>
-                                @foreach(\App\Models\Publisher::all() as $publisher)
-                                    <option value="{{$publisher->id}}">{{$publisher->name}}</option>
-                                @endforeach
-                            </select>
-
-                            @if ($errors->has('publisher_id'))
-                                <small class="text-danger">{{ $errors->first('publisher_id') }}</small>
-                            @endif
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="tariff_number" class="form-label">Tarifa szám</label>
-                            <input type="number" name="tariff_number" id="tariff_number" class="form-control @if($errors->has('tariff_number')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('tariff_number', $product->tariff_number)}}">
-
-                            @if ($errors->has('tariff_number'))
-                                <small class="text-danger">{{ $errors->first('tariff_number') }}</small>
-                            @endif
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="tariff_description" class="form-label">Tarifa leírás</label>
-                            <input type="text" name="tariff_description" id="tariff_description" class="form-control @if($errors->has('tariff_description')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('tariff_description', $product->tariff_description)}}">
-
-                            @if ($errors->has('tariff_description'))
-                                <small class="text-danger">{{ $errors->first('tariff_description') }}</small>
-                            @endif
-                        </div>
+                  
                         
                         <button type="submit" class="btn submit-btn">Módosítás</button>
                     </form>

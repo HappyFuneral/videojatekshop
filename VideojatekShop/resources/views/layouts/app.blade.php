@@ -46,20 +46,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">All Products</a></li>
-                            <li><hr class="dropdown-divider" /></li>
-
-                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-
-                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url('/home')}}">Főoldal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Rólunk</a></li>
+                   
                 </ul>
               
             </div>
@@ -73,23 +62,29 @@
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
                     @guest
+                    <a class="nav-link" href="{{route('cart')}}">
+                        {{ __('Kosár') }}
+                    </a>
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Belépés') }}</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Regisztrálás') }}</a>
                             </li>
                         @endif
                     @else
+                    <a class="nav-link" href="{{route('cart')}}">
+                        {{ __('Kosár') }}
+                    </a>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->email }}
                             </a>
-
+                  
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 
 
@@ -128,9 +123,7 @@
                                     <a class="dropdown-item nav-dropdown" href="{{ route('storages.index') }}">Raktár Cím</a>
 
                                 @endif
-                                    <a class="dropdown-item" href="cart">
-                                        {{ __('Kosár') }}
-                                    </a>
+               
 
                                 <!-- Cart history -->
                                 @if (Auth::user()->role_id == 1)
@@ -140,7 +133,7 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Kijelentkezés') }}
                                 </a>
                                 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

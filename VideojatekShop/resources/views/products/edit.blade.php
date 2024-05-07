@@ -68,9 +68,10 @@
 
                         <div class="mb-3">
                             <label for="description" class="form-label">Leírás</label>
-                            <input type="text" name="description" id="description" class="form-control @if($errors->has('description')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('description', $product->description)}}">
-
+                            <textarea name="description" id="description" class="form-control @if($errors->has('description')) border border-danger @endif"
+                                aria-describedby="helpId" value="">
+                                {{old('description', $product->description)}}
+                            </textarea>
                             @if ($errors->has('description'))
                                 <small class="text-danger">{{ $errors->first('description') }}</small>
                             @endif
@@ -89,7 +90,7 @@
                         <div class="mb-3">
                             <label for="releaseDate" class="form-label">Megjelenés</label>
                             <input type="date" name="releaseDate" id="releaseDate" class="form-control @if($errors->has('releaseDate')) border border-danger @endif"
-                                aria-describedby="helpId" value="{{old('releaseDate')}}">
+                                aria-describedby="helpId" value="{{$product->releaseDate}}">
 
                             @if ($errors->has('releaseDate'))
                                 <small class="text-danger">{{ $errors->first('releaseDate', $product->releaseDate) }}</small>
@@ -100,7 +101,11 @@
                             <label for="product_type_id" class="form-label">Termék Típus</label>
                             <select name="product_type_id" class="form-control @if($errors->has('product_type_id')) border border-danger @endif" data-te-select-init>
                                 @foreach(\App\Models\ProductType::all() as $producttype)
-                                    <option value="{{old('producttype', $product->price)}}">{{$producttype->name}}</option>
+                                @if($producttype->id == $product->product_type_id)
+                                    <option selected value="{{old('product_type_id', $product->product_type_id)}}">{{$producttype->name}}</option>
+                                @else
+                                    <option value="{{old('product_type_id', $product->product_type_id)}}">{{$producttype->name}}</option>
+                                @endif
                                 @endforeach
                             </select>
 
@@ -113,7 +118,11 @@
                             <label for="platform_id" class="form-label">Platform Típus</label>
                             <select name="platform_id" class="form-control @if($errors->has('platform_id')) border border-danger @endif" data-te-select-init>
                                 @foreach(\App\Models\Platform::all() as $platform)
+                                @if($platform->id == $product->platform_id)
+                                    <option selected value="{{$platform->id}}">{{$platform->name}}</option>
+                                @else
                                     <option value="{{$platform->id}}">{{$platform->name}}</option>
+                                @endif
                                 @endforeach
                             </select>
 
@@ -126,7 +135,11 @@
                             <label for="publisher_id" class="form-label">Kiadó</label>
                             <select name="publisher_id" class="form-control @if($errors->has('publisher_id')) border border-danger @endif" data-te-select-init>
                                 @foreach(\App\Models\Publisher::all() as $publisher)
+                                @if($publisher->id == $product->publisher_id)
+                                <option selected value="{{$publisher->id}}">{{$publisher->name}}</option>
+                                @else
                                     <option value="{{$publisher->id}}">{{$publisher->name}}</option>
+                                    @endif
                                 @endforeach
                             </select>
 

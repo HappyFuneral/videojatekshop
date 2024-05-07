@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\StorageProduct;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UpdateCartRequest;
 
 class CartController extends Controller
 {
@@ -30,11 +31,12 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Sikeresen frissítetted a terméket!');
     }
      
-    public function updateCart(Request $request)
+    public function updateCart(UpdateCartRequest $request)
     {
         if($request->id && $request->quantity){
-            $x = 1;
+
             $cart = session()->get('cart');
+            $x = array_key_first($cart);
             while ($x<count($cart)+1 && $cart[$x]['product_id'] != $request->id){
                 $x++;
             }
@@ -64,8 +66,9 @@ class CartController extends Controller
     public function deleteProduct(Request $request)
     {
         if($request->id){
-            $x = 1;
             $cart = session()->get('cart');
+            $x = array_key_first($cart);
+
             while ($x<count($cart)+1 && $cart[$x]['product_id'] != $request->id){
                 $x++;
             }

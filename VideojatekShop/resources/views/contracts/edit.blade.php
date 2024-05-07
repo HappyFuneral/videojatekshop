@@ -71,7 +71,12 @@
                             <label for="contract_type_id" class="form-label">Szerződés típus</label>
                             <select name="contract_type_id" class="form-control @if($errors->has('contract_type_id')) border border-danger @endif" data-te-select-init>
                                 @foreach(\App\Models\ContractType::all() as $contracttype)
-                                    <option value="{{$contracttype->id}}">{{$contracttype->name}}</option>
+                                @if($contracttype->id == $contract->contract_type_id)
+                                    <option selected value="{{$contracttype->id}}">{{$contracttype->name}}</option>
+                                @else
+                                 <option value="{{$contracttype->id}}">{{$contracttype->name}}</option>
+
+                                @endif
                                 @endforeach
                             </select>
 

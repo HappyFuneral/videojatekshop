@@ -75,9 +75,9 @@ class OrderController extends Controller
         $order->price = $price;
         $order->update();
         unset($cart);
-        session()->put('cart', $cart);
+        session()->put('cart', []);
 
-        return back()->with("success", "Order created successfully.");
+        return back()->with("success", "Sikeresen leadtad a rendelést!");
     }
 
     /**
@@ -103,8 +103,7 @@ class OrderController extends Controller
     {
         $order->updated_by = Auth::user()->id;
         $order->update($request->all());
-
-        return redirect()->route('orders.index')->with('success', 'The order was updated successfully.');
+        return redirect()->route('orders.index')->with('success', 'A rendelés státusza megváltozott!');
     }
 
     /**

@@ -45,16 +45,16 @@
                         @foreach ($orders as $item)
                             <tr class="">
                                 <td scope="row">{{ $item->id }}</td>
-                                <td>{{ $item->user_id }}</td>
-                                <td>{{App\Models\OrderProduct::orderPrice($item->id)}}</td>
+                                <td>{{ App\Models\User::all()->find($item->user_id)->name }}</td>
+                                <td>{{App\Models\Order::all()->find($item->id)->price}}</td>
                                 <td>{{ $item->postal }}</td>
                                 <td>{{ $item->country }}</td>
-                                <td>{{ $item->provincie }}</td>
+                                <td>{{ $item->province }}</td>
                                 <td>{{ $item->city }}</td>
                                 <td>{{ $item->address }}</td>
                                 <td>{{ \App\Models\OrderState::all()->find($item->orderState_id)->state }}</td>
                                 <td>{{ $item->created_at }}</td>
-                                <td>{{ $item->created_by }}</td>
+                                <td>{{ App\Models\User::all()->find($item->created_by)->name  }}</td>
                                 <td>{{ $item->updated_at }}</td>
                                 <td>{{ $item->updated_by }}</td>
                                 <td>

@@ -25,6 +25,7 @@
                     </thead>
                     <tbody>
                         @php $total = 0 @endphp
+                        @if (session()->get('cart') !== null)
                         @foreach (session()->get('cart') as $item)
                             <tr class="">
                                 <td>{{\App\Models\Product::all()->find( \App\Models\StorageProduct::all()->find($item['product_id'])->product_id)->name }}</td>
@@ -51,6 +52,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @endif
                     </tbody>
                     <tfoot>
                         <tr>

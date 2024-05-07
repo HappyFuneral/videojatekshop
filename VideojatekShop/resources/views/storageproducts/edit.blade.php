@@ -50,7 +50,11 @@
                             <label for="product_id" class="form-label">Termék</label>
                             <select name="product_id" class="form-control @if($errors->has('product_id')) border border-danger @endif" data-te-select-init>
                                 @foreach(\App\Models\Product::all() as $product)
+                                @if($product->id == $storageproduct->product_id)
+                                    <option selected value="{{$product->id}}">{{$product->name}}</option>
+                                    @else
                                     <option value="{{$product->id}}">{{$product->name}}</option>
+                                @endif
                                 @endforeach
                             </select>
 
@@ -63,7 +67,11 @@
                             <label for="storage" class="form-label">Raktár</label>
                             <select name="storage_id" class="form-control @if($errors->has('storage_id')) border border-danger @endif" data-te-select-init>
                                 @foreach(\App\Models\Storage::all() as $storage)
+                                @if($storage->id == $storageproduct->storage_id)
+                                    <option selected value="{{$storage->id}}">{{$storage->storageName}}</option>
+                                @else
                                     <option value="{{$storage->id}}">{{$storage->storageName}}</option>
+                                @endif
                                 @endforeach
                             </select>
 

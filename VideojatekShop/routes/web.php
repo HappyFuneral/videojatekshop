@@ -81,6 +81,8 @@ Route::middleware(Authenticate::class)->group(function () {
     |--------------------------------------------------------------------------
     */
     Route::resource('/products', ProductController::class)->middleware(VerifyUserRole::class);
+    Route::get('/products/{product}',[ProductController::class, 'show'])->name('products.show');
+
     Route::get('/products/show_deleted', [ProductController::class, 'show_deleted'])->name('products.show_deleted')->middleware(VerifyAdminRole::class);
 
     /*
