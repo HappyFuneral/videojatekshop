@@ -13,12 +13,16 @@
                 </div>
             @endif
             <div class="table-responsive">
+
+                <!--
                 @if (Auth::user()->role_id == 1)
                     <form action="{{ route('orders.show_deleted') }}">
                         @csrf
                         <button type="submit" class="btn show_deleted-btn">Törölt adatok</button>
                     </form>
                 @endif
+                -->
+                
                 <table class="table table-dark" id="listTable">
                     <thead>
                         <tr>
@@ -37,7 +41,9 @@
                             <th scope="col">Módosította</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
-                            <th scope="col"></th>
+                            @if (Auth::user()->role_id == 1)
+                                <th scope="col"></th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -45,7 +51,7 @@
                         @foreach ($orders as $item)
                             <tr class="">
                                 <td scope="row">{{ $item->id }}</td>
-                                <td>{{ App\Models\User::all()->find($item->user_id)->name }}</td>
+                                <td>{{$item->user_id }}</td>
                                 <td>{{App\Models\Order::all()->find($item->id)->price}}</td>
                                 <td>{{ $item->postal }}</td>
                                 <td>{{ $item->country }}</td>
@@ -66,16 +72,18 @@
                                 <td>
                                     <form action="{{ route('orders.show', $item) }}" method="GET">
                                         @csrf
-                                        <button type="submit" class="btn btn-warning">Kinézet</button>
+                                        <button type="submit" class="btn btn-warning">Tételei</button>
                                     </form>
                                 </td>
-                                <td>
-                                    <form action="{{ route('orders.destroy', $item) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Törlés</button>
-                                    </form>
-                                </td>
+                                @if (Auth::user()->role_id == 1)
+                                    <td>
+                                        <form action="{{ route('orders.destroy', $item) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Törlés</button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

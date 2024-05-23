@@ -14,14 +14,19 @@
             @endif
             <div class="table-responsive">
 
-                <form action="{{ route('storages.create') }}">
-                    @csrf
-                    <button type="submit" class="btn create-btn">+ Hozzáadás</button>
-                </form>
+                @if (Auth::user()->role_id == 1)
+                    <form action="{{ route('storages.create') }}">
+                        @csrf
+                        <button type="submit" class="btn create-btn">+ Hozzáadás</button>
+                    </form>
+                @endif
+
+                <!--
                 <form action="{{ route('storages.show_deleted') }}">
                     @csrf
                     <button type="submit" class="btn show_deleted-btn">Törölt adatok</button>
                 </form>
+                -->
 
                 <table class="table table-dark" id="listTable">
                     <thead>
@@ -34,7 +39,9 @@
                             <th scope="col">Város</th>
                             <th scope="col">Cím</th>
                             <th scope="col"></th>
-                            <th scope="col"></th>
+                            @if (Auth::user()->role_id == 1)
+                                <th scope="col"></th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -54,13 +61,15 @@
                                         <button type="submit" class="btn btn-warning">Módosítás</button>
                                     </form>
                                 </td>
-                                <td>
-                                    <form action="{{ route('storages.destroy', $item) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Törlés</button>
-                                    </form>
-                                </td>
+                                @if (Auth::user()->role_id == 1)
+                                    <td>
+                                        <form action="{{ route('storages.destroy', $item) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Törlés</button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

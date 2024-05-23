@@ -287,7 +287,7 @@ class ProductSeeder extends Seeder
             'releaseDate' => '2021-04-11',
             'tariff_number' => 95045000,
             'tariff_description' => 'Video game consoles and machines',
-            'product_type_id' => 3,
+            'product_type_id' => 2,
             'publisher_id' => 1,
             'platform_id' => 7,
         ]);
@@ -304,7 +304,7 @@ class ProductSeeder extends Seeder
             'releaseDate' => '2021-06-18',
             'tariff_number' => 95045000,
             'tariff_description' => 'Video game consoles and machines',
-            'product_type_id' => 3,
+            'product_type_id' => 2,
             'publisher_id' => 2,
             'platform_id' => 5,
         ]);

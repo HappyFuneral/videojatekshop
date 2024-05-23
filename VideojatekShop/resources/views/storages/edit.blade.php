@@ -56,7 +56,7 @@
                         </div>
                         
                         <div class="mb-3">
-                            <label for="country" class="form-label">Country</label>
+                            <label for="country" class="form-label">Ország</label>
                             <input type="text" name="country" id="country" class="form-control @if($errors->has('country')) border border-danger @endif"
                                 aria-describedby="helpId" value="{{old('country', $storage->country)}}">
 
@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="province" class="form-label">Province</label>
+                            <label for="province" class="form-label">Megye</label>
                             <input type="text" name="province" id="province" class="form-control @if($errors->has('province')) border border-danger @endif"
                                 aria-describedby="helpId" value="{{old('province', $storage->province)}}">
 
@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="city" class="form-label">City</label>
+                            <label for="city" class="form-label">Város</label>
                             <input type="text" name="city" id="city" class="form-control @if($errors->has('city')) border border-danger @endif"
                                 aria-describedby="helpId" value="{{old('city', $storage->city)}}">
 
@@ -86,7 +86,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="address" class="form-label">Address</label>
+                            <label for="address" class="form-label">Cím</label>
                             <input type="text" name="address" id="address" class="form-control @if($errors->has('address')) border border-danger @endif"
                                 aria-describedby="helpId" value="{{old('address', $storage->address)}}">
 

@@ -14,14 +14,19 @@
             @endif
             <div class="table-responsive">
 
-                <form action="{{ route('products.create') }}">
-                    @csrf
-                    <button type="submit" class="btn create-btn">+ Hozzáadás</button>
-                </form>
+                @if (Auth::user()->role_id == 1)
+                    <form action="{{ route('products.create') }}">
+                        @csrf
+                        <button type="submit" class="btn create-btn">+ Hozzáadás</button>
+                    </form>
+                @endif
+
+                <!--
                 <form action="{{ route('products.show_deleted') }}">
                     @csrf
                     <button type="submit" class="btn show_deleted-btn">Törölt adatok</button>
                 </form>
+                -->
 
                 <table class="table table-dark" id="listTable">
                     <thead>
@@ -41,8 +46,10 @@
                             <th scope="col">Utolsó módosítás</th>
                             <th scope="col">Módosította</th>
                             <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
+                            @if (Auth::user()->role_id == 1)
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -63,25 +70,29 @@
                                 <td>{{ $item->created_by }}</td>
                                 <td>{{ $item->updated_at }}</td>
                                 <td>{{ $item->updated_by }}</td>
-                                <td>
-                                    <form action="{{ route('products.edit', $item) }}" method="GET">
-                                        @csrf
-                                        <button type="submit" class="btn btn-warning">Módosítás</button>
-                                    </form>
-                                </td>
+                                @if (Auth::user()->role_id == 1)
+                                    <td>
+                                        <form action="{{ route('products.edit', $item) }}" method="GET">
+                                            @csrf
+                                            <button type="submit" class="btn btn-warning">Módosítás</button>
+                                        </form>
+                                    </td>
+                                @endif
                                 <td>
                                     <form action="{{ route('products.show', $item) }}" method="GET">
                                         @csrf
                                         <button type="submit" class="btn btn-warning">Kinézet</button>
                                     </form>
                                 </td>
-                                <td>
-                                    <form action="{{ route('products.destroy', $item) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Törlés</button>
-                                    </form>
-                                </td>
+                                @if (Auth::user()->role_id == 1)
+                                    <td>
+                                        <form action="{{ route('products.destroy', $item) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Törlés</button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

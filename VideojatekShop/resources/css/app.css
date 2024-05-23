@@ -87,6 +87,16 @@ nav {
     text-transform: uppercase !important;
 }
 
+.type-bar {
+    color: white !important;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+}
+
+.type-bar:hover {
+    background: #760DBC !important;
+}
+
 .dropdown-menu {
     background: #000420 !important;
 }
@@ -167,6 +177,10 @@ nav {
     text-transform: none;
 }
 
+.showpage-mainbar {
+    background-color: white !important;
+}
+
 .showpage-sidebar {
     padding: 3%;
     border-left: 2px solid #4D47EB !important;
@@ -234,6 +248,11 @@ nav {
     text-transform: uppercase !important;
     background-color: #4D47EB !important;
     width: 50%;
+}
+
+/* PHONE BUTTON */
+.iti__country-container {
+    padding-left: 1% !important;
 }
 
 /* CREATED BUTTON */

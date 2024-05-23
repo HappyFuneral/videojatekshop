@@ -22,6 +22,42 @@ class ProductController extends Controller
     }
 
     /**
+     * Display a listing of the game resource.
+     */
+    public function gameproduct()
+    {
+        $products = Product::where('product_type_id',1)->get();
+        return view('gameproduct', ['products'=> $products]);
+    }
+
+    /**
+     * Display a listing of the controller resource.
+     */
+    public function controllerproduct()
+    {
+        $products = Product::where('product_type_id',2)->get();
+        return view('controllerproduct', ['products'=> $products]);
+    }
+
+    /**
+     * Display a listing of the console resource.
+     */
+    public function consoleproduct()
+    {
+        $products = Product::where('product_type_id',3)->get();
+        return view('consoleproduct', ['products'=> $products]);
+    }
+
+    /**
+     * Display a listing of the accessory resource.
+     */
+    public function accessoryproduct()
+    {
+        $products = Product::where('product_type_id',4)->get();
+        return view('accessoryproduct', ['products'=> $products]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

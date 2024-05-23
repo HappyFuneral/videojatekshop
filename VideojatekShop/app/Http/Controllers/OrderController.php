@@ -36,8 +36,8 @@ class OrderController extends Controller
             [
                 "user_id" => Auth::user()->id,
                 "price" => 0,
-                "delivery_date" => $request->delivery_date,
-                "delivery_details" => $request->delivery_details,
+                "delivery_date" => now(),
+                "delivery_details" => "Foxpost",
                 "postal" => $request->postal,
                 "country" => $request->country,
                 "province" => $request->province,
@@ -112,6 +112,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
+        $this->authorize('delete', Order::class);
         $order->deleted_by = Auth::user()->id;
         $order->update();
         $order->delete();

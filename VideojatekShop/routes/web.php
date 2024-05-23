@@ -38,6 +38,11 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::get('/gameproduct', [ProductController::class,'gameproduct'])->name('gameproduct');
+Route::get('controllerproduct', [ProductController::class,'controllerproduct'])->name('controllerproduct');
+Route::get('consoleproduct', [ProductController::class,'consoleproduct'])->name('consoleproduct');
+Route::get('accessoryproduct', [ProductController::class,'accessoryproduct'])->name('accessoryproduct');
+
 Route::get('/cart', [CartController::class, 'Cart'])->name('cart');
 Route::get('/cart/add/{id}',[CartController::class, 'addProductToCart'])->name('addProductToCart');
 Route::patch('/cart/update',[CartController::class, 'updateCart'])->name('updateCart');

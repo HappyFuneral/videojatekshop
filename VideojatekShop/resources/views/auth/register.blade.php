@@ -50,8 +50,6 @@
 
                             <input id="phoneNumber" type="tel" class="form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ old('phoneNumber') }}" placeholder="" required autocomplete="phoneNumber">
 
-                            <span id="valid-msg" class="hide" style="color: red">✓ Valid</span>
-                            <span id="error-msg" class="hide" style="color: red"></span>
                             @error('phoneNumber')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

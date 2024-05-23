@@ -46,8 +46,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url('/home')}}">Főoldal</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Rólunk</a></li>
+                    <li class="nav-item type-bar"><a class="nav-link" href="{{route('gameproduct')}}">Videójátékok</a></li>
+                    <li class="nav-item type-bar"><a class="nav-link" href="{{route('controllerproduct')}}">Kontrollerek</a></li>
+                    <li class="nav-item type-bar"><a class="nav-link" href="{{route('consoleproduct')}}">Konzolok</a></li>
+                    <li class="nav-item type-bar"><a class="nav-link" href="{{route('accessoryproduct')}}">Tartozékok</a></li>
                    
                 </ul>
               
@@ -62,8 +64,8 @@
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
                     @guest
-                    <a class="nav-link" href="{{route('cart')}}">
-                        {{ __('Kosár') }}
+                    <a class="nav-link type-bar" href="{{route('cart')}}">
+                        <i class="fa-solid fa-basket-shopping"></i>
                     </a>
                         @if (Route::has('login'))
                             <li class="nav-item">
@@ -77,8 +79,8 @@
                             </li>
                         @endif
                     @else
-                    <a class="nav-link" href="{{route('cart')}}">
-                        {{ __('Kosár') }}
+                    <a class="nav-link type-bar" href="{{route('cart')}}">
+                        <i class="fa-solid fa-basket-shopping"></i>
                     </a>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -117,19 +119,16 @@
                                     <a class="dropdown-item nav-dropdown" href="{{ route('products.index') }}">Termék lista</a>
 
                                     <!-- StorageProduct -->
-                                    <a class="dropdown-item nav-dropdown" href="{{ route('storageproducts.index') }}">Termékek bevitelének naplózása</a>
+                                    <a class="dropdown-item nav-dropdown" href="{{ route('storageproducts.index') }}">Termékek bevitele</a>
 
                                     <!-- Storage -->
                                     <a class="dropdown-item nav-dropdown" href="{{ route('storages.index') }}">Raktár Cím</a>
 
                                 @endif
                
-
                                 <!-- Cart history -->
-                                @if (Auth::user()->role_id == 1)
-                                    <a class="dropdown-item nav-dropdown" href="{{ route('cart_history') }}">Vásárlási előzmény</a>
-                                @endif
-
+                                <a class="dropdown-item nav-dropdown" href="{{ route('cart_history') }}">Vásárlási előzmény</a>
+                                
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

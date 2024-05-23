@@ -17,7 +17,9 @@
                             <th scope="col">Cím</th>
                             <th scope="col">Kézbesítő</th>
                             <th scope="col">Rendelés állapota</th>
-                            <th scope="col">Rendelés időpontja</th>                        </tr>
+                            <th scope="col">Rendelés időpontja</th>
+                            <th></th>                    
+                        </tr>
                     </thead>
                     <tbody>
 
@@ -29,14 +31,13 @@
                                 <td>{{ $item->province }}</td>
                                 <td>{{ $item->city }}</td>
                                 <td>{{ $item->address }}</td>
-                                <td>{{ $item->delivery_date }}</td>
                                 <td>{{ $item->delivery_details }}</td>
+                                <td>{{ $item->delivery_date }}</td>
                                 <td>{{ \App\Models\OrderState::all()->find($item->orderState_id)->state }}</td>
-                                <td>{{ $item->created_at }}</td>
                                 <td>
                                     <form action="{{ route('orders.show', $item) }}" method="GET">
                                         @csrf
-                                        <button type="submit" class="btn btn-warning">Kinézet</button>
+                                        <button type="submit" class="btn btn-warning">Termékek</button>
                                     </form>
                                 </td>
                             </tr>

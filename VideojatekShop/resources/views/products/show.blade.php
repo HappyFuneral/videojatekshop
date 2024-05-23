@@ -13,7 +13,7 @@
                 </div>
             @endif
             <div class="row showpage">
-                    <div class="col">
+                    <div class="col showpage-mainbar">
                         <div class="row showpage-header">
                             <h4>{{$product->name}}</h4>
                         </div>
@@ -38,8 +38,6 @@
                         <p class="showpage-info">Kiadó: {{ \App\Models\Publisher::all()->find($product->publisher_id)->name }}</p>
                         <hr class="showpage_hr">
                         <p class="showpage-info">Platform: {{ \App\Models\Platform::all()->find($product->platform_id)->name }}</p>
-                        <hr class="showpage_hr">
-                        <p class="showpage_hr">Készleten</p>
                         <hr class="showpage_hr">
                         <p class="showpage-info">KISZÁLLÍTÁS 1 NAPON BELÜL*</p>
                         <p class="showpage-info">INGYENES szállítás Foxposttal*</p>
