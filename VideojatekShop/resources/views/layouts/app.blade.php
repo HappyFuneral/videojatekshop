@@ -88,10 +88,13 @@
                             </a>
                   
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                
+                                <!-- The own user data -->
+                                <a class="dropdown-item nav-dropdown" href=" {{ route('user.show', Auth::user()) }} ">Fiók adatok</a>
 
                                 @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                                     @if (Auth::user()->role_id == 1)
+                                        <!-- User -->
+                                        <a class="dropdown-item nav-dropdown" href="{{ route('users.index') }}">Felhasználók listája</a>
 
                                         <!-- Contract Type -->
                                         <a class="dropdown-item nav-dropdown" href="{{ route('contracttypes.index') }}">Szerződés típus listája</a>

@@ -42,7 +42,7 @@ class ContractTypeController extends Controller
 
         $contracttype->save();
 
-        return back()->with("success", "Hozzáadtad a termék típust.");
+        return back()->with("success", "Hozzáadtad a Szerződés típust.");
     }
 
     /**
@@ -70,7 +70,7 @@ class ContractTypeController extends Controller
         $contracttype->updated_by = Auth::user()->id;
         $contracttype->update($request->all());
 
-        return redirect()->route('contracttypes.index')->with('success', 'Módosítottad a termék típust.');
+        return redirect()->route('contracttypes.index')->with('success', 'Módosítottad a szerződés típust.');
     }
 
     /**

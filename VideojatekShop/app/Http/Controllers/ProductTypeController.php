@@ -70,7 +70,7 @@ class ProductTypeController extends Controller
         $producttype->updated_by = Auth::user()->id;
         $producttype->update($request->all());
 
-        return redirect()->route('producttypes.index')->with('success', 'A termékk típust módosítottad.');
+        return redirect()->route('producttypes.index')->with('success', 'A termék típust módosítottad.');
     }
 
     /**

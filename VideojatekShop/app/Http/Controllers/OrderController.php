@@ -15,6 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewIndex', Order::class);
         $orders = Order::all();
         return view("orders.index", ['orders' => $orders]);
     }

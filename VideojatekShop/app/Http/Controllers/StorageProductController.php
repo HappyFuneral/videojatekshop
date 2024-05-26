@@ -101,6 +101,6 @@ class StorageProductController extends Controller
     {
         $this->authorize('restore', StorageProduct::class);
         $storageproduct->restore();
-        return back()->with('success', 'Visszaállítottad a napló bejegyzésd.');
+        return back()->with('success', 'Visszaállítottad a napló bejegyzést.');
     }
 }

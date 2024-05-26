@@ -16,6 +16,14 @@ class OrderPolicy
         //
     }
 
+    public function viewIndex(User $user): bool
+    {
+        if ($user->role_id === 1 || $user->id === 2) {
+            return true;
+        }
+
+        return false;
+    }
     /**
      * Determine whether the user can view the model.
      */

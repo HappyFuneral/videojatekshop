@@ -12,6 +12,7 @@ use App\Http\Controllers\StorageController;
 use App\Http\Controllers\StorageProductController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\VerifyAdminRole;
 use App\Http\Middleware\VerifyUserRole;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,14 @@ Route::delete('/cart/remove',[CartController::class, 'deleteProduct'])->name('de
 Route::middleware(Authenticate::class)->group(function () {
     /*
     |--------------------------------------------------------------------------
+    | User table Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('/users', UserController::class);
+    Route::get('user/{user}/show', [UserController::class, 'show'])->name('user.show');
+
+    /*
+    |--------------------------------------------------------------------------
     | Cart History Routes
     |--------------------------------------------------------------------------
     */
@@ -87,7 +96,6 @@ Route::middleware(Authenticate::class)->group(function () {
     */
     Route::resource('/products', ProductController::class)->middleware(VerifyUserRole::class);
     Route::get('/products/{product}',[ProductController::class, 'show'])->name('products.show');
-
     Route::get('/products/show_deleted', [ProductController::class, 'show_deleted'])->name('products.show_deleted')->middleware(VerifyAdminRole::class);
 
     /*

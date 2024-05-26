@@ -42,7 +42,7 @@ class OrderStateController extends Controller
 
         $orderState->save();
 
-        return back()->with("success", "Hozzáadtad a orderstate.");
+        return back()->with("success", "Hozzáadtál egy rendelés állapota típust.");
     }
 
     /**
@@ -70,7 +70,7 @@ class OrderStateController extends Controller
         $orderstate->updated_by = Auth::user()->id;
         $orderstate->update($request->all());
 
-        return redirect()->route('orderstates.index')->with('success', 'Az orderstate módosult.');
+        return redirect()->route('orderstates.index')->with('success', 'Az rendelés állapota típus módosult.');
     }
 
     /**

@@ -101,6 +101,6 @@ class StorageController extends Controller
     {
         $this->authorize('restore', Storage::class);
         $storage->restore();
-        return back()->with('success', 'Visszaállítottad a ' . $storage->name . ' .');
+        return back()->with('success', 'Visszaállítottad a(z) ' . $storage->storageName . ' .');
     }
 }
